@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('', [\App\Http\Controllers\HomeController::class,'index'])->name('home.index');
+Route::get('albums', [\App\Http\Controllers\HomeController::class,'indexAlbums'])->name('home.albums');

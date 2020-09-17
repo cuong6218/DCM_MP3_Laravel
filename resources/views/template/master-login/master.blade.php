@@ -16,6 +16,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="kamleshyadav">
     <meta name="MobileOptimized" content="320">
+    <base href="{{asset('/')}}">
     <!--Start Style -->
     <link rel="stylesheet" type="text/css" href="css/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">

@@ -24,21 +24,21 @@
                 </div>
                 <div class="ms_nav_wrapper">
                     <ul>
-                        <li><a href="index-2.html" class="active" title="Discover">
+                        <li><a href="{{route('home.index')}}" class="active" title="Discover">
 						<span class="nav_icon">
 							<span class="icon icon_discover"></span>
 						</span>
                                 <span class="nav_text">
-							discover
+							Home Page
 						</span>
                             </a>
                         </li>
-                        <li><a href="album.html" title="Albums">
+                        <li><a href="{{route('home.albums')}}" title="Albums">
 						<span class="nav_icon">
 							<span class="icon icon_albums"></span>
 						</span>
                                 <span class="nav_text">
-							albums
+							Albums
 						</span>
                             </a>
                         </li>
