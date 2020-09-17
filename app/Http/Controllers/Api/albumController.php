@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 class albumController extends Controller
@@ -14,6 +15,7 @@ class albumController extends Controller
      */
     public function index()
     {
+        return Album::all();
 
     }
 
@@ -25,7 +27,7 @@ class albumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Album:: create($request->all());
     }
 
     /**
@@ -34,9 +36,9 @@ class albumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Album $album)
     {
-        //
+        return $album;
     }
 
     /**
@@ -46,9 +48,9 @@ class albumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Album $album)
     {
-        //
+      return $album->update($request->all());
     }
 
     /**
@@ -57,8 +59,8 @@ class albumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Album $album)
     {
-        //
+      return  $album->delete();
     }
 }
