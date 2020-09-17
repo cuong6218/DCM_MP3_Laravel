@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f69f476-baf8-4049-9f36-aebb475a6c65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Laravel-Module5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Laravel-Module5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
