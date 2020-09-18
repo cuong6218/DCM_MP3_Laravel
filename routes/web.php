@@ -15,3 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('', [\App\Http\Controllers\HomeController::class,'index'])->name('home.index');
 Route::get('albums', [\App\Http\Controllers\HomeController::class,'indexAlbums'])->name('home.albums');
+Route::prefix('admin')->group(function (){
+    Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
+
+    Route::prefix('albums')->group(function (){
+        Route::get('',[\App\Http\Controllers\CategoryController::class,'index'])->name('albums.index');
+        Route::get('/create',[\App\Http\Controllers\CategoryController::class,'create'])->name('albums.create');
+    });
+
+});
+
+
