@@ -81,6 +81,8 @@ class SongController extends Controller
     public function show($id)
     {
         //
+        $song = Song::findOrFail($id);
+        return view('template.demo.about-us', compact('song'));
     }
 
     /**
