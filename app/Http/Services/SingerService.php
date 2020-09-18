@@ -34,4 +34,8 @@ class SingerService
             $this->singerRepo->save($singer);
         }
     }
+    function destroy($id)
+    {
+        $this->singerRepo->destroy($id);
+    }
 }

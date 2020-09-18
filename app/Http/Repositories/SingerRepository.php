@@ -26,4 +26,8 @@ class SingerRepository
     {
         $singer->save();
     }
+    function destroy($id)
+    {
+        $this->singer->destroy($id);
+    }
 }
