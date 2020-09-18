@@ -10,6 +10,7 @@
 <!-- Begin Head -->
 <head>
     <title>Miraculous - Online Music Store Html Template</title>
+    @toastr_css
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="Music">
@@ -285,5 +286,7 @@
 <script type="text/javascript" src="js/plugins/scroll/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
 </body>
-
+@jquery
+@toastr_js
+@toastr_render
 </html>
