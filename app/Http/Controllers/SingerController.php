@@ -91,6 +91,7 @@ class SingerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->singerService->destroy($id);
+        return redirect()->route('singers.index');
     }
 }

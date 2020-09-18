@@ -15,13 +15,14 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
+                                <th colspan="2">Action</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -30,6 +31,7 @@
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
+                                <th colspan="2">Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -38,7 +40,9 @@
                                 <td>{{$key}}</td>
                                 <td>{{$singer->singer_name}}</td>
                                 <td>{{$singer->description}}</td>
-                                <td><img src="{{$singer->image}}" alt="no image" style="width: 60px; height: 60px"></td>
+                                <td><img src="{{asset('storage/'.$singer->image)}}" alt="no image" style="width: 100px; height: 60px"></td>
+                                <td><a href="#" class="btn btn-primary">Update</a> </td>
+                                <td><a href="{{route('singers.delete', $singer->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a> </td>
                             </tr>
                             @empty
                             <tr>
