@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use App\Models\Category;
 use App\Models\Singer;
+use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,29 @@ class SongController extends Controller
     public function store(Request $request)
     {
         //
+        $song = new Song();
+        $song->song_name = $request->song_name;
 
+        if($request->hasFile('audio')){
+            $audio = $request->file('audio');
+
+            $path1 = $audio->store('audios','public');
+            $song->audio = $path1;
+        }
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $path = $image->store('images','public');
+            $song->image = $path;
+        }
+
+        $song->author = $request->author;
+        $song->views = '1';
+        $song->singer_id = $request->singer_id;
+        $song->album_id = $request->album_id;
+        $song->category_id = $request->category_id;
+        $song->save();
+        return redirect()->route('songs.index');
     }
 
     /**
