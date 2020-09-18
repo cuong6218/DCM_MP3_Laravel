@@ -16,6 +16,8 @@
 
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="/Client/style.css">
+
+
     <style>
         #text-name{
             color: white;
