@@ -20,11 +20,11 @@ class RegisterController extends Controller
     {
         if (Customer::where('email', '=',$request->input('email'))->exists()) {
             Session::flash('error','email đã tồn tại');
-            return redirect()->route('form.register');
+            return redirect()->route('home.index');
         }
         toastr()->success('Đăng kí thành công');
 //        Session::flash('success','Đăng kí thành công');
-        return redirect()->route('form.register');
+        return redirect()->route('home.index');
 
     }
 }
