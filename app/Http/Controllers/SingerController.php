@@ -12,6 +12,10 @@ class SingerController extends Controller
     {
         $this->singerService = $singerService;
     }
+    public function getAll()
+    {
+        return $this->singerService->getAll();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +24,7 @@ class SingerController extends Controller
     public function index()
     {
         $singers = $this->singerService->getDesc();
-        return view('');
+        return view('admin.singers.list', compact('singers'));
     }
 
     /**
