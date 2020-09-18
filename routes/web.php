@@ -36,6 +36,14 @@ Route::prefix('admin')->group(function (){
         Route::get('/edit/{id}',[\App\Http\Controllers\AlbumController::class,'edit'])->name('albums.edit');
         Route::post('/edit/{id}',[\App\Http\Controllers\AlbumController::class,'update'])->name('albums.update');
     });
+    Route::prefix('songs')->group(function (){
+        Route::get('',[\App\Http\Controllers\SongController::class,'index'])->name('songs.index');
+        Route::get('/create',[\App\Http\Controllers\SongController::class,'create'])->name('songs.create');
+        Route::post('/create',[\App\Http\Controllers\SongController::class,'store'])->name('songs.store');
+        Route::get('/delete/{id}',[\App\Http\Controllers\SongController::class,'destroy'])->name('songs.delete');
+        Route::get('/edit/{id}',[\App\Http\Controllers\SongController::class,'edit'])->name('songs.edit');
+        Route::post('/edit/{id}',[\App\Http\Controllers\SongController::class,'update'])->name('songs.update');
+    });
 
 
     Route::prefix('singers')->group(function (){
