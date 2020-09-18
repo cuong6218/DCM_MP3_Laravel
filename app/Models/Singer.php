@@ -11,4 +11,8 @@ class Singer extends Model
     protected $fillable = [
         'singer_name', 'image', 'description',
     ];
+
+    function songs(){
+        return $this->hasMany(Song::class,'singer_id');
+    }
 }
