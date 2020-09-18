@@ -19,9 +19,9 @@ Route::prefix('admin')->group(function (){
     Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
 
 
-    Route::prefix('albums')->group(function (){
-        Route::get('',[\App\Http\Controllers\CategoryController::class,'index'])->name('albums.index');
-        Route::get('/create',[\App\Http\Controllers\CategoryController::class,'create'])->name('albums.create');
+    Route::prefix('categorys')->group(function (){
+        Route::get('',[\App\Http\Controllers\CategoryController::class,'index'])->name('categorys.index');
+        Route::get('/create',[\App\Http\Controllers\CategoryController::class,'create'])->name('categorys.create');
     });
 
 });
