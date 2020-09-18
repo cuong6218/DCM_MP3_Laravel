@@ -41,7 +41,7 @@
                                 <td>{{$singer->singer_name}}</td>
                                 <td>{{$singer->description}}</td>
                                 <td><img src="{{asset('storage/'.$singer->image)}}" alt="no image" style="width: 100px; height: 60px"></td>
-                                <td><a href="#" class="btn btn-primary">Update</a> </td>
+                                <td><a href="{{route('singers.edit', $singer->id)}}" class="btn btn-primary">Update</a> </td>
                                 <td><a href="{{route('singers.delete', $singer->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a> </td>
                             </tr>
                             @empty

@@ -43,6 +43,8 @@ Route::prefix('admin')->group(function (){
         Route::get('/create', [\App\Http\Controllers\SingerController::class, 'create'])->name('singers.create');
         Route::post('/store', [\App\Http\Controllers\SingerController::class, 'store'])->name('singers.store');
         Route::get('/{id}/delete', [\App\Http\Controllers\SingerController::class, 'destroy'])->name('singers.delete');
+        Route::get('/{id}/edit', [\App\Http\Controllers\SingerController::class, 'edit'])->name('singers.edit');
+        Route::post('/{id}/update', [\App\Http\Controllers\SingerController::class, 'update'])->name('singers.update');
     });
 
 });

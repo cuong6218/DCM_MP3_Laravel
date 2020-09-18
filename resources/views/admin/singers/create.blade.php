@@ -10,14 +10,14 @@
         @csrf
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" name="singer_name" placeholder="Nguyễn Văn A">
+        <input type="text" class="form-control" name="singer_name" value="{{old('singer_name')}}" placeholder="Nguyễn Văn A">
         @if($errors->has('singer_name'))
             <p class="text-danger">{{$errors->first('singer_name')}}</p>
             @endif
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Description</label>
-        <textarea class="form-control" name="description"></textarea>
+        <textarea class="form-control" name="description">{{old('description')}}</textarea>
         @if($errors->has('description'))
             <p class="text-danger">{{$errors->first('description')}}</p>
         @endif

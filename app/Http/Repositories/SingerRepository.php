@@ -30,4 +30,8 @@ class SingerRepository
     {
         $this->singer->destroy($id);
     }
+    function show($id)
+    {
+        return $this->singer->findOrFail($id);
+    }
 }
