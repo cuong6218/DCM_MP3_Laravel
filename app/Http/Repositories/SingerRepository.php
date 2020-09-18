@@ -22,4 +22,8 @@ class SingerRepository
     {
         return $this->singer->all();
     }
+    function save($singer)
+    {
+        $singer->save();
+    }
 }

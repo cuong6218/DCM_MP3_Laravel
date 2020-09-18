@@ -34,7 +34,7 @@ class SingerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.singers.create');
     }
 
     /**

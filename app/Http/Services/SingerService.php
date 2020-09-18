@@ -21,4 +21,5 @@ class SingerService
     {
         return $this->singerRepo->getAll();
     }
+
 }

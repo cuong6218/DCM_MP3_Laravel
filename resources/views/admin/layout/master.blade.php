@@ -80,7 +80,7 @@
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{route('singers.index')}}">List</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Add new</a>
+                            <a class="nav-link" href="{{route('singers.create')}}">Add new</a>
                         </nav>
                     </div>
 
