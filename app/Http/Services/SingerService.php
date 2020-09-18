@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 
 use App\Http\Repositories\SingerRepository;
+use App\Models\Singer;
 
 class SingerService
 {
@@ -21,5 +22,16 @@ class SingerService
     {
         return $this->singerRepo->getAll();
     }
-
+    function store($request)
+    {
+        $singer = new Singer();
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('images', 'public');
+            $data['image'] = $path;
+            $singer->fill($data);
+            $this->singerRepo->save($singer);
+        }
+    }
 }

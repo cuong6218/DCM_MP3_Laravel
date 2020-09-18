@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\SingerService;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\SingerRequest;
 class SingerController extends Controller
 {
     protected $singerService;
@@ -43,9 +43,10 @@ class SingerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SingerRequest $request)
     {
-        //
+        $this->singerService->store($request);
+        return redirect()->route('singers.index');
     }
 
     /**
