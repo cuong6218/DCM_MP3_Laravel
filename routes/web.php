@@ -23,6 +23,9 @@ Route::prefix('admin')->group(function (){
         Route::get('',[\App\Http\Controllers\CategoryController::class,'index'])->name('categorys.index');
         Route::get('/create',[\App\Http\Controllers\CategoryController::class,'create'])->name('categorys.create');
     });
+    Route::prefix('singers')->group(function (){
+        Route::get('', [\App\Http\Controllers\SingerController::class, 'index'])->name('singers.index');
+    });
 
 });
 
