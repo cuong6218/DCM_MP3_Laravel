@@ -28,6 +28,17 @@ Route::prefix('admin')->group(function (){
         Route::post('/edit/{id}',[\App\Http\Controllers\CategoryController::class,'update'])->name('categorys.update');
 
     });
+    Route::prefix('albums')->group(function (){
+        Route::get('',[\App\Http\Controllers\AlbumController::class,'index'])->name('albums.index');
+        Route::get('/create',[\App\Http\Controllers\AlbumController::class,'create'])->name('albums.create');
+        Route::post('/create',[\App\Http\Controllers\AlbumController::class,'store'])->name('albums.store');
+        Route::get('/delete/{id}',[\App\Http\Controllers\AlbumController::class,'destroy'])->name('albums.delete');
+        Route::get('/edit/{id}',[\App\Http\Controllers\AlbumController::class,'edit'])->name('albums.edit');
+        Route::post('/edit/{id}',[\App\Http\Controllers\AlbumController::class,'update'])->name('albums.update');
+
+    });
+
+
     Route::prefix('singers')->group(function (){
         Route::get('', [\App\Http\Controllers\SingerController::class, 'index'])->name('singers.index');
         Route::get('/create', [\App\Http\Controllers\SingerController::class, 'create'])->name('singers.create');
