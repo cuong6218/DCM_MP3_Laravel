@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Singer;
+use App\Http\Services\SingerService;
 use Illuminate\Http\Request;
 
 class SingerController extends Controller
 {
-
+    protected $singerService;
+    function __construct(SingerService $singerService)
+    {
+        $this->singerService = $singerService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +19,18 @@ class SingerController extends Controller
      */
     public function index()
     {
-        return Singer::all();
+        $singers = $this->singerService->getDesc();
+        return view('');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -27,7 +41,7 @@ class SingerController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -37,6 +51,17 @@ class SingerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }
