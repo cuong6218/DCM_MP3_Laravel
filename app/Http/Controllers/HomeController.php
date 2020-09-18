@@ -18,4 +18,9 @@ class HomeController extends Controller
     {
         return view('template.album');
     }
+
+    function index2(){
+        $songs = Song::all();
+        return view('template.demo.index',compact('songs'));
+    }
 }
