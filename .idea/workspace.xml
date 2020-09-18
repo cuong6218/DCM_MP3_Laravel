@@ -19,6 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="b4ee458d-1f8c-4a71-a55e-15e58c28af90" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/DCM_MP3_Laravel.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SingerController.php" afterDir="false" />
@@ -45,6 +46,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_9_16_20__3_24_PM.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_9_18_20__7_39_AM.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_17_20,_3_52_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+
+    <list default="true" id="6f69f476-baf8-4049-9f36-aebb475a6c65" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/layout/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Laravel-Module5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_9_16_20__3_24_PM.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_17_20,_3_52_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -173,12 +186,50 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/template" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+
   <component name="RunManager">
     <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
       <method v="2" />
     </configuration>
   </component>
   <component name="TaskManager">
+
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f69f476-baf8-4049-9f36-aebb475a6c65" name="Default Changelist" comment="" />
+      <created>1600244589153</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600244589153</updated>
+      <workItem from="1600244590247" duration="349000" />
+      <workItem from="1600303255082" duration="1756000" />
+
+      <workItem from="1600383568689" duration="1963000" />
+      <workItem from="1600389572839" duration="29000" />
+      <workItem from="1600389602967" duration="1150000" />
+
+      <workItem from="1600383568689" duration="2789000" />
+      <workItem from="1600389635898" duration="383000" />
+
+    </task>
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,9 +245,30 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+
     <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog" timestamp="1600391993362">
+
+
+    <state x="583" y="225" width="424" height="490" key="FileChooserDialogImpl" timestamp="1600389599639">
+      <screen x="0" y="34" width="1600" height="866" />
+    </state>
+    <state x="583" y="225" width="424" height="490" key="FileChooserDialogImpl/0.34.1600.866@0.34.1600.866" timestamp="1600389599639" />
+    <state x="536" y="379" width="399" height="155" key="NewPhpFileDialog" timestamp="1600389976325">
+      <screen x="0" y="34" width="1600" height="866" />
+    <state x="368" y="120" width="619" height="563" key="NewPhpClassDialog" timestamp="1600389906726">
       <screen x="0" y="34" width="1366" height="734" />
     </state>
+    <state x="368" y="120" width="619" height="563" key="NewPhpClassDialog/0.34.1366.734@0.34.1366.734" timestamp="1600389906726" />
+    <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog" timestamp="1600384044250">
+
+      <screen x="0" y="34" width="1366" height="734" />
+
+    </state>
+
     <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog/0.34.1366.734@0.34.1366.734" timestamp="1600391993362" />
+
+    <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog/0.34.1366.734@0.34.1366.734" timestamp="1600384044250" />
+    <state x="536" y="379" width="399" height="155" key="NewPhpFileDialog/0.34.1600.866@0.34.1600.866" timestamp="1600389976325" />
+
   </component>
 </project>
