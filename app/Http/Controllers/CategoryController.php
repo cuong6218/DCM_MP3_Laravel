@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +41,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $category = new Category();
+        $category->category_name = $request->category_name;
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $path = $image->store('images','public');
+            $category->image = $path;
+        }
+        $category->save();
+        return redirect()->route('categorys.index');
 
     }
 
@@ -63,6 +74,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::findOrFail($id);
+        return view('admin.categorys.edit', compact('category'));
+
     }
 
     /**
@@ -75,6 +89,16 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $category = Category::findOrFail($id);
+        $category->category_name = $request->category_name;
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $path = $image->store('images','public');
+            $category->image = $path;
+        }
+        $category->save();
+        return redirect()->route('categorys.index');
     }
 
     /**
@@ -86,5 +110,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('categorys.index');
     }
 }
