@@ -40,14 +40,14 @@
                 <label for="exampleFormControlSelect1">Songs Singer:</label>
                 <select name="singer_id" class="form-control" id="exampleFormControlSelect1">
                     @foreach($singers as $singer)
-                        <option value="{{$singer->id}}">{{$singer->singer->singer_name}}</option>
+                        <option value="{{$singer->id}}">{{$singer->singer_name}}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Songs Category:</label>
-                <select name="singer_id" class="form-control" id="exampleFormControlSelect1">
+                <select name="category_id" class="form-control" id="exampleFormControlSelect1">
                     @foreach($categorys as $category)
                         <option value="{{$category->id}}">{{$category->category_name}}</option>
                     @endforeach
