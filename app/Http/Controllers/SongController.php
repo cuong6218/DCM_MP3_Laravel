@@ -81,8 +81,17 @@ class SongController extends Controller
     public function show($id)
     {
         //
-        $song = Song::findOrFail($id);
-        return view('template.demo.about-us', compact('song'));
+        $shows =  DB::table('singers')
+            ->join('songs','singers.id','songs.singer_id')
+            ->join('albums','songs.album_id','albums.id')
+
+
+            ->select('singers.*','songs.*','albums.album_name')
+            ->where('songs.id','=',"$id")
+            ->get();
+
+        return view('template.detail',compact('shows'));
+
     }
 
     /**

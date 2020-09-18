@@ -341,7 +341,7 @@
                                     <p>{{$song->author}}</p>
                                 </div>
                                 <div class="music-play-icon">
-                                    <audio controls>
+                                    <audio >
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
                                 </div>
