@@ -19,34 +19,6 @@
     <select />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="b4ee458d-1f8c-4a71-a55e-15e58c28af90" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DCM_MP3_Laravel.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SingerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/LayoutController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Singer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/SingerSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/assets/demo/chart-area-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/assets/demo/chart-bar-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/assets/demo/chart-pie-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/assets/demo/datatables-demo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/assets/img/error-404-monochrome.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/server/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categorys/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categorys/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/categorys/list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layout/dashboard.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layout/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Laravel-Module5.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_9_16_20__3_24_PM.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_9_18_20__7_39_AM.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_17_20,_3_52_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-
     <list default="true" id="6f69f476-baf8-4049-9f36-aebb475a6c65" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/resources/views/admin/layout/dashboard.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/admin/layout/master.blade.php" afterDir="false" />
@@ -59,14 +31,14 @@
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
 
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
@@ -183,10 +155,10 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
     </include_path>
   </component>
+  <component name="ProjectId" id="1haM7cQFBfcrkMN8G9PNpo8k7JP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -204,14 +176,14 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-
   <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-
     <task active="true" id="Default" summary="Default task">
       <changelist id="6f69f476-baf8-4049-9f36-aebb475a6c65" name="Default Changelist" comment="" />
       <created>1600244589153</created>
@@ -229,8 +201,10 @@
       <workItem from="1600389635898" duration="383000" />
 
     </task>
-
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -246,9 +220,6 @@
   </component>
   <component name="WindowStateProjectService">
 
-    <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog" timestamp="1600391993362">
-
-
     <state x="583" y="225" width="424" height="490" key="FileChooserDialogImpl" timestamp="1600389599639">
       <screen x="0" y="34" width="1600" height="866" />
     </state>
@@ -260,15 +231,10 @@
     </state>
     <state x="368" y="120" width="619" height="563" key="NewPhpClassDialog/0.34.1366.734@0.34.1366.734" timestamp="1600389906726" />
     <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog" timestamp="1600384044250">
-
       <screen x="0" y="34" width="1366" height="734" />
 
     </state>
-
-    <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog/0.34.1366.734@0.34.1366.734" timestamp="1600391993362" />
-
     <state x="458" y="326" width="440" height="151" key="NewPhpFileDialog/0.34.1366.734@0.34.1366.734" timestamp="1600384044250" />
     <state x="536" y="379" width="399" height="155" key="NewPhpFileDialog/0.34.1600.866@0.34.1600.866" timestamp="1600389976325" />
-
   </component>
 </project>
