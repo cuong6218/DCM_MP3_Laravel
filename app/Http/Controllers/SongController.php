@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
+use App\Models\Category;
+use App\Models\Singer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -14,6 +18,8 @@ class SongController extends Controller
     public function index()
     {
         //
+        $songs = DB::table('songs')->select('*')->orderBy('id','desc')->get();
+        return view('admin.songs.list',compact('songs'));
     }
 
     /**
@@ -24,6 +30,10 @@ class SongController extends Controller
     public function create()
     {
         //
+        $albums = Album::all();
+        $categorys = Category::all();
+        $singers = Singer::all();
+        return view('admin.songs.create',compact('albums','categorys','singers'));
     }
 
     /**
@@ -35,6 +45,7 @@ class SongController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**

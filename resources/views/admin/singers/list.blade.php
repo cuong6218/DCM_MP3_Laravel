@@ -35,7 +35,7 @@
                             <tbody>
                             @forelse($singers as $key => $singer)
                             <tr>
-                                <td>{{$key}}</td>
+                                <td>{{++$key}}</td>
                                 <td>{{$singer->singer_name}}</td>
                                 <td>{{$singer->description}}</td>
                                 <td><img src="{{$singer->image}}" alt="no image" style="width: 60px; height: 60px"></td>
