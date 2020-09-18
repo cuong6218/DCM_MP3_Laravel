@@ -19,6 +19,7 @@ class CreateSongsTable extends Migration
             $table->string('audio');
             $table->string('image');
             $table->string('author');
+            $table->string('views');
             $table->unsignedBigInteger('singer_id');
             $table->foreign('singer_id')->references('id')->on('singers');
             $table->unsignedBigInteger('album_id');
