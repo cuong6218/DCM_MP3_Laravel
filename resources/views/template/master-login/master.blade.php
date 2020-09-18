@@ -12,6 +12,7 @@
     <title>Miraculous - Online Music Store Html Template</title>
     @toastr_css
     <meta charset="utf-8">
+    <meta name="_token" content="{{csrf_token()}}" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="Music">
     <meta name="keywords" content="">
@@ -36,8 +37,8 @@
 
 
 <!-- Modal -->
-<div class="ms_register_popup">
-    <div id="myModal" class="modal  centered-modal" role="dialog">
+<div class="ms_register_popup" id="exampleModal">
+    <div id="myModal" class="modal  centered-modal" role="dialog" >
         <div class="modal-dialog register_dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -46,12 +47,13 @@
                     <i class="fa_icon form_close"></i>
                 </button>
                 <div class="modal-body">
+                    <div class="alert alert-danger" style="display:none"></div>
                     <div class="ms_register_img">
                         <img src="images/register_img.png" alt="" class="img-fluid"/>
                     </div>
                     <div class="ms_register_form">
-                        <h2>Register / Sign Up</h2>
-                        <form action="{{route('customer.register')}}" method="post">
+                        <h2 id="exampleModalLabel">Register / Sign Up</h2>
+                        <form action="{{route('customer.register')}}" data-remote="true" method="post">
                             @csrf
                             @if($errors->all())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -63,7 +65,7 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <input type="text" placeholder="Enter Your Name" name="name" class="form-control"
+                                <input type="text" id="name" placeholder="Enter Your Name" name="name" class="form-control"
                                        value="{{old('name')}}">
                                 @if($errors->has('name'))
                                     <script>
@@ -78,7 +80,7 @@
 							</span>
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Enter Your Email" name="email" class="form-control"
+                                <input type="text" id="email" placeholder="Enter Your Email" name="email" class="form-control"
                                        value="{{old('email')}}"
                                 >
                                 @if (Session::has('error'))
@@ -94,7 +96,7 @@
 						</span>
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Enter Password" name="password"
+                                <input type="password" id="password" placeholder="Enter Password" name="password"
                                        class="form-control">
                                 @if($errors->has('password'))
                                     <p class="text-danger">{{$errors->first('password')}}</p>
@@ -110,7 +112,7 @@
 						<i class=" fa_icon form-lock" aria-hidden="true"></i>
 						</span>
                             </div>
-                            <input type="submit" class="ms_btn" value="register now">
+                            <input type="submit" id="formSubmit" class="ms_btn" value="register now">
                             <p>Already Have An Account? <a href="#myModal1" data-toggle="modal"
                                                            class="ms_modal hideCurrentModel">login here</a></p>
                         </form>
@@ -322,7 +324,9 @@
 <script type="text/javascript" src="js/plugins/nice_select/jquery.nice-select.min.js"></script>
 <script type="text/javascript" src="js/plugins/scroll/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
+<script src="{{asset('./public/js/my.js')}}"></script>
 </body>
+
 @jquery
 @toastr_js
 @toastr_render
