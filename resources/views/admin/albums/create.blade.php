@@ -10,11 +10,18 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Albums name:</label>
                 <input name="album_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                @if($errors->has('album_name'))
+                    <p class="text-danger">{{$errors->first('album_name')}}</p>
+                @endif
             </div>
+
 
             <div class="form-group">
                 <label for="exampleFormControlFile1">Albums Image: </label>
                 <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                @if($errors->has('image'))
+                    <p class="text-danger">{{$errors->first('image')}}</p>
+                @endif
             </div>
 
             <button type="submit" class="btn btn-info">Add Albums</button>

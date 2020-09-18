@@ -10,6 +10,9 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Category name:</label>
                 <input value="{{$category->category_name}}" name="category_name" type="text" class="form-control">
+                @if($errors->has('category_name'))
+                    <p class="text-danger">{{$errors->first('category_name')}}</p>
+                @endif
             </div>
 
 
@@ -19,6 +22,9 @@
             <div class="form-group">
                 <label for="exampleFormControlFile1">Image: </label>
                 <input value="{{asset('storage/'.$category->image)}}" name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                @if($errors->has('image'))
+                    <p class="text-danger">{{$errors->first('image')}}</p>
+                @endif
             </div>
 
             <button type="submit" class="btn btn-info">Update Category</button>
