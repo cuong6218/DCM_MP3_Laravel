@@ -10,6 +10,7 @@
 <!-- Begin Head -->
 <head>
     <title>Miraculous - Online Music Store Html Template</title>
+    @toastr_css
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="Music">
@@ -40,6 +41,7 @@
         <div class="modal-dialog register_dialog">
             <!-- Modal content-->
             <div class="modal-content">
+
                 <button type="button" class="close" data-dismiss="modal">
                     <i class="fa_icon form_close"></i>
                 </button>
@@ -49,33 +51,69 @@
                     </div>
                     <div class="ms_register_form">
                         <h2>Register / Sign Up</h2>
-                        <div class="form-group">
-                            <input type="text" placeholder="Enter Your Name" class="form-control">
-                            <span class="form_icon">
+                        <form action="{{route('customer.register')}}" method="post">
+                            @csrf
+                            @if($errors->all())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error! </strong> Đăng kí không thành công!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter Your Name" name="name" class="form-control"
+                                       value="{{old('name')}}">
+                                @if($errors->has('name'))
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#modal').modal({show: true});
+                                        })
+                                    </script>
+                                    <p class="text-danger">{{$errors->first('name')}}</p>
+                                @endif
+                                <span class="form_icon">
 							<i class="fa_icon form-user" aria-hidden="true"></i>
 							</span>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Enter Your Email" class="form-control">
-                            <span class="form_icon">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter Your Email" name="email" class="form-control"
+                                       value="{{old('email')}}"
+                                >
+                                @if (Session::has('error'))
+                                    <p class="text-danger">
+                                        <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('error') }}
+                                    </p>
+                                @endif
+                                @if($errors->has('email'))
+                                    <p class="text-danger">{{$errors->first('email')}}</p>
+                                @endif
+                                <span class="form_icon">
 							<i class="fa_icon form-envelope" aria-hidden="true"></i>
 						</span>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Enter Password" class="form-control">
-                            <span class="form_icon">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Enter Password" name="password"
+                                       class="form-control">
+                                @if($errors->has('password'))
+                                    <p class="text-danger">{{$errors->first('password')}}</p>
+                                @endif
+                                <span class="form_icon">
 						<i class="fa_icon form-lock" aria-hidden="true"></i>
 						</span>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Confirm Password" class="form-control">
-                            <span class="form_icon">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Confirm Password" name="password_confirmation"
+                                       class="form-control">
+                                <span class="form_icon">
 						<i class=" fa_icon form-lock" aria-hidden="true"></i>
 						</span>
-                        </div>
-                        <a href="#" class="ms_btn">register now</a>
-                        <p>Already Have An Account? <a href="#myModal1" data-toggle="modal"
-                                                       class="ms_modal hideCurrentModel">login here</a></p>
+                            </div>
+                            <input type="submit" class="ms_btn" value="register now">
+                            <p>Already Have An Account? <a href="#myModal1" data-toggle="modal"
+                                                           class="ms_modal hideCurrentModel">login here</a></p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -265,7 +303,7 @@
                     </div>
                     <div class="ms_dnt_have">
                         <span>Dont't have an account ?</span>
-                        <a href="javascript:;" class="hideCurrentModel" data-toggle="modal" data-target="#myModal">Register
+                        <a href="javascript:" class="hideCurrentModel" data-toggle="modal" data-target="#myModal">Register
                             Now</a>
                     </div>
                 </div>
@@ -285,5 +323,7 @@
 <script type="text/javascript" src="js/plugins/scroll/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
 </body>
-
+@jquery
+@toastr_js
+@toastr_render
 </html>
