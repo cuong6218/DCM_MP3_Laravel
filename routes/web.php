@@ -26,6 +26,7 @@ Route::prefix('admin')->group(function (){
     Route::prefix('singers')->group(function (){
         Route::get('', [\App\Http\Controllers\SingerController::class, 'index'])->name('singers.index');
         Route::get('/create', [\App\Http\Controllers\SingerController::class, 'create'])->name('singers.create');
+        Route::post('/store', [\App\Http\Controllers\SingerController::class, 'store'])->name('singers.store');
     });
 
 });
