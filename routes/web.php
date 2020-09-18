@@ -22,6 +22,11 @@ Route::prefix('admin')->group(function (){
     Route::prefix('categorys')->group(function (){
         Route::get('',[\App\Http\Controllers\CategoryController::class,'index'])->name('categorys.index');
         Route::get('/create',[\App\Http\Controllers\CategoryController::class,'create'])->name('categorys.create');
+        Route::post('/create',[\App\Http\Controllers\CategoryController::class,'store'])->name('categorys.store');
+        Route::get('/delete/{id}',[\App\Http\Controllers\CategoryController::class,'destroy'])->name('categorys.delete');
+        Route::get('/edit/{id}',[\App\Http\Controllers\CategoryController::class,'edit'])->name('categorys.edit');
+        Route::post('/edit/{id}',[\App\Http\Controllers\CategoryController::class,'update'])->name('categorys.update');
+
     });
     Route::prefix('singers')->group(function (){
         Route::get('', [\App\Http\Controllers\SingerController::class, 'index'])->name('singers.index');
