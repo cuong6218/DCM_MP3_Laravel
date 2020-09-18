@@ -42,7 +42,7 @@
                 <h2 data-animation="fadeInUp" data-delay="100ms">{{$shows[0]->singer_name}}</h2>
                 <h5 data-animation="fadeInUp" data-delay="300ms">{{$shows[0]->description}}</h5>
                 <div class="welcome-btn-group">
-                  <a href="{{route('home2.index')}}" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Home Page</a>
+                  <a onclick="window.history.go(-1); return false;" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Home Page</a>
                   <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a>
                 </div>
               </div>

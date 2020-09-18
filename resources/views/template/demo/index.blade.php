@@ -1,6 +1,6 @@
 @extends('template.demo.master.menu')
 @section('content')
-<!-- ##### Preloader ##### -->
+    <!-- ##### Preloader ##### -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="circle-preloader">
             <img src="/Client/img/core-img/compact-disc.png" alt="">
@@ -163,7 +163,8 @@
     <!-- ##### Hero Area End ##### -->
 
     <!-- ##### About Us Area Start ##### -->
-    <div class="about-us-area section-padding-100-0 bg-img bg-overlay" style="background-image: url(/Client/img/bg-img/bg-4.jpg);" id="about">
+    <div class="about-us-area section-padding-100-0 bg-img bg-overlay"
+         style="background-image: url(/Client/img/bg-img/bg-4.jpg);" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -185,7 +186,14 @@
                 <div class="col-12 col-lg-6">
                     <div class="about-content mb-100">
                         <h4>Hello, It’s Michael Smithson</h4>
-                        <p>Nulla pretium tincidunt felis, nec sollicitudin mauris lobortis in. Aliquam eu feugiat ligula, laoreet efficitur nulla. Morbi nec neque porta, elementum massa at, vehicula nunc. Nulla facilisi. Donec id purus eu lectus imperdiet varius. Curabitur consectetur nunc sem, vitae cursus enim tempor eget. Praesent pellentesque nisi urna, sit amet suscipit ligula posuere id. Aenean id tortor vel quam ornare gravida. Phasellus luctus feugiat nunc, quis vulputate ipsum convallis quis. Integer vel nulla erat. Donec erat metus, luctus quis maximus quis, volutpat eu tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                        <p>Nulla pretium tincidunt felis, nec sollicitudin mauris lobortis in. Aliquam eu feugiat
+                            ligula, laoreet efficitur nulla. Morbi nec neque porta, elementum massa at, vehicula nunc.
+                            Nulla facilisi. Donec id purus eu lectus imperdiet varius. Curabitur consectetur nunc sem,
+                            vitae cursus enim tempor eget. Praesent pellentesque nisi urna, sit amet suscipit ligula
+                            posuere id. Aenean id tortor vel quam ornare gravida. Phasellus luctus feugiat nunc, quis
+                            vulputate ipsum convallis quis. Integer vel nulla erat. Donec erat metus, luctus quis
+                            maximus quis, volutpat eu tellus. Interdum et malesuada fames ac ante ipsum primis in
+                            faucibus.</p>
                         <img src="/Client/img/core-img/signature.png" alt="">
                     </div>
                 </div>
@@ -332,21 +340,23 @@
                     <div class="music-player-slides owl-carousel">
                     @foreach($songs as $song)
                         <!-- Single Music Player -->
-                        <div class="single-music-player">
-                            <img src="{{asset('storage/'.$song->image)}}" alt="">
+                            <div class="single-music-player">
+                                <img src="{{asset('storage/'.$song->image)}}" alt="">
 
-                            <div class="music-info d-flex justify-content-between">
-                                <div class="music-text">
-                                    <h5><a id="text-name" href="{{route('home2.show',$song->id)}}">{{$song->song_name}}</a></h5>
-                                    <p>{{$song->author}}</p>
-                                </div>
-                                <div class="music-play-icon">
-                                    <audio >
-                                    <source src="{{asset('storage/'.$song->audio)}}">
-                                </audio>
+                                <div class="music-info d-flex justify-content-between">
+                                    <div class="music-text">
+                                        {{--                                    <h5><a id="text-name" href="{{route('home2.show',$song->id)}}">{{$song->song_name}}</a></h5>--}}
+                                        <h5><a id="text-name"
+                                               href="{{route('home2.show',$song->id)}}">{{$song->song_name}}</a></h5>
+                                        <p>{{$song->author}}</p>
+                                    </div>
+                                    <div class="music-play-icon">
+                                        <audio preload="auto" controls>
+                                            <source src="{{asset('storage/'.$song->audio)}}">
+                                        </audio>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -363,7 +373,8 @@
                     <div class="featured-album-content d-flex flex-wrap">
 
                         <!-- Album Thumbnail -->
-                        <div class="album-thumbnail h-100 bg-img" style="background-image: url(/Client/img/bg-img/bg-4.jpg);"></div>
+                        <div class="album-thumbnail h-100 bg-img"
+                             style="background-image: url(/Client/img/bg-img/bg-4.jpg);"></div>
 
                         <!-- Album Songs -->
                         <div class="album-songs h-100">
@@ -502,7 +513,8 @@
     <!-- ##### Music Artists Area Start ##### -->
     <div class="musica-music-artists-area d-flex flex-wrap clearfix">
         <!-- Music Search -->
-        <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms" style="background-image: url(/Client/img/bg-img/bg-9.jpg);">
+        <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms"
+             style="background-image: url(/Client/img/bg-img/bg-9.jpg);">
             <!-- Content -->
             <div class="music-search-content">
                 <h2>Music</h2>
@@ -511,7 +523,8 @@
         </div>
 
         <!-- Artists Search -->
-        <div class="artists-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="600ms" style="background-image: url(/Client/img/bg-img/bg-1.jpg);">
+        <div class="artists-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="600ms"
+             style="background-image: url(/Client/img/bg-img/bg-1.jpg);">
             <!-- Content -->
             <div class="music-search-content">
                 <h2>Artists</h2>
@@ -530,10 +543,14 @@
                 <div class="col-12 col-md-6 col-xl-3">
                     <div class="footer-widget-area mb-100">
                         <a href="#"><img src="/Client/img/core-img/logo2.png" alt=""></a>
-                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
+                        <p class="copywrite-text"><a href="#">
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                                    aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
                     </div>
                 </div>
 
