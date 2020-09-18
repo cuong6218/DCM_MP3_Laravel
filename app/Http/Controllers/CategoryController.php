@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         //
         $categorys = DB::table('categories')->orderBy('id','desc')->get();
-        return view('template.index',compact('categorys'));
+        return view('admin.categorys.list',compact('categorys'));
     }
 
     /**
@@ -28,9 +28,9 @@ class CategoryController extends Controller
     {
         //
 
-        return view('admin.categorys.list');
+        return view('admin.categorys.create');
 
-  
+
 
     }
 
