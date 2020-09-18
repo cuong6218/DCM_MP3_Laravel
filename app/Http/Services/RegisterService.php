@@ -15,7 +15,7 @@ class RegisterService
     {
         $this->registerRepo=$registerRepo;
     }
-    public function addUser($request)
+    public function addCustomer($request)
     {
         $customer = new Customer();
         $customer->name = $request->name;

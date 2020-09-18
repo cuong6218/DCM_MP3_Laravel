@@ -22,6 +22,7 @@ class RegisterController extends Controller
             Session::flash('error','email đã tồn tại');
             return redirect()->route('home.index');
         }
+        $this->registerService->addCustomer($request);
         toastr()->success('Đăng kí thành công');
 //        Session::flash('success','Đăng kí thành công');
         return redirect()->route('home.index');
