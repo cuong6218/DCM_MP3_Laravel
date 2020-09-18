@@ -68,7 +68,8 @@ class SingerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $singer = $this->singerService->show($id);
+        return view('admin.singers.edit', compact('singer'));
     }
 
     /**
@@ -78,9 +79,10 @@ class SingerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SingerRequest $request, $id)
     {
-        //
+        $this->singerService->update($request, $id);
+        return redirect()->route('singers.index');
     }
 
     /**
