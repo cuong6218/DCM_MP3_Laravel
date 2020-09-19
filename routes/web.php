@@ -63,3 +63,4 @@ Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])
 Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbums'])->name('home2.albums');
 Route::get('singer',[\App\Http\Controllers\HomeController::class, 'showListSinger'])->name('home2.singer');
 Route::get('singer/{id}',[\App\Http\Controllers\SongController::class, 'showListSongSinger'])->name('home2.song-singer');
+Route::get('songs',[\App\Http\Controllers\HomeController::class, 'showListSong'])->name('home2.song');

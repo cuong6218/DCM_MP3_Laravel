@@ -28,7 +28,6 @@
             <!-- Content -->
             <div class="music-search-content">
                 <a href="{{route('home2.song-singer',$singer->id)}}"><h2>{{$singer->singer_name}}</h2></a>
-{{--                <h6 style="color: white">{{$singer->description}}</h6>--}}
             </div>
         </div>
             <br>
@@ -43,11 +42,11 @@
                     <div class="cta-content">
                         <div class="cta-text">
                             <span>Unique Way to see a</span>
-                            <h2>Music Concert</h2>
+                            <h2>List Musics</h2>
                             <h4>Search for the best music</h4>
                         </div>
                         <div class="cta-btn mt-30">
-                            <a href="#" class="btn musica-btn">elements</a>
+                            <a href="{{route('home2.song')}}" class="btn musica-btn">Musics</a>
                         </div>
                     </div>
                 </div>
