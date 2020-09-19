@@ -33,4 +33,9 @@ class HomeController extends Controller
         return view('template.demo.list-singer',compact('singers'));
     }
 
+    function showListSong(){
+        $songs =  DB::table('songs')->select('*')->orderBy('id','desc')->get();
+        return view('template.demo.list-song',compact('songs'));
+    }
+
 }
