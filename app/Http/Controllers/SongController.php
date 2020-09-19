@@ -126,5 +126,23 @@ class SongController extends Controller
     public function destroy($id)
     {
         //
+        $song = Song::findOrFail($id);
+        $song->delete();
+        return redirect()->route('songs.index');
+    }
+
+    function showListSongSinger($id){
+
+        $lists =  DB::table('singers')
+            ->join('songs','singers.id','songs.singer_id')
+            ->join('albums','songs.album_id','albums.id')
+
+
+            ->select('songs.*','albums.album_name','singers.*')
+            ->where('singers.id','=',"$id")
+            ->get();
+
+        return view('template.demo.detail-singer',compact('lists'));
+
     }
 }

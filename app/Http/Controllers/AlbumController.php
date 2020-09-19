@@ -67,7 +67,7 @@ class AlbumController extends Controller
             ->join('songs','singers.id','songs.singer_id')
             ->join('albums','songs.album_id','albums.id')
 
-            ->select('singers.*','songs.*','albums.album_name')
+            ->select('singers.*','songs.*','albums.*')
             ->where('albums.id','=',"$id")
             ->get();
 

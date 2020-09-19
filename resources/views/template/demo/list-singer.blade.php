@@ -8,76 +8,31 @@
     </div>
 
     <!-- ##### Header Area Start ##### -->
-
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <h2>{{$albums[0]->album_name}}</h2>
+            <h2>Show List Singer</h2>
         </div>
     </div>
     <!-- bg gradients -->
     <div class="bg-gradients"></div>
     <!-- ##### Breadcumb Area End ##### -->
 
-    <div class="featured-album-area section-padding-100 clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="featured-album-content d-flex flex-wrap">
-
-                        <!-- Album Thumbnail -->
-                        <div class="album-thumbnail h-100 bg-img"
-{{--                             style="background-image: url(/Client/img/bg-img/bg-4.jpg);"></div>--}}
-                             style="background-image: url({{asset('storage/'.$albums[0]->image)}});"></div>
-
-                        <!-- Album Songs -->
-                        <div class="album-songs h-100">
-
-                            <!-- Album Info -->
-                            <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="album-title">
-                                    <h6>Featured album</h6>
-                                    <h4>{{$albums[0]->album_name}}</h4>
-                                </div>
-                                <div class="album-buy-now">
-                                    <a href="#" class="btn musica-btn">Home Page</a>
-                                </div>
-                            </div>
-
-                            <div class="album-all-songs">
-
-                                <!-- Music Playlist -->
-                                <div class="music-playlist">
-                                    <!-- Single Song -->
-                                    @foreach($albums as $album)
-                                    <div class="single-music active">
-                                        <a href="{{route('home2.show',$album->id)}}"><h6>{{$album->song_name}}</h6></a>
-                                        <audio  controls>
-                                            <source src="{{asset('storage/'.$album->audio)}}">
-                                        </audio>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <!-- Now Playing -->
-                            <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
-                                <div class="songs-name">
-                                    <p>Playing</p>
-                                    <h6>Drop that beat</h6>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="/Client/audio/dummy-audio.mp3">
-                                </audio>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+    <div  class="musica-music-artists-area d-flex flex-wrap clearfix">
+        <!-- Music Search -->
+        @foreach($singers as $singer)
+        <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms"
+             style="background-image: url({{asset('storage/'.$singer->image)}});">
+            <!-- Content -->
+            <div class="music-search-content">
+                <a href="{{route('home2.song-singer',$singer->id)}}"><h2>{{$singer->singer_name}}</h2></a>
+{{--                <h6 style="color: white">{{$singer->description}}</h6>--}}
             </div>
         </div>
+            <br>
+        @endforeach
     </div>
 
     <!-- ##### CTA Area Start ##### -->
@@ -111,9 +66,9 @@
                     <div class="footer-widget-area mb-100">
                         <a href="#"><img src="/Client/img/core-img/logo2.png" alt=""></a>
                         <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
                     </div>
                 </div>
 
