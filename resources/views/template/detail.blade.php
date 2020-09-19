@@ -85,7 +85,7 @@
                   </div>
                   <!-- Likes, Share & Download -->
                   <div class="likes-share-download d-flex align-items-center justify-content-between">
-                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i>View ({{$shows[0]->views}})</a>
+                    <a><i class="fa fa-eye" aria-hidden="true"></i> View ({{$shows[0]->views}})</a>
                     <div>
                       <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(04)</a>
                       <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>

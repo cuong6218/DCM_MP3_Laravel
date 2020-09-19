@@ -19,7 +19,9 @@ class HomeController extends Controller
 
         $singers = DB::table('singers')->select('*')->orderBy('id', 'desc')->paginate(2);
 
-        return view('template.demo.index',compact('songs','albums','singers'));
+        $topSongs = DB::table('songs')->select('*')->orderBy('views','desc')->paginate(20);
+
+        return view('template.demo.index',compact('songs','albums','singers','topSongs'));
     }
 
     function showListAlbums(){

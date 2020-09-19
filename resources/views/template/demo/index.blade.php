@@ -172,6 +172,7 @@
 
                                         <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>
                                         <p>{{$song->author}}</p>
+                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
                                         <audio  controls>
@@ -206,10 +207,10 @@
                             <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="album-title">
                                     <h6>Featured album</h6>
-                                    <h4>Love is all Around</h4>
+                                    <h4>List Top View</h4>
                                 </div>
                                 <div class="album-buy-now">
-                                    <a href="#" class="btn musica-btn">Buy it on Itunes</a>
+                                    <a href="{{route('home2.albums')}}" class="btn musica-btn">List Hot Albums</a>
                                 </div>
                             </div>
 
@@ -217,111 +218,30 @@
 
                                 <!-- Music Playlist -->
                                 <div class="music-playlist">
+                                    @foreach($topSongs as $list)
                                     <!-- Single Song -->
                                     <div class="single-music active">
-                                        <h6>Drop that beat</h6>
+                                        <a href="{{route('home2.show',$list->id)}}">
+                                        <h6>{{$list->song_name}}</h6>
+                                        </a>
                                         <audio  controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
+                                            <source src="{{asset('storage/'.$list->audio)}}">
                                         </audio>
+                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
                                     </div>
+                                        @endforeach
 
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Hey, Mister Dj</h6>
-                                        <audio  controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Message to my future self</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Bring back the love</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Hey, Mister Dj - Remix</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Message to my future self</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Drop that beat</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Hey, Mister Dj</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Message to my future self</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Bring back the love</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Hey, Mister Dj - Remix</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
-
-                                    <!-- Single Song -->
-                                    <div class="single-music">
-                                        <h6>Message to my future self</h6>
-                                        <audio preload="auto" controls>
-                                            <source src="/Client/audio/dummy-audio.mp3">
-                                        </audio>
-                                    </div>
                                 </div>
                             </div>
 
                             <!-- Now Playing -->
                             <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="songs-name">
-                                    <p>Playing</p>
-                                    <h6>Drop that beat</h6>
+                                    <p>Hot Musics</p>
+                                    <h6>{{$topSongs[0]->song_name}}</h6>
                                 </div>
                                 <audio preload="auto" controls>
-                                    <source src="/Client/audio/dummy-audio.mp3">
+                                    <source src="{{asset('storage/'.$topSongs[0]->audio)}}">
                                 </audio>
                             </div>
 

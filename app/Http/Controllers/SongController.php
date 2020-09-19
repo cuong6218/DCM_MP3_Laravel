@@ -9,6 +9,7 @@ use App\Models\Singer;
 use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SongController extends Controller
 {
@@ -81,6 +82,14 @@ class SongController extends Controller
     public function show($id)
     {
         //
+        $views = 'song_'.$id;
+        if(!Session::has($views)){
+            Song::where('id',$id)->increment('views');
+            Session::put($views,1);
+        } else {
+            Session::forget($views);
+        }
+
         $shows =  DB::table('singers')
             ->join('songs','singers.id','songs.singer_id')
             ->join('albums','songs.album_id','albums.id')
@@ -145,4 +154,6 @@ class SongController extends Controller
         return view('template.demo.detail-singer',compact('lists'));
 
     }
+
+
 }
