@@ -1,110 +1,6 @@
 @extends('template.demo.master.menu')
 @section('content')
-    <!-- ##### Preloader ##### -->
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="circle-preloader">
-            <img src="/Client/img/core-img/compact-disc.png" alt="">
-        </div>
-    </div>
 
-    <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
-        <!-- Navbar Area -->
-        <div class="musica-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container-fluid">
-                    <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="musicaNav">
-
-                        <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="/Client/img/core-img/logo.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- close btn -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About us</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="concert-tours.html">Concert &amp; Tours</a></li>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="concert-tours.html">Concert &amp; Tours</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="concert-tours.html">Concert &amp; Tours</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="concert-tours.html">Concert &amp; Tours</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="concert-tours.html">Concert &amp; Tours</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="concert-tours.html">Gallery</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-
-                                <!-- Social Button -->
-                                <div class="top-social-info">
-                                    <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                </div>
-
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Hero Area Start ##### -->
@@ -208,8 +104,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading">
-                        <h2>Upcoming shows</h2>
-                        <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>
+                        <h2>New Albums</h2>
+                        <a href="{{route('home2.albums')}}"><h6>Show List Albums</h6></a>
                     </div>
                 </div>
             </div>
@@ -219,11 +115,11 @@
                     <!-- Upcoming Shows Content -->
 
                     <div class="upcoming-shows-content">
-                    @foreach($albums as $album)
+                    @foreach($albums as $key=>$album)
                         <!-- Single Upcoming Shows -->
                         <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
                             <div class="shows-date">
-                                <h2>17 <span>July</span></h2>
+                                <h2>{{++$key}}<span></span></h2>
                             </div>
                             <div class="shows-desc d-flex align-items-center">
                                 <div class="shows-img">
@@ -439,26 +335,19 @@
     <!-- ##### Featured Album Area End ##### -->
 
     <!-- ##### Music Artists Area Start ##### -->
-    <div class="musica-music-artists-area d-flex flex-wrap clearfix">
+    <div  class="musica-music-artists-area d-flex flex-wrap clearfix">
         <!-- Music Search -->
-        <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms"
-             style="background-image: url(/Client/img/bg-img/bg-9.jpg);">
-            <!-- Content -->
-            <div class="music-search-content">
-                <h2>Music</h2>
-                <h4>Search for the best music</h4>
+        @foreach($singers as $singer)
+            <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms"
+                 style="background-image: url({{asset('storage/'.$singer->image)}});">
+                <!-- Content -->
+                <div class="music-search-content">
+                    <a href="{{route('home2.song-singer',$singer->id)}}"><h2>{{$singer->singer_name}}</h2></a>
+{{--                    <h6 style="color: white">{{$singer->description}}</h6>--}}
+                </div>
             </div>
-        </div>
-
-        <!-- Artists Search -->
-        <div class="artists-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="600ms"
-             style="background-image: url(/Client/img/bg-img/bg-1.jpg);">
-            <!-- Content -->
-            <div class="music-search-content">
-                <h2>Artists</h2>
-                <h4>Search for the best artists</h4>
-            </div>
-        </div>
+            <br>
+        @endforeach
     </div>
     <!-- ##### Music Artists Area End ##### -->
 

@@ -8,21 +8,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Poca - Podcast &amp; Audio Template</title>
+    <title>Musica - Music Template</title>
     <base href="{{asset('')}}">
   <!-- Favicon -->
-  <link rel="icon" href="./img/core-img/favicon.ico">
+  <link rel="icon" href="/Client/img/core-img/favicon.ico">
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
+    <style>
+        .poca-btn.active{
+            background: linear-gradient(to right, #cc1573, #5722a9);
+        }
+        .poca-btn.btn-2{
+            background: linear-gradient(to right, #cc1573, #5722a9);
+            color: white;
+            border: solid #e85153;
+        }
+        .audioplayer:not(.audioplayer-playing) .audioplayer-playpause{
+            background: linear-gradient(to right, #cc1573, #5722a9);
+        }
+        .audioplayer .audioplayer-volume-adjust div div{
+            background: linear-gradient(to right, #cc1573, #5722a9);
+        }
+        .poca-music-area .poca-music-content .music-published-date{
+            color: #5722a9;
+        }
+
+    </style>
 </head>
 
 <body>
   <!-- Preloader -->
   <div id="preloader">
     <div class="preloader-thumbnail">
-      <img src="./img/core-img/preloader.png" alt="">
+      <img src="/Client/img/core-img/compact-disc.png" alt="">
     </div>
   </div>
 
@@ -42,8 +62,8 @@
                 <h2 data-animation="fadeInUp" data-delay="100ms">{{$shows[0]->singer_name}}</h2>
                 <h5 data-animation="fadeInUp" data-delay="300ms">{{$shows[0]->description}}</h5>
                 <div class="welcome-btn-group">
-                  <a onclick="window.history.go(-1); return false;" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Home Page</a>
-                  <a href="#" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">Subscribe with RSS</a>
+                  <a href="{{route('home2.index')}}" class="btn poca-btn m-2 ml-0 active" data-animation="fadeInUp" data-delay="500ms">Home Page</a>
+                  <a href="{{route('home2.albums')}}" class="btn poca-btn btn-2 m-2" data-animation="fadeInUp" data-delay="700ms">List Albums</a>
                 </div>
               </div>
               <!-- Welcome Music Area -->

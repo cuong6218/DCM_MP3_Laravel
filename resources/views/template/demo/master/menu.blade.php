@@ -19,13 +19,81 @@
 
 
     <style>
-        #text-name{
+        #text-name {
             color: white;
+
         }
+        .musica-music-artists-area .music-search {
+            margin-top: 6px;
+        }
+        p h1 h2 h3 h4 h5 h6 {
+            font-family: "Roboto", sans-serif;
+        }
+
     </style>
 </head>
 
 <body>
+<!-- ##### Preloader ##### -->
+<div class="preloader d-flex align-items-center justify-content-center">
+    <div class="circle-preloader">
+        <img src="/Client/img/core-img/compact-disc.png" alt="">
+    </div>
+</div>
+
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+    <!-- Navbar Area -->
+    <div class="musica-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container-fluid">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="musicaNav">
+
+                    <!-- Nav brand -->
+                    <a href="{{route('home2.index')}}" class="nav-brand"><img src="/Client/img/core-img/logo.png"
+                                                                              alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="{{route('home2.index')}}">Home</a></li>
+                                <li><a href="{{route('home2.albums')}}">List Albums</a></li>
+                                <li><a href="{{route('home2.singer')}}">List Singer</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+
+                            <!-- Social Button -->
+                            <div class="top-social-info">
+                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
 @yield('content')
 
 
