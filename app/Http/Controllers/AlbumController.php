@@ -63,6 +63,15 @@ class AlbumController extends Controller
     public function show($id)
     {
         //
+        $albums =  DB::table('singers')
+            ->join('songs','singers.id','songs.singer_id')
+            ->join('albums','songs.album_id','albums.id')
+
+            ->select('singers.*','songs.*','albums.album_name')
+            ->where('albums.id','=',"$id")
+            ->get();
+
+        return view('template.demo.about-us',compact('albums'));
     }
 
     /**

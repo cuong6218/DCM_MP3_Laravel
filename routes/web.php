@@ -59,5 +59,7 @@ Route::prefix('admin')->group(function (){
 
 Route::get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
 Route::get('songs/{id}',[\App\Http\Controllers\SongController::class,'show'])->name('home2.show');
+Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])->name('home2.show-album');
+
 
 
