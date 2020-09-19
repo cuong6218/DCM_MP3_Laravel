@@ -217,8 +217,9 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Upcoming Shows Content -->
-                    <div class="upcoming-shows-content">
 
+                    <div class="upcoming-shows-content">
+                    @foreach($albums as $album)
                         <!-- Single Upcoming Shows -->
                         <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
                             <div class="shows-date">
@@ -226,10 +227,10 @@
                             </div>
                             <div class="shows-desc d-flex align-items-center">
                                 <div class="shows-img">
-                                    <img src="/Client/img/bg-img/s1.jpg" alt="">
+                                    <img src="{{asset('storage/'.$album->image)}}" alt="">
                                 </div>
                                 <div class="shows-name">
-                                    <h6>Electric castle Festival</h6>
+                                    <h6>{{$album->album_name}}</h6>
                                     <p>Cluj, Romania</p>
                                 </div>
                             </div>
@@ -237,87 +238,14 @@
                                 <p>At the Castle</p>
                             </div>
                             <div class="shows-time">
-                                <p>20:30</p>
+                                <p>{{$album->created_at}}</p>
                             </div>
                             <div class="buy-tickets">
-                                <a href="#" class="btn musica-btn">Buy Tikets</a>
+                                <a href="{{route('home2.show-album',$album->id)}}" class="btn musica-btn">Show Albums</a>
                             </div>
                         </div>
+                        @endforeach
 
-                        <!-- Single Upcoming Shows -->
-                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                            <div class="shows-date">
-                                <h2>23 <span>July</span></h2>
-                            </div>
-                            <div class="shows-desc d-flex align-items-center">
-                                <div class="shows-img">
-                                    <img src="/Client/img/bg-img/s2.jpg" alt="">
-                                </div>
-                                <div class="shows-name">
-                                    <h6>Electric Festival</h6>
-                                    <p>Manhathan, NY, USA</p>
-                                </div>
-                            </div>
-                            <div class="shows-location">
-                                <p>Main Stadium</p>
-                            </div>
-                            <div class="shows-time">
-                                <p>21:30</p>
-                            </div>
-                            <div class="buy-tickets">
-                                <a href="#" class="btn musica-btn">Buy Tikets</a>
-                            </div>
-                        </div>
-
-                        <!-- Single Upcoming Shows -->
-                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                            <div class="shows-date">
-                                <h2>25 <span>July</span></h2>
-                            </div>
-                            <div class="shows-desc d-flex align-items-center">
-                                <div class="shows-img">
-                                    <img src="/Client/img/bg-img/s3.jpg" alt="">
-                                </div>
-                                <div class="shows-name">
-                                    <h6>Sunflower festival</h6>
-                                    <p>Paris, France</p>
-                                </div>
-                            </div>
-                            <div class="shows-location">
-                                <p>Sunflower Arena</p>
-                            </div>
-                            <div class="shows-time">
-                                <p>20:30</p>
-                            </div>
-                            <div class="buy-tickets">
-                                <a href="#" class="btn musica-btn">Buy Tikets</a>
-                            </div>
-                        </div>
-
-                        <!-- Single Upcoming Shows -->
-                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                            <div class="shows-date">
-                                <h2>30 <span>July</span></h2>
-                            </div>
-                            <div class="shows-desc d-flex align-items-center">
-                                <div class="shows-img">
-                                    <img src="/Client/img/bg-img/s4.jpg" alt="">
-                                </div>
-                                <div class="shows-name">
-                                    <h6>Electric castle Festival</h6>
-                                    <p>Cluj, Romania</p>
-                                </div>
-                            </div>
-                            <div class="shows-location">
-                                <p>At the Castle</p>
-                            </div>
-                            <div class="shows-time">
-                                <p>20:30</p>
-                            </div>
-                            <div class="buy-tickets">
-                                <a href="#" class="btn musica-btn">Buy Tikets</a>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -351,7 +279,7 @@
                                         <p>{{$song->author}}</p>
                                     </div>
                                     <div class="music-play-icon">
-                                        <audio preload="auto" controls>
+                                        <audio  controls>
                                             <source src="{{asset('storage/'.$song->audio)}}">
                                         </audio>
                                     </div>
@@ -397,7 +325,7 @@
                                     <!-- Single Song -->
                                     <div class="single-music active">
                                         <h6>Drop that beat</h6>
-                                        <audio preload="auto" controls>
+                                        <audio  controls>
                                             <source src="/Client/audio/dummy-audio.mp3">
                                         </audio>
                                     </div>
@@ -405,7 +333,7 @@
                                     <!-- Single Song -->
                                     <div class="single-music">
                                         <h6>Hey, Mister Dj</h6>
-                                        <audio preload="auto" controls>
+                                        <audio  controls>
                                             <source src="/Client/audio/dummy-audio.mp3">
                                         </audio>
                                     </div>
