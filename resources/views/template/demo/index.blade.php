@@ -165,13 +165,12 @@
                     @foreach($songs as $song)
                         <!-- Single Music Player -->
                             <div class="single-music-player">
-                                <img src="{{asset('storage/'.$song->image)}}" alt="">
+                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$song->image)}}" alt="">
 
                                 <div class="music-info d-flex justify-content-between">
                                     <div class="music-text">
-                                        {{--                                    <h5><a id="text-name" href="{{route('home2.show',$song->id)}}">{{$song->song_name}}</a></h5>--}}
-                                        <h5><a id="text-name"
-                                               href="{{route('home2.show',$song->id)}}">{{$song->song_name}}</a></h5>
+
+                                        <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>
                                         <p>{{$song->author}}</p>
                                     </div>
                                     <div class="music-play-icon">

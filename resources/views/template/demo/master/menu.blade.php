@@ -26,8 +26,14 @@
         .musica-music-artists-area .music-search {
             margin-top: 6px;
         }
-        p h1 h2 h3 h4 h5 h6 {
-            font-family: "Roboto", sans-serif;
+        .single-music-player{
+            margin-top: 20px;
+        }
+        .owl-carousel .owl-item img{
+            width: 100% !important;
+        }
+        single-music-player{
+            width: 100% !important;
         }
 
     </style>
@@ -70,10 +76,10 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="{{route('home2.index')}}">Home</a></li>
+                                <li><a href="{{route('home2.index')}}">Home Page</a></li>
                                 <li><a href="{{route('home2.albums')}}">List Albums</a></li>
                                 <li><a href="{{route('home2.singer')}}">List Singer</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{route('home2.song')}}">List Songs</a></li>
                             </ul>
 
                             <!-- Social Button -->
