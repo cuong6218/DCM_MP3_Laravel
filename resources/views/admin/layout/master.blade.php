@@ -41,7 +41,7 @@
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Login</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="login.html">Logout</a>
@@ -75,11 +75,11 @@
                         <div class="sb-nav-link-icon"><i class="fa fa-paper-plane-o"></i></div>
                         Categories
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('albums.index')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                         Albums
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('songs.index')}}">
                         <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
                         Songs
                     </a>
