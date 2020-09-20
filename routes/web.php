@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('register',[\App\Http\Controllers\RegisterController::class,'register'])->name('customer.register');
-
-
-Route::prefix('admin')->group(function (){
+Route::get('login', [\App\Http\Controllers\LayoutController::class, 'showLogin'])->name('layout.showLogin');
+Route::post('login', [\App\Http\Controllers\LayoutController::class, 'login'])->name('layout.login');
+Route::get('register', [\App\Http\Controllers\LayoutController::class, 'showRegister'])->name('layout.showRegister');
+Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
 
 
