@@ -14,15 +14,18 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
     //
-    function indexRegister(){
+    function indexRegister()
+    {
         return view('template.login.register');
     }
 
-    function indexLogin(){
+    function indexLogin()
+    {
         return view('template.login.login');
     }
 
-    function storeRegister(UserRequest $request){
+    function storeRegister(UserRequest $request)
+    {
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -37,7 +40,8 @@ class UserController extends Controller
         return response()->json($data);
     }
 
-    function storeLogin(Request $request){
+    function storeLogin(Request $request)
+    {
         $data = [
             'email' => $request->email,
             'password' => $request->password
@@ -50,8 +54,6 @@ class UserController extends Controller
         toastr()->success('Login Success', 'Success!');
         return redirect()->route('home2.index');
 
-
-
     }
 
     public function logout()
@@ -60,3 +62,4 @@ class UserController extends Controller
         return redirect()->route('home2.index');
 
     }
+}

@@ -215,10 +215,9 @@
                             </div>
 
                             <div class="album-all-songs">
-
                                 <!-- Music Playlist -->
                                 <div class="music-playlist">
-                                    @foreach($topSongs as $list)
+                                    @foreach($listSongs as $list)
                                     <!-- Single Song -->
                                     <div class="single-music active">
 
@@ -239,10 +238,10 @@
                             <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="songs-name">
                                     <p>Hot Musics</p>
-                                    <h6>{{$topSongs[0]->song_name}}</h6>
+                                    <h6>{{$listSongs[0]->song_name}}</h6>
                                 </div>
                                 <audio preload="auto" controls>
-                                    <source src="{{asset('storage/'.$topSongs[0]->audio)}}">
+                                    <source src="{{asset('storage/'.$listSongs[0]->audio)}}">
                                 </audio>
                             </div>
 

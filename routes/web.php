@@ -74,3 +74,7 @@ Route::prefix('users')->group(function (){
     Route::post('login',[\App\Http\Controllers\UserController::class,'storeLogin'])->name('users.login.store');
     Route::get('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('users.logout.store');
 });
+
+Route::prefix('profile')->middleware('auth')->group(function (){
+    Route::get('/',[\App\Http\Controllers\ProfileController::class,'indexProfile'])->name('profile.index');
+});
