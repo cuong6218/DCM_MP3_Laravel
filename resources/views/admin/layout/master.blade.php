@@ -44,7 +44,7 @@
                 <a class="dropdown-item" href="{{route('layout.showLogin')}}">Login</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="{{route('layout.logout')}}">Logout</a>
             </div>
         </li>
     </ul>

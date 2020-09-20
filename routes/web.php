@@ -17,7 +17,8 @@ Route::get('login', [\App\Http\Controllers\LayoutController::class, 'showLogin']
 Route::post('login', [\App\Http\Controllers\LayoutController::class, 'login'])->name('layout.login');
 Route::get('register', [\App\Http\Controllers\LayoutController::class, 'showRegister'])->name('layout.showRegister');
 Route::post('register', [\App\Http\Controllers\LayoutController::class, 'register'])->name('layout.register');
-Route::middleware('auth')->prefix('admin')->group(function (){
+Route::get('logout', [\App\Http\Controllers\LayoutController::class, 'logout'])->name('layout.logout');
+Route::middleware('checkLogin')->prefix('admin')->group(function (){
     Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
 
 
@@ -59,7 +60,7 @@ Route::middleware('auth')->prefix('admin')->group(function (){
 
 });
 
-Route::get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
+Route::middleware('auth')->get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
 Route::get('songs/{id}',[\App\Http\Controllers\SongController::class,'show'])->name('home2.show');
 Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])->name('home2.show-album');
 Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbums'])->name('home2.albums');
