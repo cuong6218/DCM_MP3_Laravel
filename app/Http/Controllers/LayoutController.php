@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\checkLogin;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,19 +30,20 @@ class LayoutController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        if(!Auth::attempt($data)){
+        if(!auth::attempt($data)){
             return redirect()->route('layout.showLogin');
         }
         return redirect()->route('layout.index');
     }
     function logout(){
-        Session::remove('isAuth');
+//        Session::remove('isAuth');
+        Auth::logout();
         return redirect()->route('layout.showLogin');
     }
     function showRegister(){
         return view('admin.layout.register');
     }
-    function register(\Illuminate\Support\Facades\Request $request){
+    function register(Request $request){
         $this->userService->store($request);
         return redirect()->route('layout.showLogin');
     }
