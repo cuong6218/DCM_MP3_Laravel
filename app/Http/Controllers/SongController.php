@@ -21,8 +21,8 @@ class SongController extends Controller
     public function index()
     {
         //
-        $songs = DB::table('songs')->select('*')->orderBy('id','desc')->get();
-        return view('admin.songs.list',compact('songs'));
+        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->get();
+        return view('admin.songs.list', compact('songs'));
     }
 
     /**
@@ -36,13 +36,13 @@ class SongController extends Controller
         $albums = Album::all();
         $categorys = Category::all();
         $singers = Singer::all();
-        return view('admin.songs.create',compact('albums','categorys','singers'));
+        return view('admin.songs.create', compact('albums', 'categorys', 'singers'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SongRequest $request)
@@ -51,16 +51,16 @@ class SongController extends Controller
         $song = new Song();
         $song->song_name = $request->song_name;
 
-        if($request->hasFile('audio')){
+        if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
 
-            $path1 = $audio->store('audios','public');
+            $path1 = $audio->store('audios', 'public');
             $song->audio = $path1;
         }
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $path = $image->store('images','public');
+            $path = $image->store('images', 'public');
             $song->image = $path;
         }
 
@@ -76,37 +76,35 @@ class SongController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        $views = 'song_'.$id;
-        if(!Session::has($views)){
-            Song::where('id',$id)->increment('views');
-            Session::put($views,1);
+        $views = 'song_' . $id;
+        if (!Session::has($views)) {
+            Song::where('id', $id)->increment('views');
+            Session::put($views, 1);
         } else {
             Session::forget($views);
         }
 
-        $shows =  DB::table('singers')
-            ->join('songs','singers.id','songs.singer_id')
-            ->join('albums','songs.album_id','albums.id')
-
-
-            ->select('singers.*','songs.*','albums.album_name')
-            ->where('songs.id','=',"$id")
+        $shows = DB::table('singers')
+            ->join('songs', 'singers.id', 'songs.singer_id')
+            ->join('albums', 'songs.album_id', 'albums.id')
+            ->select('singers.*', 'songs.*', 'albums.album_name')
+            ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail',compact('shows'));
+        return view('template.detail', compact('shows'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -117,8 +115,8 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -129,7 +127,7 @@ class SongController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -140,18 +138,17 @@ class SongController extends Controller
         return redirect()->route('songs.index');
     }
 
-    function showListSongSinger($id){
+    function showListSongSinger($id)
+    {
 
-        $lists =  DB::table('singers')
-            ->join('songs','singers.id','songs.singer_id')
-            ->join('albums','songs.album_id','albums.id')
-
-
-            ->select('songs.*','albums.album_name','singers.*')
-            ->where('singers.id','=',"$id")
+        $lists = DB::table('singers')
+            ->join('songs', 'singers.id', 'songs.singer_id')
+            ->join('albums', 'songs.album_id', 'albums.id')
+            ->select('songs.*', 'albums.album_name', 'singers.*')
+            ->where('singers.id', '=', "$id")
             ->get();
 
-        return view('template.demo.detail-singer',compact('lists'));
+        return view('template.demo.detail-singer', compact('lists'));
 
     }
 
