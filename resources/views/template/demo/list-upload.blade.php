@@ -6,18 +6,6 @@
             <img src="/Client/img/core-img/compact-disc.png" alt="">
         </div>
     </div>
-
-    <!-- ##### Header Area Start ##### -->
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">col-sm-8</div>
-            <div class="col-sm-4">col-sm-4</div>
-        </div>
-    </div>
-
-
-
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
@@ -29,6 +17,37 @@
     <!-- bg gradients -->
     <div class="bg-gradients"></div>
     <!-- ##### Breadcumb Area End ##### -->
+    <!-- ##### Header Area Start ##### -->
+    <br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <table class="table">
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col">Profile</th>
+                    </tr>
+                    </thead>
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col"><a href="{{route('profile.upload')}}">Upload Musics</a></th>
+                    </tr>
+                    </thead>
+                </table>
+
+            </div>
+
+
+            <div class="col-sm-8">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 
