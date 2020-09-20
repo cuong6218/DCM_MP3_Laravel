@@ -221,6 +221,7 @@
                                     @foreach($topSongs as $list)
                                     <!-- Single Song -->
                                     <div class="single-music active">
+
                                         <a href="{{route('home2.show',$list->id)}}">
                                         <h6>{{$list->song_name}}</h6>
                                         </a>

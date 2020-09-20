@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    @toastr_css
     <!-- Title -->
     <title>Musica - Music Template</title>
 
@@ -23,20 +23,33 @@
             color: white;
 
         }
+
         .musica-music-artists-area .music-search {
             margin-top: 6px;
         }
-        .single-music-player{
+
+        .single-music-player {
             margin-top: 20px;
         }
-        .owl-carousel .owl-item img{
-            width: 100% !important;
-        }
-        single-music-player{
+
+        .owl-carousel .owl-item img {
             width: 100% !important;
         }
 
+        single-music-player {
+            width: 100% !important;
+        }
+
+        .header-area .musica-main-menu .top-social-info a {
+            border-radius: 20px;
+        }
+        #navbarDropdown{
+            color: #cc1573;
+            font-size: 15px;
+        }
+
     </style>
+
 </head>
 
 <body>
@@ -83,15 +96,31 @@
                             </ul>
 
                             <!-- Social Button -->
-                            <div class="top-social-info">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
+                            @if(\Illuminate\Support\Facades\Auth::check())
 
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{\Illuminate\Support\Facades\Auth::user()->email}}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{route('users.logout.store')}}">Logout</a>
+                                    </div>
+                                </li>
+                            @else
+                                <div class="top-social-info">
+                                    <div class="row">
+                                        <div class="col-md-6 album-buy-now">
+                                            <a href="{{route('users.register')}}" class="btn musica-btn">Register</a>
+                                        </div>
+                                        <div class="col-md-6 album-buy-now">
+                                            <a href="{{route('users.login')}}" class="btn musica-btn" >Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <!-- Nav End -->
                     </div>
@@ -107,6 +136,9 @@
 
 <!-- ##### All Javascript Script ##### -->
 <!-- jQuery-2.2.4 js -->
+@jquery
+@toastr_js
+@toastr_render
 <script src="/Client/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
 <script src="/Client/js/bootstrap/popper.min.js"></script>
@@ -116,6 +148,7 @@
 <script src="/Client/js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="/Client/js/active.js"></script>
+<script src="/myJs/my.js"></script>
 </body>
 
 </html>

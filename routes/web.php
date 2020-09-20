@@ -64,3 +64,12 @@ Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbum
 Route::get('singer',[\App\Http\Controllers\HomeController::class, 'showListSinger'])->name('home2.singer');
 Route::get('singer/{id}',[\App\Http\Controllers\SongController::class, 'showListSongSinger'])->name('home2.song-singer');
 Route::get('songs',[\App\Http\Controllers\HomeController::class, 'showListSong'])->name('home2.song');
+
+
+Route::prefix('users')->group(function (){
+    Route::get('register',[\App\Http\Controllers\UserController::class,'indexRegister'])->name('users.register');
+    Route::get('login',[\App\Http\Controllers\UserController::class,'indexLogin'])->name('users.login');
+    Route::post('register',[\App\Http\Controllers\UserController::class,'storeRegister'])->name('users.register.store');
+    Route::post('login',[\App\Http\Controllers\UserController::class,'storeLogin'])->name('users.login.store');
+    Route::get('logout',[\App\Http\Controllers\UserController::class,'logout'])->name('users.logout.store');
+});
