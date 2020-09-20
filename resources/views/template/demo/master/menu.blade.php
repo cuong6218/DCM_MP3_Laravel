@@ -103,7 +103,7 @@
                                         {{\Illuminate\Support\Facades\Auth::user()->email}}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('profile.index')}}">Upload Music</a>
+                                        <a class="dropdown-item" href="{{route('profile.upload')}}">Upload Music</a>
                                         <a class="dropdown-item" href="#">Another action</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('users.logout.store')}}">Logout</a>
