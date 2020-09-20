@@ -21,12 +21,13 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                             <div class="card-body">
-                                <form>
+                                <form method="post" action="{{route('layout.register')}}">
+                                    @csrf
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputFirstName">Name</label>
-                                                <input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
+                                                <input name="name" class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
                                             </div>
                                         </div>
 {{--                                        <div class="col-md-6">--}}
@@ -38,13 +39,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                        <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+                                        <input name="email" class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                                <input name="password" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
                                             </div>
                                         </div>
 {{--                                        <div class="col-md-6">--}}
@@ -54,7 +55,7 @@
 {{--                                            </div>--}}
 {{--                                        </div>--}}
                                     </div>
-                                    <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="login.html">Create Account</a></div>
+                                    <div class="form-group mt-4 mb-0"><button type="submit" class="btn btn-primary btn-block">Create Account</button></div>
                                 </form>
                             </div>
                             <div class="card-footer text-center">

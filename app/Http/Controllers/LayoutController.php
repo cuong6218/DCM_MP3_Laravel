@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class LayoutController extends Controller
 {
+    protected $userService;
+    function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     function index()
     {
         return view('admin.layout.master');
@@ -33,5 +40,9 @@ class LayoutController extends Controller
     }
     function showRegister(){
         return view('admin.layout.register');
+    }
+    function register(\Illuminate\Support\Facades\Request $request){
+        $this->userService->store($request);
+        return redirect()->route('layout.showLogin');
     }
 }

@@ -16,6 +16,7 @@ Route::post('register',[\App\Http\Controllers\RegisterController::class,'registe
 Route::get('login', [\App\Http\Controllers\LayoutController::class, 'showLogin'])->name('layout.showLogin');
 Route::post('login', [\App\Http\Controllers\LayoutController::class, 'login'])->name('layout.login');
 Route::get('register', [\App\Http\Controllers\LayoutController::class, 'showRegister'])->name('layout.showRegister');
+Route::post('register', [\App\Http\Controllers\LayoutController::class, 'register'])->name('layout.register');
 Route::middleware('auth')->prefix('admin')->group(function (){
     Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
 
