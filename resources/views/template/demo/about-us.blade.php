@@ -66,10 +66,10 @@
                             <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="songs-name">
                                     <p>Playing</p>
-                                    <h6>Drop that beat</h6>
+                                    <h6>{{$albums[0]->song_name}}</h6>
                                 </div>
                                 <audio preload="auto" controls>
-                                    <source src="/Client/audio/dummy-audio.mp3">
+                                    <source src="{{asset('storage/'.$albums[0]->audio)}}">
                                 </audio>
                             </div>
 
