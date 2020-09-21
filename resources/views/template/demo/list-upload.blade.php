@@ -50,13 +50,7 @@
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Pending</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Not Approved</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Approved</a>
+                        <a class="nav-link active" href="#">List Upload User</a>
                     </li>
                 </ul>
                 <br><br>
@@ -87,7 +81,16 @@
                                 </td>
                                 <td><img style="width: 50px; height: 50px" src="{{asset('storage/'.$music->image)}}">
                                 </td>
-                                <td><a class="btn btn-secondary">{{$music->status}}</a></td>
+                                <td>
+                                    <a class="btn @if($music->status == 'pending')
+                                        btn-secondary
+                                            @elseif($music->status == 'approved')
+                                        btn-success
+                                        @elseif($music->status == 'notApproved')
+                                        btn-danger
+                                        @endif
+                                        ">{{$music->status}}</a>
+                                </td>
 
                     </tbody>
                     @endforeach

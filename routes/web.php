@@ -18,7 +18,7 @@ Route::post('login', [\App\Http\Controllers\LayoutController::class, 'login'])->
 Route::get('register', [\App\Http\Controllers\LayoutController::class, 'showRegister'])->name('layout.showRegister');
 Route::post('register', [\App\Http\Controllers\LayoutController::class, 'register'])->name('layout.register');
 Route::get('logout', [\App\Http\Controllers\LayoutController::class, 'logout'])->name('layout.logout');
-Route::middleware('checkLogin')->prefix('admin')->group(function (){
+Route::prefix('admin')->group(function (){
     Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
 
 
@@ -56,6 +56,15 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
         Route::get('/{id}/delete', [\App\Http\Controllers\SingerController::class, 'destroy'])->name('singers.delete');
         Route::get('/{id}/edit', [\App\Http\Controllers\SingerController::class, 'edit'])->name('singers.edit');
         Route::post('/{id}/update', [\App\Http\Controllers\SingerController::class, 'update'])->name('singers.update');
+    });
+
+    Route::prefix('browser')->group(function (){
+        Route::get('pending',[\App\Http\Controllers\ApprovedController::class,'showPending'])->name('browser.pending');
+        Route::get('status/{id}',[\App\Http\Controllers\ApprovedController::class,'editStatus'])->name('browser.status');
+        Route::get('approved',[\App\Http\Controllers\ApprovedController::class,'listApproved'])->name('browser.approved');
+        Route::post('status/{id}',[\App\Http\Controllers\ApprovedController::class,'approved'])->name('browser.approved.edit');
+        Route::get('notApproved',[\App\Http\Controllers\ApprovedController::class,'listNotApproved'])->name('browser.notApproved.list');
+
     });
 
 });
