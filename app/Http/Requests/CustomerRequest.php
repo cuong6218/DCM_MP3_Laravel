@@ -26,7 +26,7 @@ class CustomerRequest extends FormRequest
         return [
             'firstName' => 'required|min:2|max:12',
             'lastName' => 'required|min:2|max:5',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:customers',
             'password' => 'required'
         ];
     }

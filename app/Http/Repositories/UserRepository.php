@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 
 
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository
 {
@@ -16,7 +17,7 @@ class UserRepository
         $user->save();
     }
     function getAll(){
-        return $this->user->select('*')->all()->get();
+        return DB::table('customers')->get();
     }
     function show($id){
         return $this->user->findOrFail($id);
