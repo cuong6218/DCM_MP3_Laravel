@@ -46,6 +46,7 @@ class LayoutController extends Controller
     }
     function register(CustomerRequest $request){
         $this->userService->store($request);
+        toastr()->success('Register Success', 'Success!');
         return redirect()->route('layout.showLogin');
     }
 }

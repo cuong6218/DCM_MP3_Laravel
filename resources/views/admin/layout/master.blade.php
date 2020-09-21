@@ -83,6 +83,10 @@
                         <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
                         Songs
                     </a>
+                    <a class="nav-link" href="">
+                        <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
+                        Song test
+                    </a>
 {{--                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
 {{--                        <nav class="sb-sidenav-menu-nested nav">--}}
 {{--                            <a class="nav-link" href="{{route('categorys.index')}}">List</a>--}}

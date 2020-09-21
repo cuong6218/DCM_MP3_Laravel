@@ -8,7 +8,7 @@ use App\Http\Repositories\RegisterRepository;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterService
+class   RegisterService
 {
     protected $registerRepo;
     public function __construct(RegisterRepository $registerRepo)

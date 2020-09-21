@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\SingerService;
+use App\Models\Singer;
 use Illuminate\Http\Request;
 use App\Http\Requests\SingerRequest;
+use Illuminate\Support\Facades\Session;
+
 class SingerController extends Controller
 {
     protected $singerService;
@@ -45,8 +48,8 @@ class SingerController extends Controller
      */
     public function store(SingerRequest $request)
     {
-        $this->singerService->store($request);
-        return redirect()->route('singers.index');
+            $this->singerService->store($request);
+            return redirect()->route('singers.index');
     }
 
     /**
