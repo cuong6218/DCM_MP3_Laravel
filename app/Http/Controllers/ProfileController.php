@@ -52,7 +52,7 @@ class ProfileController extends Controller
 
     function showPending($id){
 
-        $musics = DB::table('musics')->select('*')->where('user_id',$id)->orWhere('status','=','pending')->get();
+        $musics = DB::table('musics')->select('*')->where('user_id',$id)->get();
 
         return view('template.demo.list-upload',compact('musics'));
 
