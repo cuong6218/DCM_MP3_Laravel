@@ -24,22 +24,31 @@
                                 <form method="post" action="{{route('layout.register')}}">
                                     @csrf
                                     <div class="form-row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputFirstName">Name</label>
-                                                <input name="name" class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
+                                                <label class="small mb-1" for="inputFirstName">First Name</label>
+                                                <input name="firstName" class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
+                                                @if($errors->has('firstName'))
+                                                    <p class="text-danger">{{$errors->first('firstName')}}</p>
+                                                @endif
                                             </div>
                                         </div>
-{{--                                        <div class="col-md-6">--}}
-{{--                                            <div class="form-group">--}}
-{{--                                                <label class="small mb-1" for="inputLastName">Last Name</label>--}}
-{{--                                                <input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" />--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputLastName">Last Name</label>
+                                                <input name="lastName" class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" />
+                                                @if($errors->has('lastName'))
+                                                    <p class="text-danger">{{$errors->first('lastName')}}</p>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputEmailAddress">Email</label>
                                         <input name="email" class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+                                        @if($errors->has('email'))
+                                            <p class="text-danger">{{$errors->first('email')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12">

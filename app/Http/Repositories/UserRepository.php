@@ -4,12 +4,12 @@
 namespace App\Http\Repositories;
 
 
-use App\Models\User;
+use App\Models\Customer;
 
 class UserRepository
 {
     protected $user;
-    function __construct(User $user){
+    function __construct(Customer $user){
         $this->user = $user;
     }
     function save($user){
