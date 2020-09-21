@@ -21,7 +21,9 @@ class HomeController extends Controller
 
         $listSongs = DB::table('songs')->orderBy('views','desc')->paginate(20);
 
-        return view('template.demo.index',compact('songs','albums','singers','listSongs'));
+        $customerMusic = DB::table('musics')->where('status','=','approved')->orderBy('id','desc')->get();
+
+        return view('template.demo.index',compact('songs','albums','singers','listSongs','customerMusic'));
     }
 
     function showListAlbums(){

@@ -183,6 +183,31 @@
                             </div>
                         @endforeach
                     </div>
+                    <hr>
+
+                    <div class="music-player-slides owl-carousel">
+                    @foreach($customerMusic as $customer)
+                        <!-- Single Music Player -->
+                            <div class="single-music-player">
+                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$customer->image)}}" alt="">
+
+                                <div class="music-info d-flex justify-content-between">
+                                    <div class="music-text">
+
+                                        <a href="{{route('home2.show',$customer->id)}}"><h5>{{$customer->music_name}}</h5></a>
+                                        <p>{{$customer->singer}}</p>
+                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$customer->views}}</i></a>
+                                    </div>
+                                    <div class="music-play-icon">
+                                        <audio  controls>
+                                            <source src="{{asset('storage/'.$customer->audio)}}">
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
                 </div>
             </div>
         </div>
