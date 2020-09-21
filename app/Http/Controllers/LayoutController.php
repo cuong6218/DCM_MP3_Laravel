@@ -7,7 +7,7 @@ use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use App\Http\Requests\CustomerRequest;
 class LayoutController extends Controller
 {
     protected $userService;
@@ -24,26 +24,27 @@ class LayoutController extends Controller
     {
         return view('admin.layout.login');
     }
-    function login(Request $request)
+    function login(CustomerRequest $request)
     {
         $data = [
             'email' => $request->email,
             'password' => $request->password,
         ];
         if(!auth::attempt($data)){
-            return redirect()->route('layout.showLogin');
+            toastr()->error('Wrong email or password', 'Error!');
+            return back();
         }
+        toastr()->success('Login Success', 'Success!');
         return redirect()->route('layout.index');
     }
     function logout(){
-//        Session::remove('isAuth');
         Auth::logout();
         return redirect()->route('layout.showLogin');
     }
     function showRegister(){
         return view('admin.layout.register');
     }
-    function register(Request $request){
+    function register(CustomerRequest $request){
         $this->userService->store($request);
         return redirect()->route('layout.showLogin');
     }

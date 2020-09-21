@@ -26,6 +26,9 @@
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputEmailAddress">Email</label>
                                         <input class="form-control py-4" id="inputEmailAddress" type="email" name="email" placeholder="Enter email address" />
+                                        @if($errors->has('email'))
+                                            <p class="text-danger">{{$errors->first('email')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputPassword">Password</label>
