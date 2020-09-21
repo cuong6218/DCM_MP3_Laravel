@@ -6,6 +6,7 @@ use App\Http\Requests\MusicRequest;
 use App\Models\Music;
 use App\Models\Singer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -37,13 +38,23 @@ class ProfileController extends Controller
         $music->singer = $request->singer;
         $music->views = '1';
         $music->status = 'pending';
+        $music->user_id = $request->user_id;
         $music->save();
 
-        return redirect()->route('profile.list');
+        toastr()->success('Upload Success', 'Success!');
+        return redirect()->route('profile.upload');
 
     }
 
     function indexListUpload(){
         return view('template.demo.list-upload');
+    }
+
+    function showPending($id){
+
+        $musics = DB::table('musics')->select('*')->where('user_id',$id)->orWhere('status','=','pending')->get();
+
+        return view('template.demo.list-upload',compact('musics'));
+
     }
 }

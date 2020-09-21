@@ -81,4 +81,6 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/upload',[\App\Http\Controllers\ProfileController::class,'indexMusicUser'])->name('profile.upload');
     Route::post('/upload',[\App\Http\Controllers\ProfileController::class,'storeAddMusics'])->name('profile.upload.store');
     Route::get('/list',[\App\Http\Controllers\ProfileController::class,'indexListUpload'])->name('profile.list');
+
+    Route::get('/list/{id}',[\App\Http\Controllers\ProfileController::class,'showPending'])->name('profile.pending');
 });

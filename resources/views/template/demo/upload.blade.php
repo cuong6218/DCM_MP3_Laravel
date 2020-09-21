@@ -19,6 +19,7 @@
     <!-- ##### Breadcumb Area End ##### -->
     <!-- ##### Header Area Start ##### -->
 <br><br><br><br>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -34,8 +35,13 @@
                         <th scope="col"><a href="{{route('profile.upload')}}">Upload Musics</a></th>
                     </tr>
                     </thead>
-                </table>
 
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col"><a href="{{route('profile.pending',\Illuminate\Support\Facades\Auth::user()->id)}}">List Musics</a></th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
 
 
@@ -82,6 +88,9 @@
                             <p class="text-danger">{{$errors->first('singer')}}</p>
                         @endif
                     </div>
+
+                    <input name="user_id" type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" hidden>
+
 
                     <button type="submit" class="btn btn-info">Add Songs</button>
                     <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
