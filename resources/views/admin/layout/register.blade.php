@@ -10,6 +10,7 @@
     <title>Page Title - SB Admin</title>
     <link href="/server/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    @toastr_css
 </head>
 <body class="bg-primary">
 <div id="layoutAuthentication">
@@ -27,7 +28,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputFirstName">First Name</label>
-                                                <input name="firstName" class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
+                                                <input name="firstName" value="{{old('firstName')}}" class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
                                                 @if($errors->has('firstName'))
                                                     <p class="text-danger">{{$errors->first('firstName')}}</p>
                                                 @endif
@@ -36,7 +37,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputLastName">Last Name</label>
-                                                <input name="lastName" class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" />
+                                                <input name="lastName" value="{{old('lastName')}}" class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" />
                                                 @if($errors->has('lastName'))
                                                     <p class="text-danger">{{$errors->first('lastName')}}</p>
                                                 @endif
@@ -45,7 +46,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                        <input name="email" class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+                                        <input name="email" value="{{old('email')}}" class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
                                         @if($errors->has('email'))
                                             <p class="text-danger">{{$errors->first('email')}}</p>
                                         @endif
@@ -54,7 +55,10 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input name="password" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                                <input name="password" value="{{old('password')}}" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                                @if($errors->has('password'))
+                                                    <p class="text-danger">{{$errors->first('password')}}</p>
+                                                @endif
                                             </div>
                                         </div>
 {{--                                        <div class="col-md-6">--}}

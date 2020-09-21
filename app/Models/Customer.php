@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Http\Middleware\checkLogin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Customer extends Model
 {

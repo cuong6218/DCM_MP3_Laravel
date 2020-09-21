@@ -10,6 +10,7 @@
     <title>Page Title - SB Admin</title>
     <link href="/server/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    @toastr_css
 </head>
 <body class="bg-primary">
 <div id="layoutAuthentication">
@@ -25,14 +26,17 @@
                                     @csrf
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                        <input class="form-control py-4" id="inputEmailAddress" type="email" name="email" placeholder="Enter email address" />
+                                        <input class="form-control py-4" id="inputEmailAddress" value="{{old('email')}}" type="email" name="email" placeholder="Enter email address" />
                                         @if($errors->has('email'))
                                             <p class="text-danger">{{$errors->first('email')}}</p>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputPassword">Password</label>
-                                        <input class="form-control py-4" id="inputPassword" type="password" name="password" placeholder="Enter password" />
+                                        <input class="form-control py-4" id="inputPassword" value="{{old('password')}}" type="password" name="password" placeholder="Enter password" />
+                                        @if($errors->has('password'))
+                                            <p class="text-danger">{{$errors->first('password')}}</p>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
