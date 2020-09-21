@@ -10,7 +10,6 @@
     <title>Page Title - SB Admin</title>
     <link href="/server/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    @toastr_css
 </head>
 <body class="bg-primary">
 <div id="layoutAuthentication">

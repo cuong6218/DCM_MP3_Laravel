@@ -83,9 +83,9 @@
                         <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
                         Songs
                     </a>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('browser.pending')}}}}">
                         <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
-                        Song test
+                        Check Song Status
                     </a>
 {{--                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
 {{--                        <nav class="sb-sidenav-menu-nested nav">--}}

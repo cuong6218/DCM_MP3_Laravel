@@ -2,16 +2,24 @@
 
 namespace App\Models;
 
-use App\Http\Middleware\checkLogin;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
     protected $table = 'customers';
-    protected $fillable = ['firstName','email','password', 'lastName'];
-    protected $hidden = ['password', 'remember_token'];
-    protected $casts = ['email_verified_at' => 'datetime'];
+    protected $guard = "admins";
+
+    protected $fillable = [
+        'firstName', 'lastName', 'email', 'password',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
 }
