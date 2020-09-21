@@ -30,11 +30,8 @@ class LayoutController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        if(!auth::attempt($data)){
-            toastr()->error('Wrong email or password', 'Error!');
-            return back();
-        }
-        toastr()->success('Login Success', 'Success!');
+        Auth::guard('admins')->attempt($data);
+        Auth::guard('web')->attempt($data);
         return redirect()->route('layout.index');
     }
     function logout(){
@@ -46,7 +43,6 @@ class LayoutController extends Controller
     }
     function register(CustomerRequest $request){
         $this->userService->store($request);
-        toastr()->success('Register Success', 'Success!');
         return redirect()->route('layout.showLogin');
     }
 }
