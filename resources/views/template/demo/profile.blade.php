@@ -18,7 +18,7 @@
     <div class="bg-gradients"></div>
     <!-- ##### Breadcumb Area End ##### -->
     <!-- ##### Header Area Start ##### -->
-<br><br><br><br>
+    <br><br><br><br>
 
     <div class="container">
         <div class="row">
@@ -46,55 +46,7 @@
 
 
             <div class="col-sm-8">
-                <h4>Add Songs</h4>
-                <hr>
-                <form method="post" enctype="multipart/form-data" action="{{route('profile.upload.store')}}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Songs name:</label>
-                        <input name="music_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @if($errors->has('music_name'))
-                            <p class="text-danger">{{$errors->first('music_name')}}</p>
-                        @endif
-                    </div>
 
-
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Songs Image: </label>
-                        <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
-                        @if($errors->has('image'))
-                            <p class="text-danger">{{$errors->first('image')}}</p>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Songs Audio: </label>
-                        <input name="audio" type="file" class="form-control-file" id="exampleFormControlFile1">
-                        @if($errors->has('audio'))
-                            <p class="text-danger">{{$errors->first('audio')}}</p>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Songs Singer:</label>
-                        <select name="singer" class="form-control" id="exampleFormControlSelect1">
-                            <option value="">Choose...</option>
-                            @foreach($singers as $singer)
-                                <option value="{{$singer->id}}">{{$singer->singer_name}}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('singer'))
-                            <p class="text-danger">{{$errors->first('singer')}}</p>
-                        @endif
-                    </div>
-
-                    <input name="user_id" type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" hidden>
-
-
-                    <button type="submit" class="btn btn-info">Add Songs</button>
-                    <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
-                </form>
-                <br><br>
             </div>
         </div>
     </div>

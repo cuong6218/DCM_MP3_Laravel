@@ -25,7 +25,7 @@ class AlbumRequest extends FormRequest
     {
         return [
             'album_name' => 'required|min:2|max:20',
-            'image' => 'required'
+            'image' => 'required|image'
         ];
     }
 }
