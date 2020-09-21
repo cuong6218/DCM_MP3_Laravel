@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\checkLogin;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CustomerRequest;
 class LayoutController extends Controller
@@ -24,18 +24,22 @@ class LayoutController extends Controller
     {
         return view('admin.layout.login');
     }
-    function login(CustomerRequest $request)
+    function login(Request $request)
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-        Auth::guard('admins')->attempt($data);
-        Auth::guard('web')->attempt($data);
-        return redirect()->route('layout.index');
+//        return redirect()->route('layout.index');
+        if($request->email == 'admin@gmail.com' && $request->password == '123456')
+        {
+            Session::put('isLogin', true);
+            toastr()->success('Login success!', 'Success!');
+            return redirect()->route('layout.index');
+        } else {
+            toastr()->error('Wrong email or password', 'Error!');
+            return redirect()->route('layout.showRegister');
+        }
     }
     function logout(){
         Auth::logout();
+//        Session::remove('isLogin');
         return redirect()->route('layout.showLogin');
     }
     function showRegister(){

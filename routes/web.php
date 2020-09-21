@@ -12,14 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('register',[\App\Http\Controllers\RegisterController::class,'register'])->name('customer.register');
-Route::get('login', [\App\Http\Controllers\LayoutController::class, 'showLogin'])->name('layout.showLogin');
-Route::post('login', [\App\Http\Controllers\LayoutController::class, 'login'])->name('layout.login');
-Route::get('register', [\App\Http\Controllers\LayoutController::class, 'showRegister'])->name('layout.showRegister');
-Route::post('register', [\App\Http\Controllers\LayoutController::class, 'register'])->name('layout.register');
+//Route::post('register',[\App\Http\Controllers\RegisterController::class,'register'])->name('customer.register');
+
+
+//Route::get('register', [\App\Http\Controllers\LayoutController::class, 'showRegister'])->name('layout.showRegister');
+//Route::post('register', [\App\Http\Controllers\LayoutController::class, 'register'])->name('layout.register');
+Route::get('show-login', [\App\Http\Controllers\LayoutController::class, 'showLogin'])->name('layout.showLogin');
+Route::post('admin-login', [\App\Http\Controllers\LayoutController::class, 'login'])->name('layout.login');
 Route::get('logout', [\App\Http\Controllers\LayoutController::class, 'logout'])->name('layout.logout');
+
 Route::prefix('admin')->group(function (){
-    Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
+
+    Route::middleware('checkLogin')->get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
 
 
     Route::prefix('categorys')->group(function (){

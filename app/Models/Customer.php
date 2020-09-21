@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Customer extends Authenticatable
+class Customer extends Model
 {
     use Notifiable;
     protected $table = 'customers';
-    protected $guard = "admins";
 
     protected $fillable = [
         'firstName', 'lastName', 'email', 'password',
