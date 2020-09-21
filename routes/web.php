@@ -93,3 +93,5 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
     Route::get('/list/{id}',[\App\Http\Controllers\ProfileController::class,'showPending'])->name('profile.pending');
 });
+
+

@@ -57,4 +57,6 @@ class ProfileController extends Controller
         return view('template.demo.list-upload',compact('musics'));
 
     }
+
+
 }
