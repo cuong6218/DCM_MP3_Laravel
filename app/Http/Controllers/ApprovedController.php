@@ -44,5 +44,11 @@ class ApprovedController extends Controller
         return view('admin.Approved.notApproved',compact('musics'));
     }
 
+    function deleteMusic($id){
+        $music = Music::findOrFail($id);
+        $music->delete();
+
+        return redirect()->route('profile.upload');
+    }
 
 }

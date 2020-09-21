@@ -62,6 +62,7 @@
                         <th scope="col">Audio</th>
                         <th scope="col">Image</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,7 +72,7 @@
                         </tr>
                     @else
                         @foreach($musics as $key => $music)
-                            <tr>
+                            <tr id="musics-{{$music->id}}">
                                 <th scope="row">{{++$key}}</th>
                                 <td>{{$music->music_name}}</td>
                                 <td>
@@ -91,6 +92,8 @@
                                         @endif
                                         ">{{$music->status}}</a>
                                 </td>
+{{--                                <td><a href="{{route('profile.delete',$music->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure!')">Delete</a></td>--}}
+                                <td><a id="delete-music" data-id="{{$music->id}}" class="btn btn-danger">Delete</a></td>
 
                     </tbody>
                     @endforeach
@@ -216,4 +219,6 @@
             </div>
         </div>
     </footer>
+
+
 @endsection

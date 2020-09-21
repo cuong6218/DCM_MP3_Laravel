@@ -92,6 +92,7 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/list',[\App\Http\Controllers\ProfileController::class,'indexListUpload'])->name('profile.list');
 
     Route::get('/list/{id}',[\App\Http\Controllers\ProfileController::class,'showPending'])->name('profile.pending');
+    Route::get('/delete/{id}',[\App\Http\Controllers\ApprovedController::class,'deleteMusic'])->name('profile.delete');
 });
 
 

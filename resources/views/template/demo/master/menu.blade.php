@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     @toastr_css
@@ -17,11 +18,19 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="/Client/style.css">
 
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <style>
         #text-name {
             color: white;
-
         }
 
         .musica-music-artists-area .music-search {
@@ -142,6 +151,7 @@
 @jquery
 @toastr_js
 @toastr_render
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 <script src="/Client/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
 <script src="/Client/js/bootstrap/popper.min.js"></script>
@@ -151,8 +161,37 @@
 <script src="/Client/js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="/Client/js/active.js"></script>
-<script src="/myJs/my.js"></script>
 
+<script>
+    $(document).ready(function (){
+        let origin = location.origin;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function deleteMusic(id) {
+            $.ajax({
+                url: origin + '/profile/delete/' + id,
+                method: 'GET',
+                success: function (result) {
+                    console.log(result)
+                    $('#musics-' + id).remove();
+                }
+            })
+        }
+
+        $('body').on('click','#delete-music',function (){
+            if (confirm('Are you sure?')){
+                let id = $(this).attr('data-id');
+                deleteMusic(id)
+                alertify.success('Delete Success');
+            }
+        })
+    });
+</script>
 </body>
 
 </html>
