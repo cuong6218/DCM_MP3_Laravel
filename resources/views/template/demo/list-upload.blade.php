@@ -26,7 +26,7 @@
                 <table class="table">
                     <thead class="table-info">
                     <tr>
-                        <th scope="col">Profile</th>
+                        <th scope="col"><a href="{{route('profile.users',\Illuminate\Support\Facades\Auth::user()->id)}}">Profile</a></th>
                     </tr>
                     </thead>
                     <thead class="table-info">

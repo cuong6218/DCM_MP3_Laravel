@@ -58,5 +58,8 @@ class ProfileController extends Controller
 
     }
 
+    function showProfile(){
+        return view('template.demo.profile');
+    }
 
 }

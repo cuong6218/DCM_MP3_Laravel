@@ -69,7 +69,7 @@ Route::prefix('admin')->group(function (){
 
 });
 
-Route::middleware('auth')->get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
+Route::get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
 Route::get('songs/{id}',[\App\Http\Controllers\SongController::class,'show'])->name('home2.show');
 Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])->name('home2.show-album');
 Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbums'])->name('home2.albums');
@@ -93,6 +93,7 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
     Route::get('/list/{id}',[\App\Http\Controllers\ProfileController::class,'showPending'])->name('profile.pending');
     Route::get('/delete/{id}',[\App\Http\Controllers\ApprovedController::class,'deleteMusic'])->name('profile.delete');
+    Route::get('/users/{id}',[\App\Http\Controllers\ProfileController::class,'showProfile'])->name('profile.users');
 });
 
 

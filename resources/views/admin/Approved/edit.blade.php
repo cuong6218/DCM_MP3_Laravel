@@ -3,8 +3,6 @@
 
     <div class="container">
         <br><br>
-
-        <br><br>
         <table class="table table-striped">
             <thead class="table-info">
             <tr>
