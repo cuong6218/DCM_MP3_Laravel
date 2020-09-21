@@ -11,7 +11,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <h2>Upload Song</h2>
+            <h2>List Musics User</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -34,12 +34,65 @@
                         <th scope="col"><a href="{{route('profile.upload')}}">Upload Musics</a></th>
                     </tr>
                     </thead>
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col"><a
+                                href="{{route('profile.pending',\Illuminate\Support\Facades\Auth::user()->id)}}">List
+                                Musics</a></th>
+                    </tr>
+                    </thead>
                 </table>
 
             </div>
 
 
             <div class="col-sm-8">
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Pending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Not Approved</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Approved</a>
+                    </li>
+                </ul>
+                <br><br>
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Music</th>
+                        <th scope="col">Audio</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if(empty($musics))
+                        <tr>
+                            <td>No data</td>
+                        </tr>
+                    @else
+                        @foreach($musics as $key => $music)
+                            <tr>
+                                <th scope="row">{{++$key}}</th>
+                                <td>{{$music->music_name}}</td>
+                                <td>
+                                    <audio controls>
+                                        <source src="{{asset('storage/'.$music->audio)}}" type="audio/mpeg">
+                                    </audio>
+                                </td>
+                                <td><img style="width: 50px; height: 50px" src="{{asset('storage/'.$music->image)}}">
+                                </td>
+                                <td><a class="btn btn-secondary">{{$music->status}}</a></td>
+
+                    </tbody>
+                    @endforeach
+                    @endif
+                </table>
 
             </div>
         </div>

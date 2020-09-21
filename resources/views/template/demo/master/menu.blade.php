@@ -47,6 +47,10 @@
             color: #cc1573;
             font-size: 15px;
         }
+        .audioplayer{
+            margin: 0px;
+            height: 5%;
+        }
 
     </style>
 
