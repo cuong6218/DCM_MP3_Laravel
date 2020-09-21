@@ -83,7 +83,9 @@
                         <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
                         Songs
                     </a>
-                    <a class="nav-link" href="{{route('browser.pending')}}}}">
+
+                    <a class="nav-link" href="{{route('browser.pending')}}">
+
                         <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
                         Check Song Status
                     </a>

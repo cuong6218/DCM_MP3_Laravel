@@ -82,7 +82,6 @@
                             @foreach($singers as $singer)
                                 <option value="{{$singer->id}}">{{$singer->singer_name}}</option>
                             @endforeach
-                            <option value="unknow">Unknow</option>
                         </select>
                         @if($errors->has('singer'))
                             <p class="text-danger">{{$errors->first('singer')}}</p>
