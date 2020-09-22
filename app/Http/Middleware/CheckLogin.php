@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class checkLogin
+class CheckLogin
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,11 @@ class checkLogin
      */
     public function handle(Request $request, Closure $next)
     {
-//        if (Session::get('isLogin') == false)
-//        {
-//            return $next($request);
-//        }
-        return redirect()->route('layout.showLogin');
-//        return redirect()->route('layout.showLogin');
-
+        if (Session::get('isLogin') == true){
+//
+            return $next($request);
+        } else {
+            return redirect()->route('layout.showLogin');
+        }
     }
 }
