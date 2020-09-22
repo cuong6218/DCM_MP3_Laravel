@@ -58,6 +58,8 @@
                                     <source src="{{asset('storage/'.$list->audio)}}">
                                 </audio>
                             </div>
+                                <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
+                                <a style="color: white" href="{{asset('storage/'.$list->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                             @endforeach
                         </div>
                     </div>
