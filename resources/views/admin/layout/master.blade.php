@@ -55,24 +55,18 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{route('songs.index')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
                     <div class="sb-sidenav-menu-heading">Interface</div>
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                    <a class="nav-link" href="{{route('singers.index')}}">
                         <div class="sb-nav-link-icon"><i class="fa fa-user-circle"></i></div>
                         Singers
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{route('singers.index')}}">List</a>
-                            <a class="nav-link" href="{{route('singers.create')}}">Add new</a>
-                        </nav>
-                    </div>
                     <a class="nav-link" href="{{route('categorys.index')}}">
-                        <div class="sb-nav-link-icon"><i class="fa fa-paper-plane-o"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fab fa-bity"></i></div>
                         Categories
                     </a>
                     <a class="nav-link" href="{{route('albums.index')}}">
@@ -80,13 +74,13 @@
                         Albums
                     </a>
                     <a class="nav-link" href="{{route('songs.index')}}">
-                        <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fab fa-app-store"></i></div>
                         Songs
                     </a>
 
                     <a class="nav-link" href="{{route('browser.pending')}}">
 
-                        <div class="sb-nav-link-icon"><i class="fa fa-heart-o"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fab fa-creative-commons-sampling"></i></div>
                         Check Song Status
                     </a>
 {{--                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">--}}
