@@ -20,12 +20,15 @@ class HomeController extends Controller
         $singers = DB::table('singers')->select('*')->orderBy('id', 'desc')->paginate(2);
 
         $listSongs = DB::table('songs')->orderBy('views','desc')->paginate(20);
+        $testSongs = DB::table('songs')->orderBy('views','desc')->paginate(20);
 
         $customerMusic = DB::table('musics')->where('status','=','approved')->orderBy('id','desc')->get();
 
-        $singerAll = Singer::all();
+
         return view('template.demo.index',compact('songs','albums','singers','listSongs','customerMusic', 'singerAll'));
+
     }
+
 
     function showListAlbums(){
         $albums =  DB::table('albums')->select('*')->orderBy('id','desc')->get();

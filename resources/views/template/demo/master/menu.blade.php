@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     @toastr_css
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <script src="https://www.collaboratescience.com/protoplasm/library/main.js"></script>
     <style>
         #text-name {
             color: white;
@@ -52,18 +53,22 @@
         .header-area .musica-main-menu .top-social-info a {
             border-radius: 20px;
         }
-        #navbarDropdown{
+
+        #navbarDropdown {
             color: #cc1573;
             font-size: 15px;
         }
-        .audioplayer{
+
+        .audioplayer {
             margin: 0px;
             height: 5%;
         }
-        .fa-download{
+
+        .fa-download {
             margin-left: 10px;
         }
-        .featured-album-content .album-songs .single-music{
+
+        .featured-album-content .album-songs .single-music {
             margin-top: 15px;
             margin-bottom: 5px;
         }
@@ -119,7 +124,8 @@
                             @if(\Illuminate\Support\Facades\Auth::check())
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{\Illuminate\Support\Facades\Auth::user()->email}}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -135,7 +141,7 @@
                                             <a href="{{route('users.register')}}" class="btn musica-btn">Register</a>
                                         </div>
                                         <div class="col-md-6 album-buy-now">
-                                            <a href="{{route('users.login')}}" class="btn musica-btn" >Login</a>
+                                            <a href="{{route('users.login')}}" class="btn musica-btn">Login</a>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +164,8 @@
 @jquery
 @toastr_js
 @toastr_render
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/Client/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
 <script src="/Client/js/bootstrap/popper.min.js"></script>
@@ -168,9 +175,30 @@
 <script src="/Client/js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="/Client/js/active.js"></script>
+{{--<script>--}}
+{{--    playlist = {--}}
+{{--        @foreach($testSongs as $key=>$test)--}}
+{{--        'song_{{++$key}}' : 'storage/{{$test->audio}}',--}}
+{{--        @endforeach--}}
 
+{{--    }--}}
+{{--    $("#my_audio").trigger('load');--}}
+
+
+{{--    keys = Object.keys(playlist);--}}
+{{--    $('.my_audio').append("<source id='sound_src' src=" + playlist[keys[0]] + " type='audio/mpeg'>");--}}
+
+{{--    count = 0;--}}
+{{--    $('.my_audio').on('ended', function () {--}}
+{{--        count++;--}}
+{{--        $("#sound_src").attr("src", playlist[keys[count]])[0];--}}
+{{--        $(".my_audio").trigger('load');--}}
+{{--        play_audio('play');--}}
+{{--    });--}}
+
+{{--</script>--}}
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         let origin = location.origin;
 
         $.ajaxSetup({
@@ -190,8 +218,8 @@
             })
         }
 
-        $('body').on('click','#delete-music',function (){
-            if (confirm('Are you sure?')){
+        $('body').on('click', '#delete-music', function () {
+            if (confirm('Are you sure?')) {
                 let id = $(this).attr('data-id');
                 deleteMusic(id)
                 alertify.success('Delete Success');
@@ -199,6 +227,9 @@
         })
     });
 </script>
+
+
+
 </body>
 
 </html>
