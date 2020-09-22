@@ -1,4 +1,4 @@
-@extends('template.demo.master.menu')
+    @extends('template.demo.master.menu')
 @section('content')
 
     <!-- ##### Header Area End ##### -->
@@ -50,11 +50,7 @@
         <!-- bg gradients -->
         <div class="bg-gradients"></div>
 
-        <!-- Slide Down -->
-        <div class="slide-down" id="scrollDown">
-            <h6>Slide Down</h6>
-            <div class="line"></div>
-        </div>
+
     </section>
     <!-- ##### Hero Area End ##### -->
 
