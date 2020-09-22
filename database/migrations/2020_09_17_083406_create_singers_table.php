@@ -17,7 +17,7 @@ class CreateSingersTable extends Migration
             $table->id();
             $table->string('singer_name');
             $table->string('image');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }
