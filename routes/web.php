@@ -21,11 +21,9 @@ Route::get('show-login', [\App\Http\Controllers\LayoutController::class, 'showLo
 Route::post('admin-login', [\App\Http\Controllers\LayoutController::class, 'login'])->name('layout.login');
 Route::get('logout', [\App\Http\Controllers\LayoutController::class, 'logout'])->name('layout.logout');
 
-Route::prefix('admin')->group(function (){
+Route::middleware('checkLogin')->prefix('admin')->group(function (){
 
-    Route::middleware('checkLogin')->get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
-
-
+    Route::get('', [\App\Http\Controllers\LayoutController::class, 'index'])->name('layout.index');
     Route::prefix('categorys')->group(function (){
         Route::get('',[\App\Http\Controllers\CategoryController::class,'index'])->name('categorys.index');
         Route::get('/create',[\App\Http\Controllers\CategoryController::class,'create'])->name('categorys.create');

@@ -38,8 +38,8 @@ class LayoutController extends Controller
         }
     }
     function logout(){
-        Auth::logout();
-//        Session::remove('isLogin');
+//        Auth::logout();
+        Session::remove('isLogin');
         return redirect()->route('layout.showLogin');
     }
     function showRegister(){
