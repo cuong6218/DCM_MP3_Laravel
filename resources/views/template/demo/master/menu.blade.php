@@ -60,6 +60,13 @@
             margin: 0px;
             height: 5%;
         }
+        .fa-download{
+            margin-left: 10px;
+        }
+        .featured-album-content .album-songs .single-music{
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
 
     </style>
 

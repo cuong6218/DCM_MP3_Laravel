@@ -243,15 +243,18 @@
                                         <a href="{{route('home2.show',$list->id)}}">
                                         <h6>{{$list->song_name}}</h6>
                                         </a>
-                                        <audio class="11111" controls>
-                                            <source src="{{asset('storage/'.$list->audio)}}">
+                                        <audio controls preload="auto">
+                                            <source src="{{asset('storage/'.$list->audio)}}" >
                                         </audio>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
                                     </div>
+                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
+                                        <a style="color: white" href="{{asset('storage/'.$list->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                                         @endforeach
 
                                 </div>
                             </div>
+
+
 
                             <!-- Now Playing -->
                             <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
