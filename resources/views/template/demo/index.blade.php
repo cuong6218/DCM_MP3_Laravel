@@ -250,21 +250,19 @@
                                         <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
                                         <a style="color: white" href="{{asset('storage/'.$list->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                                         @endforeach
-
                                 </div>
                             </div>
-
-
-
                             <!-- Now Playing -->
                             <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="songs-name">
                                     <p>Hot Musics</p>
                                     <h6>{{$listSongs[0]->song_name}}</h6>
                                 </div>
-                                <audio preload="auto" controls>
+                                <audio preload="auto" controls >
                                     <source src="{{asset('storage/'.$listSongs[0]->audio)}}">
                                 </audio>
+{{--                                <audio class="my_audio" controls autoplay></audio>--}}
+
                             </div>
 
                         </div>
@@ -381,5 +379,5 @@
     </footer>
 
 
-
 @endsection
+
