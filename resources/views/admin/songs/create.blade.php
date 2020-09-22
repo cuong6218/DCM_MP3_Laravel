@@ -1,10 +1,11 @@
 @extends('admin.layout.master')
 @section('table')
-
-    <div class="container">
-        <br>
-        <h4>Add Songs</h4>
-        <hr>
+    <div class="container-fluid">
+        <h1 class="mt-4">Add Song</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="{{route('songs.index')}}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Songs / Add</li>
+        </ol>
         <form method="post" enctype="multipart/form-data" action="">
             @csrf
             <div class="form-group">
@@ -70,5 +71,4 @@
             <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
         </form>
     </div>
-    <br>
 @endsection

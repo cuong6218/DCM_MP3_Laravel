@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 @section('table')
     <div class="container-fluid">
-        <h1 class="mt-4">Form Add Singer</h1>
+        <h1 class="mt-4">Add Singer</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('songs.index')}}">Dashboard</a></li>
             <li class="breadcrumb-item active">Singers / Add</li>
         </ol>
     <form method="post" action="{{route('singers.store')}}" enctype="multipart/form-data">
@@ -27,6 +27,7 @@
         <input type="file" name="image" class="form-control-file">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
     </form>
     </div>
 @endsection
