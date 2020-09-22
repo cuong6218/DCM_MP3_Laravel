@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input name="password1" type="text" class="form-control form-control-user"
+                                        <input name="password1" type="password" class="form-control form-control-user"
                                                id="password1" placeholder="Password">
                                         @if($errors->has('password'))
                                             <p class="text-dark">{{$errors->first('password')}}</p>
@@ -90,7 +90,7 @@
                                         <p id="error-password1" class="text-danger"></p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input name="password1_confirmation" type="text"
+                                        <input name="password1_confirmation" type="password"
                                                class="form-control form-control-user" id="password2"
                                                placeholder="Repeat Password">
                                     </div>
