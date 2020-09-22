@@ -25,7 +25,7 @@ class MusicRequest extends FormRequest
     {
         return [
             //
-            'music_name' => 'required|min:2|max:20',
+            'music_name' => 'required|min:2|max:40',
             'image' => 'required|image',
             'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'singer' => 'required',
