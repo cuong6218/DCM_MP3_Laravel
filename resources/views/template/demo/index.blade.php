@@ -189,7 +189,12 @@
                                 <div class="music-info d-flex justify-content-between">
                                     <div class="music-text">
                                         <a href="{{route('home2.show',$customer->id)}}"><h5>{{$customer->music_name}}</h5></a>
-                                        <p>{{$customer->singer}}</p>
+                                        @foreach($singerAll as $singer)
+
+                                        <p > @if($singer->id == $customer->singer)
+                                                {{$singer->singer_name}}</p>
+                                            @endif
+                                        @endforeach
                                         <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$customer->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
