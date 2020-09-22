@@ -161,30 +161,29 @@
                             <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>
                         </div>
                     </div>
-                    <div class="music-player-slides owl-carousel">
-                    @foreach($songs as $song)
-                        <!-- Single Music Player -->
-                            <div class="single-music-player">
-                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$song->image)}}" alt="">
+{{--                    <div class="music-player-slides owl-carousel">--}}
+{{--                    @foreach($songs as $song)--}}
+{{--                        <!-- Single Music Player -->--}}
+{{--                            <div class="single-music-player">--}}
+{{--                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$song->image)}}" alt="">--}}
 
-                                <div class="music-info d-flex justify-content-between">
-                                    <div class="music-text">
+{{--                                <div class="music-info d-flex justify-content-between">--}}
+{{--                                    <div class="music-text">--}}
 
-                                        <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>
-                                        <p>{{$song->author}}</p>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>
-                                    </div>
-                                    <div class="music-play-icon">
-                                        <audio  controls>
-                                            <source src="{{asset('storage/'.$song->audio)}}">
-                                        </audio>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <hr>
-
+{{--                                        <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>--}}
+{{--                                        <p>{{$song->author}}</p>--}}
+{{--                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="music-play-icon">--}}
+{{--                                        <audio  controls>--}}
+{{--                                            <source src="{{asset('storage/'.$song->audio)}}">--}}
+{{--                                        </audio>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                    <hr>--}}
                     <div class="music-player-slides owl-carousel">
                     @foreach($customerMusic as $customer)
                         <!-- Single Music Player -->
@@ -193,13 +192,12 @@
 
                                 <div class="music-info d-flex justify-content-between">
                                     <div class="music-text">
-
                                         <a href="{{route('home2.show',$customer->id)}}"><h5>{{$customer->music_name}}</h5></a>
                                         <p>{{$customer->singer}}</p>
                                         <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$customer->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
-                                        <audio  controls>
+                                        <audio class="" controls>
                                             <source src="{{asset('storage/'.$customer->audio)}}">
                                         </audio>
                                     </div>
@@ -244,12 +242,12 @@
                                 <div class="music-playlist">
                                     @foreach($listSongs as $list)
                                     <!-- Single Song -->
-                                    <div class="single-music active">
+                                    <div class="single-music active ">
 
                                         <a href="{{route('home2.show',$list->id)}}">
                                         <h6>{{$list->song_name}}</h6>
                                         </a>
-                                        <audio  controls>
+                                        <audio class="11111" controls>
                                             <source src="{{asset('storage/'.$list->audio)}}">
                                         </audio>
                                         <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
@@ -382,4 +380,7 @@
             </div>
         </div>
     </footer>
+
+
+
 @endsection
