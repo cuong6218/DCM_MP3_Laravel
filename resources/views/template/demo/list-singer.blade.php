@@ -23,14 +23,24 @@
     <div  class="musica-music-artists-area d-flex flex-wrap clearfix">
         <!-- Music Search -->
         @foreach($singers as $singer)
-        <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms"
-             style="background-image: url({{asset('storage/'.$singer->image)}});">
-            <!-- Content -->
-            <div class="music-search-content">
-                <a href="{{route('home2.song-singer',$singer->id)}}"><h2>{{$singer->singer_name}}</h2></a>
+            <div class="col-md-3 mt-3 mb-3">
+            <div class="card" style="width: 18rem; height: 400px">
+                <img class="card-img-top rounded-circle " style="width: 280px; height: 280px" src="{{asset('storage/'.$singer->image)}}" alt="Card image cap">
+                <div class="card-body">
+                    <a href="{{route('home2.song-singer',$singer->id)}}"><h5 class="card-title text-center">{{$singer->singer_name}}</h5></a>
+                    <p class="card-text text-center">166K interested</p>
+                </div>
             </div>
-        </div>
-            <br>
+            </div>
+
+{{--        <div class="music-search bg-img bg-overlay2 wow fadeInUp" data-wow-delay="300ms"--}}
+{{--             style="background-image: url({{asset('storage/'.$singer->image)}});">--}}
+{{--            <!-- Content -->--}}
+{{--            <div class="music-search-content">--}}
+{{--                <a href="{{route('home2.song-singer',$singer->id)}}"><h2>{{$singer->singer_name}}</h2></a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--            <br>--}}
         @endforeach
     </div>
 
