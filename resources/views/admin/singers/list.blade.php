@@ -4,14 +4,15 @@
         <div class="container-fluid">
             <h1 class="mt-4">Table Singer</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{route('songs.index')}}">Dashboard</a></li>
                 <li class="breadcrumb-item active">Singers</li>
             </ol>
+            <a href="{{route('singers.create')}}" class="btn btn-info mb-4">Add new</a>
             </div>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    DataTable Example
+                    DataTable
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -25,15 +26,6 @@
                                 <th colspan="2">Action</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th colspan="2">Action</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
                             @forelse($singers as $key => $singer)
                             <tr>
@@ -51,6 +43,7 @@
                             @endforelse
                             </tbody>
                         </table>
+                        {{$singers->links()}}
                     </div>
                 </div>
             </div>

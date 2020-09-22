@@ -1,10 +1,11 @@
 @extends('admin.layout.master')
 @section('table')
-
-    <div class="container">
-        <br>
-        <h4>Edit Category</h4>
-        <hr>
+    <div class="container-fluid">
+        <h1 class="mt-4">Update Category</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Categories / Update</li>
+        </ol>
         <form method="post" enctype="multipart/form-data" action="{{route('categorys.update',$category->id)}}">
             @csrf
             <div class="form-group">
@@ -30,6 +31,5 @@
             <button type="submit" class="btn btn-info">Update Category</button>
             <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
         </form>
-
     </div>
 @endsection

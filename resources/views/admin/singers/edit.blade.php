@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('table')
     <div class="container-fluid">
-        <h1 class="mt-4">Form Update Singer</h1>
+        <h1 class="mt-4">Update Singer</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
             <li class="breadcrumb-item active">Singers / Update</li>
@@ -27,6 +27,7 @@
                 <input type="file" name="image" class="form-control-file">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
         </form>
     </div>
 @endsection
