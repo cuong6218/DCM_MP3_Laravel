@@ -24,10 +24,11 @@ class SongRequest extends FormRequest
     public function rules()
     {
         return [
-            'song_name' => 'required|min:2|max:20',
+            'song_name' => 'required|min:2|max:40',
             'author' => 'required|min:2|max:20',
             'image' => 'required|image',
             'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
+
         ];
     }
 }
