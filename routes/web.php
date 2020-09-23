@@ -96,6 +96,9 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/list/{id}',[\App\Http\Controllers\ProfileController::class,'showPending'])->name('profile.pending');
     Route::get('/delete/{id}',[\App\Http\Controllers\ApprovedController::class,'deleteMusic'])->name('profile.delete');
     Route::get('/users/{id}',[\App\Http\Controllers\ProfileController::class,'showProfile'])->name('profile.users');
+    Route::post('/users/{id}',[\App\Http\Controllers\ProfileController::class,'updateUser'])->name('profile.users.update');
+    Route::get('/change',[\App\Http\Controllers\ProfileController::class,'showChangePassword'])->name('profile.password');
+    Route::post('/change',[\App\Http\Controllers\ProfileController::class,'postChangePassword'])->name('profile.password.update');
 });
 
 
