@@ -11,7 +11,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <h2>Profile</h2>
+            <h2>Change Password</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -46,32 +46,40 @@
 
 
             <div class="col-sm-8">
-
-                <form method="post" action="{{route('profile.users.update',\Illuminate\Support\Facades\Auth::user()->id)}}">
+                <div class="card-header">
+                    <h4>Change Password</h4>
+                </div>
+                <br><br>
+                <form method="post" action="{{route('profile.password.update')}}">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">User Name</label>
-                        <input name="name" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @if($errors->has('name'))
-                            <p class="text-danger">{{$errors->first('name')}}</p>
+                        <label for="exampleInputEmail1">
+                            Old Password</label>
+                        <input name="current-password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @if($errors->has('current-password'))
+                            <p class="text-danger">{{$errors->first('current-password')}}</p>
+                        @endif
+                    </div>
+                <hr>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">New Password</label>
+                        <input name="new-password" type="password" class="form-control" id="exampleInputPassword1">
+                        @if($errors->has('new-password'))
+                            <p class="text-danger">{{$errors->first('new-password')}}</p>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input name="new-password_confirmation" type="password" class="form-control" id="exampleInputPassword1">
+                        @if($errors->has('new-password_confirmation'))
+                            <p class="text-danger">{{$errors->first('new-password_confirmation')}}</p>
                         @endif
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email </label>
-                        <input disabled value="{{\Illuminate\Support\Facades\Auth::user()->email}}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-
-                    </div>
-
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                    <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
                 </form>
-<br><br>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input disabled value="{{\Illuminate\Support\Facades\Auth::user()->password}}" type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <a href="{{route('profile.password')}}" class="btn btn-warning" @if(empty(\Illuminate\Support\Facades\Auth::user()->password)) hidden @endif>Change Password</a>
 
             </div>
         </div>
