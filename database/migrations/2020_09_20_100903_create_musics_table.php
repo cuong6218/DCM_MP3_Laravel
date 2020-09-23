@@ -21,6 +21,7 @@ class CreateMusicsTable extends Migration
             $table->string('singer');
             $table->integer('views');
             $table->string('status');
+            $table->longText('desc')->nullable();
             $table->timestamps();
         });
     }
