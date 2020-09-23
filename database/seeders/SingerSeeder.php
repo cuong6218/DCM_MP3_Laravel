@@ -15,6 +15,12 @@ class SingerSeeder extends Seeder
     {
         DB::table('singers')->insert([
             'id' => 1,
+            'singer_name' => 'Unknown',
+            'image' => 'images/user-default.png',
+            'description' => '',
+        ]);
+        DB::table('singers')->insert([
+            'id' => 2,
             'singer_name' => 'Phương Ly',
             'image' => 'images/ratrxjPK3fUYSC7K9JcKYAQEKQuir2EsiCXQbBYB.jpeg',
             'description' => 'Phương Ly tham gia các cuộc thi âm nhạc từ sớm, đạt giải nhì nhạc nhẹ của Sao Mai năm 2005, lọt vào top 30 cuộc thi Vietnam Idol 2007 sau đó là bán kết 3 của Vietnam Idol 2010. Cô được đông đảo khán giả yêu thích nhưng bất ngờ biến mất khỏi showbiz Việt.
@@ -23,7 +29,7 @@ Năm 2017, sự kết hợp giữa Phương Ly và JustaTee trong "Mặt Trời 
 Cái tên Phương Ly trở nên nổi tiếng trong làng V-pop, cô liên tiếp có các ca khúc hit như "Anh Là Ai" hay "Đâu Chịu Ngồi Yên" (cùng Rhymastic và Touliver) trong năm 2019.',
         ]);
         DB::table('singers')->insert([
-            'id' => 2,
+            'id' => 3,
             'singer_name' => 'Jack',
             'image' => 'images/WqcMvCizY6wbTkCoJMDLaChpNWrAx2OUKcchlHUz.jpeg',
             'description' => 'Với niềm đam mê ca hát, Jack từ bỏ con đường sư phạm và gia nhập nhóm hiphop G5R.
@@ -32,13 +38,6 @@ Thừa thắng xông lên, Jack kết hợp cùng K-ICM ra mắt "Bạc Phận",
 Cũng trong thời gian này, Jack quyết định đầu quân về công ty ICM, chung một nhà với K-ICM. Bộ đôi liên tiếp ra mắt những ca khúc "khủng" như: "Sóng Gió", "Em Gì Ơi"...
 Cuối năm 2019, sau những lùm xùm với K-ICM và công ty quản lý, Jack rời khỏi ICM.
 Đầu năm 2020, Jack ra mắt ca khúc "Là Một Thằng Con Trai" đánh dấu điểm khởi đầu cho sự nghiệp solo của anh.',
-        ]);
-        DB::table('singers')->insert([
-            'id' => 3,
-            'singer_name' => 'Noo Phước Thịnh',
-            'image' => 'images/3f6c8FZIq9fgfIQQLTDYscNyw2OW08ZUqrIqFlEg.jpeg',
-            'description' => 'Ca khúc “Xin Đừng Buông Tay” một lần nữa được Noo Phước Thịnh thể hiện lại với giọng ca ngọt ngào và tình cảm sẽ làm các fan đừng ngồi không yên đây!
-Bấm ngay vào Zing MP3 để thưởng thức giọng ca của Noo Phước Thịnh với ca khúc “Xin Đừng Buông Tay” thôi nào!',
         ]);
         DB::table('singers')->insert([
             'id' => 4,
@@ -100,6 +99,12 @@ Cuối cùng, vào ngày 29/06, YG Entertainment cho ra mắt những hình ản
 Ngày 15/01/2017, Black Pink tiết lộ BLINK sẽ là tên fanclub chính thức của nhóm bằng một hình ảnh đăng tải lên Instagram. YG giải thích rằng họ đã lấy “BL” trong Black và “INK” trong “pink” để hợp thành từ Blink (nhấp nháy), mang ý nghĩa là cách mà Black Pink nhìn thấy người hâm mộ của họ.
 Sáng ngày 17/05, YGEX Entertainment (công ty hợp tác giữa YG và AVEX, chuyên phụ trách hoạt động của nghệ sĩ YG tại Nhật) đã thông báo rằng nhóm nhạc nữ Black Pink sẽ ra mắt tại thị trường Nhật Bản vào tháng 07. Để quảng bá cho nhóm, kể từ ngày 17/05, YVEX đã đăng tải hồ sơ của 4 thành viên Jennie, Jisoo, Rosé và Lisa lên website chính thức.',
         ]);
-
+        DB::table('singers')->insert([
+            'id' => 9,
+            'singer_name' => 'Noo Phước Thịnh',
+            'image' => 'images/3f6c8FZIq9fgfIQQLTDYscNyw2OW08ZUqrIqFlEg.jpeg',
+            'description' => 'Ca khúc “Xin Đừng Buông Tay” một lần nữa được Noo Phước Thịnh thể hiện lại với giọng ca ngọt ngào và tình cảm sẽ làm các fan đừng ngồi không yên đây!
+Bấm ngay vào Zing MP3 để thưởng thức giọng ca của Noo Phước Thịnh với ca khúc “Xin Đừng Buông Tay” thôi nào!',
+        ]);
     }
 }

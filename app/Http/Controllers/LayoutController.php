@@ -18,7 +18,7 @@ class LayoutController extends Controller
 
     function index()
     {
-        return view('admin.layout.master');
+        return view('admin.songs.list');
     }
     function showLogin()
     {
@@ -31,7 +31,7 @@ class LayoutController extends Controller
         {
             Session::put('isLogin', true);
             toastr()->success('Login success!', 'Success!');
-            return redirect()->route('layout.index');
+            return redirect()->route('songs.index');
         } else {
             toastr()->error('Wrong email or password', 'Error!');
             return redirect()->route('layout.showRegister');
