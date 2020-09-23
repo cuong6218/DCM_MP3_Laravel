@@ -98,5 +98,8 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/users/{id}',[\App\Http\Controllers\ProfileController::class,'showProfile'])->name('profile.users');
 });
 
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
 
 
