@@ -23,6 +23,8 @@ class HomeController extends Controller
         $customerMusic = DB::table('musics')->where('status','=','approved')->orderBy('id','desc')->get();
 
         $singerAll = Singer::all();
+
+
         return view('template.demo.index',compact('songs','albums','singers','listSongs','customerMusic', 'singerAll'));
 
     }
