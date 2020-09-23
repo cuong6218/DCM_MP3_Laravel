@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    //
-
 
     function index2(){
         $songs = Song::all();
