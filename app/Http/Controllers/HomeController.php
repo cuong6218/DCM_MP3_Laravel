@@ -13,7 +13,7 @@ class HomeController extends Controller
     function index2(){
         $songs = Song::all();
 
-        $albums =  DB::table('albums')->select('*')->orderBy('id','desc')->paginate(4);
+        $albums =  DB::table('albums')->select('*')->orderBy('id','desc')->simplePaginate(4);
 
         $singers = DB::table('singers')->select('*')->orderBy('id', 'desc')->paginate(2);
 

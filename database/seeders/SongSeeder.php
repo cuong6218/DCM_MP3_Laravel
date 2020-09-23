@@ -22,7 +22,7 @@ class SongSeeder extends Seeder
             'author' => 'Đan Trường',
             'views' => '1',
             'singer_id' => 4,
-            'album_id' => 7,
+            'album_id' => 1,
             'category_id' => 5,
         ]);
         DB::table('songs')->insert([
@@ -33,7 +33,7 @@ class SongSeeder extends Seeder
             'author' => 'Đặng Thế Phong',
             'views' => '1',
             'singer_id' => 2,
-            'album_id' => 10,
+            'album_id' => 2,
             'category_id' => 2,
         ]);
         DB::table('songs')->insert([
@@ -44,7 +44,7 @@ class SongSeeder extends Seeder
             'author' => 'Đỗ Nhuận',
             'views' => '1',
             'singer_id' => 4,
-            'album_id' => 7,
+            'album_id' => 3,
             'category_id' => 4,
         ]);
         DB::table('songs')->insert([
@@ -55,7 +55,7 @@ class SongSeeder extends Seeder
             'author' => 'Đức Quỳnh',
             'views' => '1',
             'singer_id' => 6,
-            'album_id' => 1,
+            'album_id' => 4,
             'category_id' => 3,
         ]);
         DB::table('songs')->insert([
@@ -77,7 +77,7 @@ class SongSeeder extends Seeder
             'author' => 'Hoàng Quý',
             'views' => '1',
             'singer_id' => 2,
-            'album_id' => 4,
+            'album_id' => 6,
             'category_id' => 7,
         ]);
         DB::table('songs')->insert([
@@ -88,7 +88,7 @@ class SongSeeder extends Seeder
             'author' => 'Hoàng Quý',
             'views' => '1',
             'singer_id' => 7,
-            'album_id' => 1,
+            'album_id' => 7,
             'category_id' => 5,
         ]);
         DB::table('songs')->insert([
@@ -99,7 +99,7 @@ class SongSeeder extends Seeder
             'author' => 'Đan Trường',
             'views' => '1',
             'singer_id' => 2,
-            'album_id' => 2,
+            'album_id' => 8,
             'category_id' => 7,
         ]);
         DB::table('songs')->insert([
@@ -110,7 +110,7 @@ class SongSeeder extends Seeder
             'author' => 'Đan Trường',
             'views' => '1',
             'singer_id' => 1,
-            'album_id' => 6,
+            'album_id' => 9,
             'category_id' => 1,
         ]);
         DB::table('songs')->insert([

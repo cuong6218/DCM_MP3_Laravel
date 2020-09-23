@@ -94,57 +94,6 @@
     </div>
     <!-- ##### About Us Area End ##### -->
 
-    <!-- ##### Upcoming Shows Area Start ##### -->
-    <div class="upcoming-shows-area section-padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>New Albums</h2>
-                        <a href="{{route('home2.albums')}}"><h6>Show List Albums</h6></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <!-- Upcoming Shows Content -->
-
-                    <div class="upcoming-shows-content">
-                    @foreach($albums as $key=>$album)
-                        <!-- Single Upcoming Shows -->
-                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                            <div class="shows-date">
-                                <h2>{{++$key}}<span></span></h2>
-                            </div>
-                            <div class="shows-desc d-flex align-items-center">
-                                <div class="shows-img">
-                                    <img src="{{asset('storage/'.$album->image)}}" alt="">
-                                </div>
-                                <div class="shows-name">
-                                    <h6>{{$album->album_name}}</h6>
-                                    <p>Cluj, Romania</p>
-                                </div>
-                            </div>
-                            <div class="shows-location">
-                                <p>At the Castle</p>
-                            </div>
-                            <div class="shows-time">
-                                <p>{{$album->created_at}}</p>
-                            </div>
-                            <div class="buy-tickets">
-                                <a href="{{route('home2.show-album',$album->id)}}" class="btn musica-btn">Show Albums</a>
-                            </div>
-                        </div>
-                        @endforeach
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Upcoming Shows Area End ##### -->
 
     <!-- ##### Music Player Area Start ##### -->
     <div class="music-player-area section-padding-100">
@@ -157,29 +106,29 @@
                             <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>
                         </div>
                     </div>
-{{--                    <div class="music-player-slides owl-carousel">--}}
-{{--                    @foreach($songs as $song)--}}
-{{--                        <!-- Single Music Player -->--}}
-{{--                            <div class="single-music-player">--}}
-{{--                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$song->image)}}" alt="">--}}
+                    <div class="music-player-slides owl-carousel">
+                    @foreach($songs as $song)
+                        <!-- Single Music Player -->
+                            <div class="single-music-player">
+                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$song->image)}}" alt="">
 
-{{--                                <div class="music-info d-flex justify-content-between">--}}
-{{--                                    <div class="music-text">--}}
+                                <div class="music-info d-flex justify-content-between">
+                                    <div class="music-text">
 
-{{--                                        <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>--}}
-{{--                                        <p>{{$song->author}}</p>--}}
-{{--                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="music-play-icon">--}}
-{{--                                        <audio  controls>--}}
-{{--                                            <source src="{{asset('storage/'.$song->audio)}}">--}}
-{{--                                        </audio>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
-{{--                    </div>--}}
-{{--                    <hr>--}}
+                                        <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>
+                                        <p>{{$song->author}}</p>
+                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>
+                                    </div>
+                                    <div class="music-play-icon">
+                                        <audio  controls>
+                                            <source src="{{asset('storage/'.$song->audio)}}">
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <hr>
                     <div class="music-player-slides owl-carousel">
                     @foreach($customerMusic as $customer)
                         <!-- Single Music Player -->
@@ -212,6 +161,55 @@
         </div>
     </div>
     <!-- ##### Music Player Area End ##### -->
+    <!-- ##### Upcoming Shows Area Start ##### -->
+    <div class="upcoming-shows-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>New Albums</h2>
+                        <a href="{{route('home2.albums')}}"><h6>Show List Albums</h6></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Upcoming Shows Content -->
+
+                    <div class="upcoming-shows-content">
+                    @foreach($albums as $key=>$album)
+                        <!-- Single Upcoming Shows -->
+                            <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                <div class="shows-date">
+                                    <h2>{{++$key}}<span></span></h2>
+                                </div>
+                                <div class="shows-desc d-flex align-items-center">
+                                    <div class="shows-img">
+                                        <img src="{{asset('storage/'.$album->image)}}" alt="">
+                                    </div>
+                                    <div class="shows-name">
+                                        <h6>{{$album->album_name}}</h6>
+                                        <p>Cluj, Romania</p>
+                                    </div>
+                                </div>
+                                <div class="shows-location">
+                                    <p>At the Castle</p>
+                                </div>
+                                <div class="shows-time">
+                                    <p>{{$album->created_at}}</p>
+                                </div>
+                                <div class="buy-tickets">
+                                    <a href="{{route('home2.show-album',$album->id)}}" class="btn musica-btn">Show Albums</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Upcoming Shows Area End ##### -->
 
     <!-- ##### Featured Album Area Start ##### -->
     <div class="featured-album-area section-padding-100 clearfix">
