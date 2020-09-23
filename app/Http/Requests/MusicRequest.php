@@ -29,6 +29,7 @@ class MusicRequest extends FormRequest
             'image' => 'required|image',
             'audio' => 'required|mimes:application/octet-stream,audio/mpeg,mp3,wav',
             'singer' => 'required',
+            'desc' => 'required'
         ];
     }
 }

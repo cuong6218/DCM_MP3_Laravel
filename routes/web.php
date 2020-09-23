@@ -99,4 +99,9 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 });
 
 
+Route::get('/auth/redirect/{provider}', [\App\Http\Controllers\SocialController::class,'redirect']);
+
+Route::get('/callback/{provider}', [\App\Http\Controllers\SocialController::class,'callback']);
+
+
 
