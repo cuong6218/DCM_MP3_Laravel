@@ -39,6 +39,7 @@ class ProfileController extends Controller
         $music->views = '1';
         $music->status = 'pending';
         $music->user_id = $request->user_id;
+        $music->desc = $request->desc;
         $music->save();
 
         toastr()->success('Upload Success', 'Success!');

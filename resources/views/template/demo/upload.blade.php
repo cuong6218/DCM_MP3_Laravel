@@ -90,6 +90,13 @@
 
                     <input name="user_id" type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" hidden>
 
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        @if($errors->has('desc'))
+                            <p class="text-danger">{{$errors->first('desc')}}</p>
+                        @endif
+                    </div>
 
                     <button type="submit" class="btn btn-info">Add Songs</button>
                     <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
