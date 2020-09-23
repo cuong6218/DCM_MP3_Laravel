@@ -21,7 +21,9 @@ class HomeController extends Controller
         $testSongs = DB::table('songs')->orderBy('views','desc')->paginate(20);
 
         $customerMusic = DB::table('musics')->where('status','=','approved')->orderBy('id','desc')->get();
+
         $singerAll = Singer::all();
+
 
         return view('template.demo.index',compact('songs','albums','singers','listSongs','customerMusic', 'singerAll'));
 
