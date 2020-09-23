@@ -29,10 +29,13 @@ class SingerService
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $image->store('images', 'public');
-            $data['image'] = $path;
-            $singer->fill($data);
-            $this->singerRepo->save($singer);
-        }
+//            $data['image'] = $path;
+//            $singer->fill($data);
+//            $this->singerRepo->save($singer);
+        } else $path = 'images/user-default.png';
+        $data['image'] = $path;
+        $singer->fill($data);
+        $this->singerRepo->save($singer);
     }
     function destroy($id)
     {
