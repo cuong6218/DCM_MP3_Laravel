@@ -116,7 +116,6 @@
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="text" name="keyword" id="song_name" class="form-control " placeholder="Enter Song Name" />
-                            <label for=""></label>
                             <div class="form-group" style="width: 120%" id="songList">
                             </div>
                         </div>
@@ -260,7 +259,6 @@
                         console.log(this.url)
                         $('#songList').fadeIn();
                         $('#songList').html(data);
-
                     }
                 });
             }

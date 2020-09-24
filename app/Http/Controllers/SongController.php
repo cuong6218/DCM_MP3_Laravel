@@ -166,10 +166,8 @@ class SongController extends Controller
                 ->get();
             $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach ($data as $row) {
-//                $output .='<li><a href="{{route('home2.show',$row->id)}}">'.$row->song_name.'</a></li>';
-//            }
                 $output .= '<li>';
-                $output .= '<a href="{{route('home2.show')}}"'>';
+                $output .= '<a href="'.route('home2.show',$row->id).'">';
                 $output .= $row->song_name;
                 $output .= '</a></li>';
             }
