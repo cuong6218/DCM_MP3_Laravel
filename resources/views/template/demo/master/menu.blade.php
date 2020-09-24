@@ -29,8 +29,7 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <script src="https://www.collaboratescience.com/protoplasm/library/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
-            crossorigin="anonymous"></script>
+
     <style>
         #text-name {
             color: white;
@@ -87,6 +86,10 @@
             border-radius: 4px;
             width: 180px;
             min-height: 229px;
+        }
+
+        .fa-thumbs-o-up{
+         margin-left: 10px;
         }
     </style>
 
