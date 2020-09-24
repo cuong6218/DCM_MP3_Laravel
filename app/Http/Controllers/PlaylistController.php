@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\PlaylistService;
+use App\Http\Services\SongService;
 use Illuminate\Http\Request;
 
 class PlaylistController extends Controller
 {
     protected $playlistService;
-    public function __construct(PlaylistService $playlistService){
+    protected $songService;
+    public function __construct(PlaylistService $playlistService,
+                                SongService $songService){
         $this->playlistService = $playlistService;
+        $this->songService = $songService;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +23,8 @@ class PlaylistController extends Controller
     public function index()
     {
         $playlists = $this->playlistService->getDesc();
-        return view('template.demo.playlist-list', compact('playlists'));
+        $songs = $this->songService->getAll();
+        return view('template.demo.playlist-list', compact('playlists', 'songs'));
     }
 
     /**
@@ -40,7 +45,8 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->playlistService->store($request);
+        return redirect()->route('playlist.index');
     }
 
     /**
@@ -51,7 +57,9 @@ class PlaylistController extends Controller
      */
     public function show($id)
     {
-        //
+        $playlist = $this->playlistService->show($id);
+        $songs = $this->songService->getAll();
+        return view('template.demo.playlist-add', compact('playlist', 'songs'));
     }
 
     /**

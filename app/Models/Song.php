@@ -11,4 +11,7 @@ class Song extends Model
     function playlists(){
         return $this->belongsToMany(Playlist::class, 'playlist_song', 'song_id', 'playlist_id');
     }
+    function singer(){
+        return $this->belongsTo(Singer::class, 'singer_id');
+    }
 }

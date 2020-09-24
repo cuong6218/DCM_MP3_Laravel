@@ -13,7 +13,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <h2>Create Playlists</h2>
+            <h2>Playlist Detail</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -23,26 +23,23 @@
     <div class="upcoming-shows-area section-padding-100">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <!-- Upcoming Shows Content -->
-                    <div class="upcoming-shows-content">
-                        <!-- Single Upcoming Shows -->
-                            <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                                <form method="post" action="">
-                                        <input type="text" class="form-control" name="playlist_name">
-                                    <div class="cta-btn mt-30">
-                                        <button href="#" class="btn musica-btn">Create playlist</button>
-                                    </div>
-{{--                                    <button type="submit" class="btn btn-success">Create Playlist</button>--}}
-                                </form>
-                            </div>
+                <div class="col-md-3">
+                    <img style="width: 250px; height: 250px;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
+                    <h5 class="playlist-name">{{$playlist->playlist_name}}</h5>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        @forelse($playlist->songs as $song)
+                        <li>{{$song->name}}</li>
+                        @empty
+                            <li>No data</li>
+                        @endforelse
+                    </ul>
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- ##### CTA Area Start ##### -->
     <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/bg-8.jpg);">
         <div class="container">
@@ -147,4 +144,16 @@
             </div>
         </div>
     </footer>
+    <div class="form-popup" id="myForm">
+
+    </div>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
 @endsection
