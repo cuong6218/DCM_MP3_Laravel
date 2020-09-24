@@ -22,11 +22,15 @@ class PlaylistService
     }
     function store($request){
         $playlist = new Playlist();
-        $playlist->name = $request->name;
+        $playlist->playlist_name = $request->playlist_name;
         $this->playlistRepo->save($playlist);
+        $playlist->songs()->sync($request->song);
     }
     function destroy($id){
         $this->playlistRepo->destroy($id);
+    }
+    function show($id){
+        return $this->playlistRepo->show($id);
     }
 
 }

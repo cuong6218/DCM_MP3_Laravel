@@ -40,6 +40,12 @@
                     <tr>
                         <th scope="col"><a href="{{route('profile.pending',\Illuminate\Support\Facades\Auth::user()->id)}}">List Musics</a></th>
                     </tr>
+
+                    </thead>
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col"><a href="{{route('playlist.index',\Illuminate\Support\Facades\Auth::user()->id)}}">Playlists</a></th>
+                    </tr>
                     </thead>
                 </table>
             </div>
