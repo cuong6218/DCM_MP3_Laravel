@@ -20,9 +20,9 @@
     <!-- ##### Header Area Start ##### -->
     <br><br><br><br>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
 
                 <table class="table">
                     <thead class="table-info">
@@ -45,7 +45,7 @@
             </div>
 
 
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <div class="card-header">
                     <h4>Change Password</h4>
                 </div>
