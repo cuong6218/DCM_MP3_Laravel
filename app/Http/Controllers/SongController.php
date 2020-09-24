@@ -7,9 +7,13 @@ use App\Models\Album;
 use App\Models\Category;
 use App\Models\Singer;
 use App\Models\Song;
+use http\Client\Response;
+use http\Params;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\Console\Input\Input;
 
 class SongController extends Controller
 {
@@ -42,7 +46,7 @@ class SongController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SongRequest $request)
@@ -115,7 +119,7 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      * @return \Illuminate\Http\Response
      */
@@ -152,5 +156,26 @@ class SongController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+
+        if ($request->query) {
+            $query = $request->query('name');
+            $data = DB::table('songs')
+                ->where('song_name', 'LIKE', "%{$query}%")->limit(3)
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach ($data as $row) {
+//                $output .='<li><a href="{{route('home2.show',$row->id)}}">'.$row->song_name.'</a></li>';
+//            }
+                $output .= '<li>';
+                $output .= '<a href="{{route('home2.show')}}"'>';
+                $output .= $row->song_name;
+                $output .= '</a></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
 
 }

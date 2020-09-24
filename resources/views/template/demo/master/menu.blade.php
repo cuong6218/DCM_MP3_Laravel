@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+
+    <!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="UTF-8">
@@ -74,7 +75,6 @@
         }
 
     </style>
-
 </head>
 
 <body>
@@ -97,6 +97,9 @@
                     <!-- Nav brand -->
                     <a href="{{route('home2.index')}}" class="nav-brand"><img src="/Client/img/core-img/logo.png"
                                                                               alt=""></a>
+                    <!-- Search box. -->
+
+
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -110,9 +113,16 @@
                         <div class="classycloseIcon">
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
-
+                        <div class="form-group">
+                            {{ csrf_field() }}
+                            <input type="text" name="keyword" id="song_name" class="form-control " placeholder="Enter Song Name" />
+                            <label for=""></label>
+                            <div class="form-group" style="width: 120%" id="songList">
+                            </div>
+                        </div>
                         <!-- Nav Start -->
                         <div class="classynav">
+
                             <ul>
                                 <li><a href="{{route('home2.index')}}">Home Page</a></li>
                                 <li><a href="{{route('home2.albums')}}">List Albums</a></li>
@@ -226,8 +236,43 @@
             }
         })
     });
-</script>
 
+    <!--search song ajax-->
+    $(document).ready(function(){
+
+        $('#song_name').keyup(function(){
+            let query = $(this).val();
+            if(query !== '')
+            {
+                let keyword = $('input[name="keyword"]').val();
+                console.log(keyword)
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "{{route('songs.search')}}",
+                    method:"GET",
+                    data:{name:keyword},
+                    success:function(data){
+                        console.log(this.url)
+                        $('#songList').fadeIn();
+                        $('#songList').html(data);
+
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', 'li', function(){
+            $('#song_name').val($(this).text());
+            $('#songList').fadeOut();
+        });
+
+    });
+</script>
 
 
 </body>
