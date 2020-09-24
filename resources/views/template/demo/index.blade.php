@@ -147,7 +147,7 @@
                                         <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$customer->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
-                                        <audio class="" controls>
+                                        <audio controls >
                                             <source src="{{asset('storage/'.$customer->audio)}}">
                                         </audio>
                                     </div>
@@ -250,7 +250,7 @@
                                             <source src="{{asset('storage/'.$list->audio)}}" >
                                         </audio>
                                     </div>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$list->views}}</i></a>
                                         <a style="color: white" href="{{asset('storage/'.$list->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                                         @endforeach
                                 </div>
@@ -261,7 +261,7 @@
                                     <p>Hot Musics</p>
                                     <h6>{{$listSongs[0]->song_name}}</h6>
                                 </div>
-                                <audio preload="auto" controls >
+                                <audio preload="auto" controls>
                                     <source src="{{asset('storage/'.$listSongs[0]->audio)}}">
                                 </audio>
 {{--                                <audio class="my_audio" controls autoplay></audio>--}}

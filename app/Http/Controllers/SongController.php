@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SongRequest;
 use App\Models\Album;
 use App\Models\Category;
+use App\Models\Dislike;
+use App\Models\Likes;
 use App\Models\Singer;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -90,6 +93,11 @@ class SongController extends Controller
             Session::forget($views);
         }
 
+        $likeSong = Song::find($id);
+        $likeCtr = Likes::where(['song_id' => $likeSong->id])->count();
+        $dislikeCtr = Dislike::where(['song_id' => $likeSong->id])->count();
+
+
         $shows = DB::table('singers')
             ->join('songs', 'singers.id', 'songs.singer_id')
             ->join('albums', 'songs.album_id', 'albums.id')
@@ -97,7 +105,7 @@ class SongController extends Controller
             ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail', compact('shows'));
+        return view('template.detail', compact('shows', 'likeCtr','dislikeCtr'));
 
     }
 
@@ -152,5 +160,45 @@ class SongController extends Controller
 
     }
 
+    function like($id)
+    {
+        $loggedin_user = Auth::user()->id;
+        $like_user = Likes::where(['user_id' => $loggedin_user, 'song_id' => $id])->first();
 
+        if (empty($like_user->user_id)) {
+            $user_id = Auth::user()->id;
+            $email = Auth::user()->email;
+            $song_id = $id;
+            $like = new Likes();
+            $like->user_id = $user_id;
+            $like->email = $email;
+            $like->song_id = $song_id;
+            $like->save();
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+
+    }
+
+    function disLike($id)
+    {
+        $loggedin_user = Auth::user()->id;
+        $like_user = Dislike::where(['user_id' => $loggedin_user, 'song_id' => $id])->first();
+
+        if (empty($like_user->user_id)) {
+            $user_id = Auth::user()->id;
+            $email = Auth::user()->email;
+            $song_id = $id;
+            $like = new Dislike();
+            $like->user_id = $user_id;
+            $like->email = $email;
+            $like->song_id = $song_id;
+            $like->save();
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+
+    }
 }
