@@ -66,7 +66,6 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
         Route::get('approved',[\App\Http\Controllers\ApprovedController::class,'listApproved'])->name('browser.approved');
         Route::post('status/{id}',[\App\Http\Controllers\ApprovedController::class,'approved'])->name('browser.approved.edit');
         Route::get('notApproved',[\App\Http\Controllers\ApprovedController::class,'listNotApproved'])->name('browser.notApproved.list');
-
     });
 
 });
@@ -97,6 +96,9 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/delete/{id}',[\App\Http\Controllers\ApprovedController::class,'deleteMusic'])->name('profile.delete');
     Route::get('/users/{id}',[\App\Http\Controllers\ProfileController::class,'showProfile'])->name('profile.users');
 });
-
+Route::prefix('playlist')->group(function (){
+    Route::get('', [\App\Http\Controllers\PlaylistController::class, 'index'])->name('playlist.index');
+    Route::get('/add', [\App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
+});
 
 

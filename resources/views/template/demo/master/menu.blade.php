@@ -29,6 +29,8 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <script src="https://www.collaboratescience.com/protoplasm/library/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+            crossorigin="anonymous"></script>
     <style>
         #text-name {
             color: white;
@@ -72,7 +74,20 @@
             margin-top: 15px;
             margin-bottom: 5px;
         }
-
+        .empty-playlist {
+            background-color: red;
+            cursor: pointer;
+            background: linear-gradient(33deg,#5a1eae -7%,#ce267a 117%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 4px;
+            width: 180px;
+            min-height: 229px;
+        }
     </style>
 
 </head>
@@ -118,6 +133,7 @@
                                 <li><a href="{{route('home2.albums')}}">List Albums</a></li>
                                 <li><a href="{{route('home2.singer')}}">List Singer</a></li>
                                 <li><a href="{{route('home2.song')}}">List Songs</a></li>
+                                <li><a href="{{route('playlist.index')}}">Playlists</a></li>
                             </ul>
 
                             <!-- Social Button -->
