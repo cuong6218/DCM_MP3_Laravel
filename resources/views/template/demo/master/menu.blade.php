@@ -73,7 +73,20 @@
             margin-top: 15px;
             margin-bottom: 5px;
         }
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
 
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;}
     </style>
 </head>
 
@@ -107,18 +120,22 @@
                     </div>
 
                     <!-- Menu -->
+
+                    <div class="form-group has-search">
+                        {{ csrf_field() }}
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter Song Name" />
+                        <div style="width: 120% " id="songList">
+                        </div>
+                    </div>
+
                     <div class="classy-menu">
 
                         <!-- close btn -->
                         <div class="classycloseIcon">
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
-                        <div class="form-group">
-                            {{ csrf_field() }}
-                            <input type="text" name="keyword" id="song_name" class="form-control " placeholder="Enter Song Name" />
-                            <div class="form-group" style="width: 120%" id="songList">
-                            </div>
-                        </div>
+
                         <!-- Nav Start -->
                         <div class="classynav">
 
