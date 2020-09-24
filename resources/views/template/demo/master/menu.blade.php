@@ -87,6 +87,11 @@
             width: 180px;
             min-height: 229px;
         }
+
+
+        .fa-thumbs-o-up{
+         margin-left: 10px;
+
         /*playlist pop-up start*/
         .open-button {
             background-color: #555;
@@ -160,6 +165,7 @@
             color:red;
             bottom: 5%;
             right: 0;
+
         }
     </style>
 
