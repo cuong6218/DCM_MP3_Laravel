@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\MusicEditRequest;
 use App\Http\Requests\MusicRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\Music;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -104,4 +106,33 @@ class ProfileController extends Controller
         return redirect()->back();
 
     }
+
+    function editMusic($id){
+        $music = Music::findOrFail($id);
+        $singers = Singer::All();
+        return view('template.demo.edit-musics',compact('music','singers'));
+
+    }
+
+    function updateMusic(MusicEditRequest $request,$id){
+        $music = Music::findOrFail($id);
+
+        $music->music_name = $request->music_name;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('images', 'public');
+            $music->image = $path;
+        }
+
+        $music->singer = $request->singer;
+        $music->desc = $request->desc;
+        $music->save();
+
+        toastr()->success('Edit Music', 'Success!');
+        return redirect()->back();
+    }
+
+
+
 }

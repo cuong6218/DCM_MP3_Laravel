@@ -99,6 +99,9 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::post('/users/{id}',[\App\Http\Controllers\ProfileController::class,'updateUser'])->name('profile.users.update');
     Route::get('/change',[\App\Http\Controllers\ProfileController::class,'showChangePassword'])->name('profile.password');
     Route::post('/change',[\App\Http\Controllers\ProfileController::class,'postChangePassword'])->name('profile.password.update');
+
+    Route::get('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'editMusic'])->name('profile.musics.edit');
+    Route::post('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'updateMusic'])->name('profile.musics.update');
 });
 
 
