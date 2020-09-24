@@ -101,11 +101,15 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
     Route::get('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'editMusic'])->name('profile.musics.edit');
     Route::post('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'updateMusic'])->name('profile.musics.update');
+
+    Route::prefix('playlist')->group(function (){
+        Route::get('', [\App\Http\Controllers\PlaylistController::class, 'index'])->name('playlist.index');
+        Route::get('/add', [\App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
+        Route::post('/add', [\App\Http\Controllers\PlaylistController::class, 'store'])->name('playlist.store');
+        Route::get('/{id}/show', [\App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist.show');
+    });
 });
-Route::prefix('playlist')->group(function (){
-    Route::get('', [\App\Http\Controllers\PlaylistController::class, 'index'])->name('playlist.index');
-    Route::get('/add', [\App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
-});
+
 
 Route::get('/auth/redirect/{provider}', [\App\Http\Controllers\SocialController::class,'redirect']);
 

@@ -23,38 +23,43 @@
     <div class="upcoming-shows-area section-padding-100">
         <div class="container">
             <div class="empty-playlist">
-                <a class="btn" href="{{route('playlist.create')}}"><i class="fas fa-plus fa-7x"></i><br/><strong>Add new</strong></a>
+                <a class="btn" onclick="openForm()" ><i class="fa fa-plus" aria-hidden="true"></i><br/><strong>Add new</strong></a>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <!-- Upcoming Shows Content -->
-
-                    <div class="upcoming-shows-content">
-                    @foreach($playlists as $key=>$playlist)
-                        <!-- Single Upcoming Shows -->
-                            <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                                <div class="shows-date">
-                                    <h2>{{++$key}}<span></span></h2>
-                                </div>
-                                <div class="shows-desc d-flex align-items-center">
-                                    <div class="shows-name">
-                                        <h6>{{$playlist->playlist_name}}</h6>
-                                    </div>
-                                </div>
-                                <div class="shows-location">
-                                    <p>At the Castle</p>
-                                </div>
-                                <div class="buy-tickets">
-                                    <a href="#" class="btn musica-btn">Show Playlists</a>
-                                </div>
+                <form action="{{route('playlist.store')}}" method="post" class="form-container">
+                    @csrf
+                    <h1>Add new playlist</h1>
+                    <input type="text" placeholder="New playlist" name="playlist_name" required>
+                        @foreach($songs as $song)
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="song[{{$song->id}}]"
+                                           value="{{ $song->id }}"> {{ $song->song_name }}
+                                </label>
                             </div>
                         @endforeach
-                    </div>
-                </div>
+                    <button type="submit" class="btn">Save</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+                    <!-- Single Music Player -->
+                    @foreach($playlists as $playlist)
+                        <div class="single-music-player col-sm-3">
+                            <img style="width: 100%; height: 100%" src="{{asset('storage/images/album_default.png')}}" alt="no image">
+                            <div class="music-info d-flex justify-content-between">
+                                <div class="music-text">
+                                    <a href="{{route('playlist.show', $playlist->id)}}"> <h5>{{$playlist->playlist_name}}</h5></a>
+                                </div>
+                                <div class="music-play-icon">
+                                    <audio controls>
+                                        <source src="#">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
             </div>
         </div>
     </div>
-
     <!-- ##### CTA Area Start ##### -->
     <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/bg-8.jpg);">
         <div class="container">
@@ -159,4 +164,22 @@
             </div>
         </div>
     </footer>
+    <div class="form-popup" id="myForm">
+        <form action="{{route('playlist.store')}}" method="post" class="form-container">
+            @csrf
+            <h1>Add new playlist</h1>
+            <input type="text" placeholder="New playlist" name="playlist_name" required>
+            <button type="submit" class="btn">Save</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
 @endsection
