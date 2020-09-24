@@ -108,6 +108,10 @@ Route::prefix('profile')->middleware('auth')->group(function (){
         Route::post('/add', [\App\Http\Controllers\PlaylistController::class, 'store'])->name('playlist.store');
         Route::get('/{id}/show', [\App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist.show');
     });
+
+    Route::get('like/{id}',[\App\Http\Controllers\SongController::class,'like'])->name('show.like');
+    Route::get('dislike/{id}',[\App\Http\Controllers\SongController::class,'disLike'])->name('show.dislike');
+
 });
 
 

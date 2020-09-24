@@ -314,8 +314,13 @@
                 alertify.success('Delete Success');
             }
         })
+
+
     });
+
+
 </script>
+
 
 
 
