@@ -26,23 +26,6 @@
                 <a class="btn" onclick="openForm()" ><i class="fa fa-plus" aria-hidden="true"></i><br/><strong>Add new</strong></a>
             </div>
             <div class="row">
-                <div class="form-popup" id="myForm">
-                <form action="{{route('playlist.store')}}" method="post" class="form-container">
-                    @csrf
-                    <h1>Add new playlist</h1>
-                    <input type="text" placeholder="New playlist" name="playlist_name" required>
-                        @foreach($songs as $song)
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="song[{{$song->id}}]"
-                                           value="{{ $song->id }}"> {{ $song->song_name }}
-                                </label>
-                            </div>
-                        @endforeach
-                    <button type="submit" class="btn">Save</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                </form>
-                </div>
                     <!-- Single Music Player -->
                     @foreach($playlists as $playlist)
                         <div class="single-music-player col-sm-3">
@@ -169,6 +152,14 @@
             @csrf
             <h1>Add new playlist</h1>
             <input type="text" placeholder="New playlist" name="playlist_name" required>
+            @foreach($songs as $song)
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="song[{{$song->id}}]"
+                               value="{{ $song->id }}"> {{ $song->song_name }}
+                    </label>
+                </div>
+            @endforeach
             <button type="submit" class="btn">Save</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
