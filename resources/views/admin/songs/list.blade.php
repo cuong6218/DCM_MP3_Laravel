@@ -46,7 +46,7 @@
                         @endforelse
                         </tbody>
                     </table>
-                    {{$songs->links()}}
+{{--                    {{$songs->links()}}--}}
                 </div>
             </div>
         </div>

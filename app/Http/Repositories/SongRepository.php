@@ -17,10 +17,13 @@ class SongRepository
         return Song::all();
     }
     function getTrash(){
-        return Song::withTrashed()->orderBy('id', 'desc')->simplePaginate(5);
+        return Song::withTrashed()->orderBy('id', 'desc')->get();
     }
     function sortDelete($id){
         $song = Song::findOrFail($id);
         $song->delete();
+    }
+    function show($id){
+        return $this->song->findOrFail($id);
     }
 }

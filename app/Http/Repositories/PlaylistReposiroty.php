@@ -15,7 +15,7 @@ class PlaylistReposiroty
     }
 
     function getAll(){
-        return $this->playlist->select('*')->all()->get();
+        return Playlist::all();
     }
     function getDesc(){
         return $this->playlist->select('*')->orderBy('id', 'desc')->get();
