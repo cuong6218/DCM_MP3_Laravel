@@ -155,10 +155,21 @@ class SongController extends Controller
         return view('template.demo.detail-singer', compact('lists'));
 
     }
+    public function showSearch(Request $request)
+    {
+        if ($request->server) {
+            $query = $request->server->get('PATH_INFO');
+            $query = str_replace('/songs/search/','',$query);
+
+        $songs =  DB::table('songs')
+            ->where('song_name', 'LIKE', "%{$query}%")
+            ->get();
+        return view('template.demo.search-song',compact('songs','query'));
+    }
+    }
 
     public function search(Request $request)
     {
-
         if ($request->query) {
             $query = $request->query('name');
             $data = DB::table('songs')
@@ -167,7 +178,7 @@ class SongController extends Controller
             $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach ($data as $row) {
                 $output .= '<li>';
-                $output .= '<a href="'.route('home2.show',$row->id).'">';
+                $output .= '<a href="'.route('home2.show-search',$row->song_name).'">';
                 $output .= $row->song_name;
                 $output .= '</a></li>';
             }

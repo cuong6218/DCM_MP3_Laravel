@@ -80,6 +80,7 @@ Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbum
 Route::get('singer',[\App\Http\Controllers\HomeController::class, 'showListSinger'])->name('home2.singer');
 Route::get('singer/{id}',[\App\Http\Controllers\SongController::class, 'showListSongSinger'])->name('home2.song-singer');
 Route::get('songs',[\App\Http\Controllers\HomeController::class, 'showListSong'])->name('home2.song');
+Route::get('songs/search/{name}',[\App\Http\Controllers\SongController::class,'showSearch'])->name('home2.show-search');
 Route::get('/search', [\App\Http\Controllers\SongController::class,'search'])->name('songs.search');
 
 Route::prefix('users')->group(function (){
