@@ -110,9 +110,6 @@
                     <!-- Nav brand -->
                     <a href="{{route('home2.index')}}" class="nav-brand"><img src="/Client/img/core-img/logo.png"
                                                                               alt=""></a>
-                    <!-- Search box. -->
-
-
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -121,12 +118,14 @@
 
                     <!-- Menu -->
 
+                    <!-- Search box. -->
                     <div class="form-group has-search">
                         {{ csrf_field() }}
                         <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter Song Name" />
-                        <div style="width: 120% " id="songList">
+                        <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />
+                        <div style="width: 120% ;position: relative " id="songList">
                         </div>
+                        <div style="position: absolute; height: 6px; right: 2px; bottom: 2px; left: 2px; border-radius: 3px;"></div>
                     </div>
 
                     <div class="classy-menu">
