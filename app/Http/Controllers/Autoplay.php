@@ -14,7 +14,7 @@ class Autoplay extends Controller
             ->join('albums', 'songs.album_id', 'albums.id')
             ->select( 'songs.*', 'albums.album_name','singers.*')
             ->where('singers.id', '=', "$id")
-            ->orderBy('songs.id','desc')
+            ->orderBy('songs.id','asc')
             ->get();
 
         return view('template.autoplay-singer', compact('playListSinger'));
