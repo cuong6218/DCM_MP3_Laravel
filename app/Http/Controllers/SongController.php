@@ -95,13 +95,13 @@ class SongController extends Controller
     public function show($id)
     {
         //
-        $views = 'song_' . $id;
-        if (!Session::has($views)) {
-            Song::where('id', $id)->increment('views');
-            Session::put($views, 1);
-        } else {
-            Session::forget($views);
-        }
+//        $views = 'song_' . $id;
+//        if (!Session::has($views)) {
+//            Song::where('id', $id)->increment('views');
+//            Session::put($views, 1);
+//        } else {
+//            Session::forget($views);
+//        }
 
         $likeSong = Song::find($id);
         $likeCtr = Likes::where(['song_id' => $likeSong->id])->count();
@@ -112,6 +112,7 @@ class SongController extends Controller
             ->join('users','comments.user_id','users.id')
             ->select('songs.*','comments.*','users.name')
             ->where('songs.id','=',"$id")
+            ->orderBy('comments.id','desc')
             ->simplePaginate(5);
 
         $shows = DB::table('singers')
@@ -221,6 +222,16 @@ class SongController extends Controller
         $this->songService->sortDelete($id);
         return back();
     }
+
+
+    function listen($id){
+        $views = 'song_' . $id;
+        if (!Session::has($views)) {
+            Song::where('id', $id)->increment('views');
+            Session::put($views, 1);
+        }
+        return redirect()->back();
+
     function choosePlaylist($id){
         $playlists = $this->playlistService->getAll();
         $song = $this->songService->show($id);
@@ -229,5 +240,6 @@ class SongController extends Controller
     function addSong($playlist_id, $song_id){
         $this->songService->addSong($request, $id);
         return redirect()->route('playlist.index');
+
     }
 }

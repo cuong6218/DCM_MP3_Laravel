@@ -134,3 +134,5 @@ Route::prefix('auto')->group(function (){
     Route::get('/list-singer/{id}',[\App\Http\Controllers\Autoplay::class,'autoplaySinger'])->name('auto.listSinger');
 });
 
+Route::post('/listen/{id}',[\App\Http\Controllers\SongController::class,'listen']);
+

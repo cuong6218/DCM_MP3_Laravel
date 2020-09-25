@@ -6,6 +6,7 @@
     <meta name="description" content="Poca - Podcast &amp; Audio Template">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     @toastr_css
     <!-- Title -->
     <title>Musica - Music Template</title>
@@ -112,7 +113,7 @@
                             </div>
                             <!-- Likes, Share & Download -->
                             <div class="likes-share-download d-flex align-items-center justify-content-between">
-                                <a><i class="fa fa-eye" aria-hidden="true"></i> View ({{$shows[0]->views}})</a>
+                                <a id="test"><i class="fa fa-headphones" aria-hidden="true"></i> Listen ({{$shows[0]->views}})</a>
                                 <div>
                                     <a href="{{route('show.like',$shows[0]->id)}}" class="mr-4"><i
                                             class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like({{$likeCtr}})</a>
@@ -126,7 +127,7 @@
                     <br>
                     <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
                 </div>
-
+                @if(\Illuminate\Support\Facades\Auth::check())
                 <div class="col-md-12">
                     <br><br>
                     <form method="post" action="{{route('comment.store',$shows[0]->id)}}">
@@ -143,6 +144,26 @@
                         <button type="submit" class="btn btn-primary">Post</button>
                     </form>
                 </div>
+                @else
+                    <div class="col-md-12">
+                        <br><br>
+                        <form method="post" action="{{route('comment.store',$shows[0]->id)}}">
+                            @csrf
+                            <div class="form-group">
+                                <br>
+                                <h4 class="text-primary">Comment: </h4>
+                                <textarea name="comment" style="background: #6b63b442; color: white" class="form-control"
+                                          type="text" rows="4"></textarea>
+                                @if($errors->has('comment'))
+                                    <p class="text-danger">{{$errors->first('comment')}}</p>
+                                @endif
+                            </div>
+                            <a href="{{route('users.login')}}" class="btn btn-primary">Post</a>
+                        </form>
+                    </div>
+
+                @endif
+
 
                 @if(empty($comments))
                     <div class="box-comment mb-3 mt-3">
@@ -176,7 +197,8 @@
 @toastr_render
 <!-- ***** Welcome Area End ***** -->
 <!-- jQuery js -->
-<script src="js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{--<script src="js/jquery.min.js"></script>--}}
 <!-- Popper js -->
 <script src="js/popper.min.js"></script>
 <!-- Bootstrap js -->
@@ -185,7 +207,33 @@
 <script src="js/poca.bundle.js"></script>
 <!-- Active js -->
 <script src="js/default-assets/active.js"></script>
+<script>
+    $(document).ready(function () {
+        let origin = location.origin;
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $("audio").on('playing',function(){
+            console.log("Push playing");
+            $.ajax({
+                url: origin + '/listen/' + {{$shows[0]->id}},
+                method: 'POST',
+                success: function (result) {
+                    console.log(result)
+                    {{--let html = '<a><i class="fa fa-headphones" aria-hidden="true"></i> Listen ({{++$shows[0]->views}})</a>';--}}
+                    {{--$('#test').html(html);--}}
+
+                }
+            })
+
+        });
+
+    });
+
+</script>
 </body>
 
 </html>
