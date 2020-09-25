@@ -15,4 +15,10 @@ class SongService
     function getAll(){
         return $this->songRepo->getAll();
     }
+    function getTrash(){
+        return $this->songRepo->getTrash();
+    }
+    function sortDelete($id){
+        $this->songRepo->sortDelete($id);
+    }
 }

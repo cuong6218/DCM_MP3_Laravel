@@ -26,6 +26,7 @@
                 <a class="btn" onclick="openForm()" ><i class="fa fa-plus" aria-hidden="true"></i><br/><strong>Add new</strong></a>
             </div>
             <div class="row">
+                <div class="form-popup" id="myForm">
                 <form action="{{route('playlist.store')}}" method="post" class="form-container">
                     @csrf
                     <h1>Add new playlist</h1>
@@ -41,6 +42,7 @@
                     <button type="submit" class="btn">Save</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                 </form>
+                </div>
                     <!-- Single Music Player -->
                     @foreach($playlists as $playlist)
                         <div class="single-music-player col-sm-3">
@@ -50,9 +52,7 @@
                                     <a href="{{route('playlist.show', $playlist->id)}}"> <h5>{{$playlist->playlist_name}}</h5></a>
                                 </div>
                                 <div class="music-play-icon">
-                                    <audio controls>
-                                        <source src="#">
-                                    </audio>
+                                    <a class="btn" href="{{route('playlist.destroy', $playlist->id)}}" onclick="return confirm('Are you sure?')"><i class="fa fa-times text-light" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>

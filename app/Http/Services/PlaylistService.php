@@ -27,7 +27,10 @@ class PlaylistService
         $playlist->songs()->sync($request->song);
     }
     function destroy($id){
+        $playlist = $this->playlistRepo->show($id);
+        $playlist->songs()->detach();
         $this->playlistRepo->destroy($id);
+
     }
     function show($id){
         return $this->playlistRepo->show($id);
