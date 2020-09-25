@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SongRequest;
+use App\Http\Services\SongService;
 use App\Models\Album;
 use App\Models\Category;
 use App\Models\Dislike;
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Session;
 
 class SongController extends Controller
 {
+    protected $songService;
+    public function __construct(SongService $songService){
+        $this->songService = $songService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +29,8 @@ class SongController extends Controller
     public function index()
     {
         //
-        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
+//        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
+        $songs = $this->songService->getTrash();
         return view('admin.songs.list', compact('songs'));
     }
 
@@ -200,5 +206,9 @@ class SongController extends Controller
             return redirect()->back();
         }
 
+    }
+    function softDelete($id){
+        $this->songService->sortDelete($id);
+        return back();
     }
 }

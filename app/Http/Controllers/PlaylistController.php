@@ -59,7 +59,7 @@ class PlaylistController extends Controller
     {
         $playlist = $this->playlistService->show($id);
         $songs = $this->songService->getAll();
-        return view('template.demo.playlist-add', compact('playlist', 'songs'));
+        return view('template.demo.playlist-detail', compact('playlist', 'songs'));
     }
 
     /**
@@ -93,6 +93,7 @@ class PlaylistController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->playlistService->destroy($id);
+        return redirect()->route('playlist.index');
     }
 }

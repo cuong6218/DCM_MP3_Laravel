@@ -48,6 +48,7 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
         Route::get('/delete/{id}',[\App\Http\Controllers\SongController::class,'destroy'])->name('songs.delete');
         Route::get('/edit/{id}',[\App\Http\Controllers\SongController::class,'edit'])->name('songs.edit');
         Route::post('/edit/{id}',[\App\Http\Controllers\SongController::class,'update'])->name('songs.update');
+        Route::get('/destroy/{id}',[\App\Http\Controllers\SongController::class,'softDelete'])->name('songs.softDelete');
     });
 
 
@@ -107,6 +108,7 @@ Route::prefix('profile')->middleware('auth')->group(function (){
         Route::get('/add', [\App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
         Route::post('/add', [\App\Http\Controllers\PlaylistController::class, 'store'])->name('playlist.store');
         Route::get('/{id}/show', [\App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist.show');
+        Route::get('/{id}/delete', [\App\Http\Controllers\PlaylistController::class, 'destroy'])->name('playlist.destroy');
     });
 
     Route::get('like/{id}',[\App\Http\Controllers\SongController::class,'like'])->name('show.like');

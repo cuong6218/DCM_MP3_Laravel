@@ -1,5 +1,6 @@
 @extends('template.demo.master.menu')
 @section('content')
+
     <!-- ##### Preloader ##### -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="circle-preloader">
@@ -23,18 +24,35 @@
     <div class="upcoming-shows-area section-padding-100">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <img style="width: 250px; height: 250px;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
-                    <h5 class="playlist-name">{{$playlist->playlist_name}}</h5>
+                <div class="col-md-3 text-center">
+                    <img style="width: 100%;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
+                    <h5 class="playlist-name" >{{$playlist->playlist_name}}</h5>
+                    <button class="btn btn-success">Play all songs</button>
                 </div>
-                <div class="col-md-8">
-                    <ul>
-                        @forelse($playlist->songs as $song)
-                        <li>{{$song->name}}</li>
-                        @empty
-                            <li>No data</li>
-                        @endforelse
-                    </ul>
+                <div class="col-md-9">
+                    @foreach($playlist->songs as $key => $song)
+                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                            <div class="shows-date">
+                                <h2>{{++$key}}<span></span></h2>
+                            </div>
+                            <div class="shows-desc d-flex align-items-center">
+                                <div class="shows-img">
+                                    <img src="{{asset('storage/'.$song->image)}}" alt="">
+                                </div>
+                                <div class="shows-name">
+                                    <h6>{{$song->song_name}}</h6>
+                                    <p>{{$song->singer->singer_name}}</p>
+                                </div>
+                            </div>
+                            <div class="music-play-icon playlist_delete">
+                                <audio controls>
+                                    <source src="{{asset('storage/'.$song->audio)}}">
+                                </audio>
+                                <a href="{{route('songs.softDelete', $song->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
+                            </div>
+
+                        </div>
+                    @endforeach
 
                 </div>
             </div>

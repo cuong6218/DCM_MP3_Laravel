@@ -105,13 +105,12 @@
             right: 28px;
             width: 280px;
         }
-
         /* The popup form - hidden by default */
         .form-popup {
             display: none;
             position: fixed;
-            bottom:35%;
-            right: 40%;
+            bottom: 0;
+            right: 15px;
             border: 3px solid #f1f1f1;
             z-index: 9;
         }
@@ -159,7 +158,7 @@
         .form-container .btn:hover, .open-button:hover {
             opacity: 1;
         }
-        /*playlist pop-up end*/
+
         .playlist-name{
             position: relative;
             color:red;
