@@ -46,6 +46,9 @@
         #th-name2{
             padding-top: 11px;
         }
+        #back-add{
+            margin-left: 110px;
+        }
     </style>
 </head>
 <body>
@@ -58,9 +61,14 @@
         <table class="table" id="table-1">
             <tbody>
             <tr>
-                <td scope="row" colspan="2">Description: {{$playListSinger[0]->description}}</td>
+                <td class="table-info" colspan="2">Description: {{$playListSinger[0]->description}}</td>
             </tr>
+            <tr>
 
+            @foreach($playListSinger as $key => $listSong)
+                <td>Musics {{++$key}}: {{$listSong->song_name}}</td>
+            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
@@ -81,6 +89,7 @@
         </thead>
     </table>
 </div>
+<button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

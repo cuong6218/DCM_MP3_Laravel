@@ -103,6 +103,12 @@ class SongController extends Controller
         $likeCtr = Likes::where(['song_id' => $likeSong->id])->count();
         $dislikeCtr = Dislike::where(['song_id' => $likeSong->id])->count();
 
+        $comments = DB::table('songs')
+            ->join('comments','songs.id','comments.song_id')
+            ->join('users','comments.user_id','users.id')
+            ->select('songs.*','comments.*','users.name')
+            ->where('songs.id','=',"$id")
+            ->get();
 
         $shows = DB::table('singers')
             ->join('songs', 'singers.id', 'songs.singer_id')
@@ -111,7 +117,7 @@ class SongController extends Controller
             ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail', compact('shows', 'likeCtr','dislikeCtr'));
+        return view('template.detail', compact('shows', 'likeCtr','dislikeCtr','comments'));
 
     }
 

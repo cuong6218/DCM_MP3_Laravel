@@ -73,6 +73,8 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
 
 Route::get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
 Route::get('songs/{id}',[\App\Http\Controllers\SongController::class,'show'])->name('home2.show');
+Route::post('songs/{id}',[\App\Http\Controllers\CommentController::class,'storeComment'])->name('comment.store');
+
 Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])->name('home2.show-album');
 Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbums'])->name('home2.albums');
 Route::get('singer',[\App\Http\Controllers\HomeController::class, 'showListSinger'])->name('home2.singer');
@@ -113,6 +115,8 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
     Route::get('like/{id}',[\App\Http\Controllers\SongController::class,'like'])->name('show.like');
     Route::get('dislike/{id}',[\App\Http\Controllers\SongController::class,'disLike'])->name('show.dislike');
+
+
 
 });
 
