@@ -347,7 +347,6 @@
                                     <source src="{{asset('storage/'.$showListLike[0]->audio)}}">
                                 </audio>
                                 {{--                                <audio class="my_audio" controls autoplay></audio>--}}
-
                             </div>
 
                         </div>

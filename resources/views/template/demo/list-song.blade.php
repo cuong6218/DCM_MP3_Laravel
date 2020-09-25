@@ -34,7 +34,7 @@
                                 <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$song->views}}</i></a>
                             </div>
                             <div class="music-play-icon">
-                                <audio controls>
+                                <audio controls data-update="{{$song->id}}">
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
                             </div>
