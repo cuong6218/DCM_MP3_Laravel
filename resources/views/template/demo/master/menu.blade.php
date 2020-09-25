@@ -234,22 +234,6 @@
         })
 
 
-        let id = $(this).attr('data-update')
-        console.log(id)
-        $("audio").on('playing',function(){
-            console.log("Push playing");
-            $.ajax({
-                url: origin + '/listen/' + id,
-                method: 'POST',
-                success: function (result) {
-                    console.log(result)
-                    {{--let html = '<a><i class="fa fa-headphones" aria-hidden="true"></i> View ({{++$shows[0]->views}})</a>';--}}
-                    {{--$('#test-songs').html(html);--}}
-
-                }
-            })
-
-        });
 
 
     });

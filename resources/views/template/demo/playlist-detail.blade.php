@@ -26,11 +26,11 @@
             <div class="row">
                 <div class="col-md-3 text-center">
                     <img style="width: 100%;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
-                    <h5 class="playlist-name" >{{$playlist->playlist_name}}</h5>
+                    <h5 class="playlist-name" >{{$playlist[0]->playlist_name}}</h5>
                     <button class="btn btn-success">Play all songs</button>
                 </div>
                 <div class="col-md-9">
-                    @foreach($playlist->songs as $key => $song)
+                    @foreach($playlist as $key => $song)
                         <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
                             <div class="shows-date">
                                 <h2>{{++$key}}<span></span></h2>
@@ -41,14 +41,14 @@
                                 </div>
                                 <div class="shows-name">
                                     <h6>{{$song->song_name}}</h6>
-                                    <p>{{$song->singer->singer_name}}</p>
+                                    <p>{{$song->singer_name}}</p>
                                 </div>
                             </div>
                             <div class="music-play-icon playlist_delete">
                                 <audio controls>
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
-                                <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
+                                <a href="{{route('playlists.deleteSong',[$song->playlist_id, $song->song_id])}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -75,7 +75,7 @@
 {{--                                        </audio>--}}
                                     </div>
                                     <div class="col-sm-2">
-                                        <a href="{{route('playlists.addSong',[$playlist->id, $song1->id])}}" class="btn text-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        <a href="{{route('playlists.addSong',[$playlists->id, $song1->id])}}" class="btn text-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             @endforeach
