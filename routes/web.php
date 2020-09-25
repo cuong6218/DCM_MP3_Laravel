@@ -122,4 +122,7 @@ Route::get('/auth/redirect/{provider}', [\App\Http\Controllers\SocialController:
 Route::get('/callback/{provider}', [\App\Http\Controllers\SocialController::class,'callback']);
 
 
+Route::prefix('auto')->group(function (){
+    Route::get('/list-singer/{id}',[\App\Http\Controllers\Autoplay::class,'autoplaySinger'])->name('auto.listSinger');
+});
 

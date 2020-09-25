@@ -42,7 +42,7 @@
                             <h4>{{$lists[0]->singer_name}}</h4>
                         </div>
                         <div class="album-buy-now">
-                            <a href="{{route('home2.index')}}" class="btn musica-btn">Home Page</a>
+                            <a href="{{route('auto.listSinger',$lists[0]->id)}}" class="btn musica-btn">Auto Music Singer</a>
                         </div>
                     </div>
 
