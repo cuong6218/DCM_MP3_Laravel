@@ -270,28 +270,7 @@
 <script src="/Client/js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="/Client/js/active.js"></script>
-{{--<script>--}}
-{{--    playlist = {--}}
-{{--        @foreach($testSongs as $key=>$test)--}}
-{{--        'song_{{++$key}}' : 'storage/{{$test->audio}}',--}}
-{{--        @endforeach--}}
 
-{{--    }--}}
-{{--    $("#my_audio").trigger('load');--}}
-
-
-{{--    keys = Object.keys(playlist);--}}
-{{--    $('.my_audio').append("<source id='sound_src' src=" + playlist[keys[0]] + " type='audio/mpeg'>");--}}
-
-{{--    count = 0;--}}
-{{--    $('.my_audio').on('ended', function () {--}}
-{{--        count++;--}}
-{{--        $("#sound_src").attr("src", playlist[keys[count]])[0];--}}
-{{--        $(".my_audio").trigger('load');--}}
-{{--        play_audio('play');--}}
-{{--    });--}}
-
-{{--</script>--}}
 <script>
     $(document).ready(function () {
         let origin = location.origin;
