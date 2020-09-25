@@ -117,7 +117,7 @@
 
                                         <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>
                                         <p>{{$song->author}}</p>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$song->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
                                         <audio  controls>
@@ -144,7 +144,7 @@
                                                 {{$singer->singer_name}}</p>
                                             @endif
                                         @endforeach
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$customer->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$customer->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
                                         <audio controls >
@@ -300,7 +300,7 @@
 
                         <!-- Album Thumbnail -->
                         <div class="album-thumbnail h-100 bg-img"
-                             style="background-image: url(/Client/img/bg-img/bg-4.jpg);"></div>
+                             style="background-image: url(/Client/img/bg-img/bg-10.jpg);"></div>
 
                         <!-- Album Songs -->
                         <div class="album-songs h-100">

@@ -108,7 +108,7 @@ class SongController extends Controller
             ->join('users','comments.user_id','users.id')
             ->select('songs.*','comments.*','users.name')
             ->where('songs.id','=',"$id")
-            ->get();
+            ->simplePaginate(5);
 
         $shows = DB::table('singers')
             ->join('songs', 'singers.id', 'songs.singer_id')

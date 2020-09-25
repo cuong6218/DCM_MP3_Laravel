@@ -123,15 +123,22 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
                 </div>
+
                 <div class="col-md-12">
+                    <br><br>
                     <form method="post" action="{{route('comment.store',$shows[0]->id)}}">
                         @csrf
                         <div class="form-group">
                             <br>
                             <h4 class="text-primary">Comment: </h4>
                             <textarea name="comment" style="background: #6b63b442; color: white" class="form-control"
-                                      type="text" rows="5"></textarea>
+                                      type="text" rows="4"></textarea>
+                            @if($errors->has('comment'))
+                                <p class="text-danger">{{$errors->first('comment')}}</p>
+                            @endif
                         </div>
                         <button type="submit" class="btn btn-primary">Post</button>
                     </form>
@@ -143,6 +150,7 @@
                         <p>Nulla pretium tincidunt felis, nec sollicitudin mauris lobortis in. Aliquam eu feugiat
                             ligula, laoreet efficitur nulla. Morbi nec neque porta, elementum massa at, vehicula</p>
                         <span>Date: 29-10-1194</span>
+
                     </div>
                 @else
                     @foreach($comments as $key=>$comment)
@@ -155,6 +163,7 @@
                 </div>
                     @endforeach
                 @endif
+                {{$comments->links()}}
             </div>
         </div>
 
