@@ -152,14 +152,14 @@
             @csrf
             <h1>Add new playlist</h1>
             <input type="text" placeholder="New playlist" name="playlist_name" required>
-            @foreach($songs as $song)
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="song[{{$song->id}}]"
-                               value="{{ $song->id }}"> {{ $song->song_name }}
-                    </label>
-                </div>
-            @endforeach
+{{--            @foreach($songs as $song)--}}
+{{--                <div class="checkbox">--}}
+{{--                    <label>--}}
+{{--                        <input type="checkbox" name="song[{{$song->id}}]"--}}
+{{--                               value="{{ $song->id }}"> {{ $song->song_name }}--}}
+{{--                    </label>--}}
+{{--                </div>--}}
+{{--            @endforeach--}}
             <button type="submit" class="btn">Save</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>

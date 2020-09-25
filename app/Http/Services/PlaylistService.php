@@ -35,5 +35,12 @@ class PlaylistService
     function show($id){
         return $this->playlistRepo->show($id);
     }
-
+    function addSong($request, $id){
+        $playlist = $this->playlistRepo->show($id);
+        $playlist->songs()->sync($request->song);
+    }
+    function deleteSong($playlist_id, $song_id){
+        $playlist = $this->playlistRepo->show($playlist_id);
+        $playlist->songs()->detach($song_id);
+    }
 }

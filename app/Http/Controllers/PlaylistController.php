@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class PlaylistController extends Controller
 {
+    protected $data = [];
     protected $playlistService;
     protected $songService;
     public function __construct(PlaylistService $playlistService,
@@ -23,7 +24,7 @@ class PlaylistController extends Controller
     public function index()
     {
         $playlists = $this->playlistService->getDesc();
-        $songs = $this->songService->getAll();
+        $songs = $this->songService->getTrash();
         return view('template.demo.playlist-list', compact('playlists', 'songs'));
     }
 
@@ -58,8 +59,8 @@ class PlaylistController extends Controller
     public function show($id)
     {
         $playlist = $this->playlistService->show($id);
-        $songs = $this->songService->getAll();
-        return view('template.demo.playlist-detail', compact('playlist', 'songs'));
+        $songs2 = $this->songService->getAll();
+        return view('template.demo.playlist-detail', compact('playlist', 'songs2'));
     }
 
     /**
@@ -95,5 +96,15 @@ class PlaylistController extends Controller
     {
         $this->playlistService->destroy($id);
         return redirect()->route('playlist.index');
+    }
+    public function addSong($playlist_id, $song_id){
+        $playlist = $this->playlistService->show($playlist_id);
+        $playlist->songs()->attach($song_id);
+//        $this->playlistService->addSong($request, $id);
+        return back();
+    }
+    public function deleteSong($playlist_id, $song_id){
+        $this->playlistService->deleteSong($playlist_id, $song_id);
+        return back();
     }
 }
