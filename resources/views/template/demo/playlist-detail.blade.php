@@ -48,11 +48,38 @@
                                 <audio controls>
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
-                                <a href="{{route('songs.softDelete', $song->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
+                                <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
                             </div>
-
                         </div>
                     @endforeach
+
+                    <h1 class="text-light">Song Suggest</h1>
+
+                            @foreach($songs2 as $key => $song1)
+                                <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                    <div class="shows-date">
+                                        <h2>{{++$key}}<span></span></h2>
+                                    </div>
+                                    <div class="shows-desc d-flex align-items-center">
+                                        <div class="shows-img">
+                                            <img src="{{asset('storage/'.$song1->image)}}" alt="">
+                                        </div>
+                                        <div class="shows-name">
+                                            <h6>{{$song1->song_name}}</h6>
+                                            <p>{{$song1->singer->singer_name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="music-play-icon playlist_delete">
+{{--                                        <audio controls>--}}
+{{--                                            <source src="{{asset('storage/'.$song1->audio)}}">--}}
+{{--                                        </audio>--}}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="{{route('playlists.addSong',[$playlist->id, $song1->id])}}" class="btn text-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+
 
                 </div>
             </div>

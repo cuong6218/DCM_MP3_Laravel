@@ -21,4 +21,11 @@ class SongService
     function sortDelete($id){
         $this->songRepo->sortDelete($id);
     }
+    function addSong($request, $id){
+        $song = $this->songRepo->show($id);
+        $song->playlists()->sync($request->playlist_id);
+    }
+    function show($id){
+        return $this->songRepo->show($id);
+    }
 }

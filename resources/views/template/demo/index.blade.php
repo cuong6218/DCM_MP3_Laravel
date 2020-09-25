@@ -341,10 +341,10 @@
                             <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="songs-name">
                                     <p>Hot Musics</p>
-                                    <h6>{{$showListLike[0]->song_name}}</h6>
+{{--                                    <h6>{{$showListLike[0]->song_name}}</h6>--}}
                                 </div>
                                 <audio preload="auto" controls>
-                                    <source src="{{asset('storage/'.$showListLike[0]->audio)}}">
+{{--                                    <source src="{{asset('storage/'.$showListLike[0]->audio)}}">--}}
                                 </audio>
                                 {{--                                <audio class="my_audio" controls autoplay></audio>--}}
 

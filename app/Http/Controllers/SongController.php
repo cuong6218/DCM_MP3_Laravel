@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SongRequest;
+use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use App\Models\Album;
 use App\Models\Category;
@@ -18,8 +19,11 @@ use Illuminate\Support\Facades\Session;
 class SongController extends Controller
 {
     protected $songService;
-    public function __construct(SongService $songService){
+    protected $playlistService;
+    public function __construct(SongService $songService,
+                                PlaylistService $playlistService){
         $this->songService = $songService;
+        $this->playlistService = $playlistService;
     }
     /**
      * Display a listing of the resource.
@@ -216,5 +220,14 @@ class SongController extends Controller
     function softDelete($id){
         $this->songService->sortDelete($id);
         return back();
+    }
+    function choosePlaylist($id){
+        $playlists = $this->playlistService->getAll();
+        $song = $this->songService->show($id);
+        return view('template.demo.playlist-song', compact('playlists', 'song'));
+    }
+    function addSong($playlist_id, $song_id){
+        $this->songService->addSong($request, $id);
+        return redirect()->route('playlist.index');
     }
 }
