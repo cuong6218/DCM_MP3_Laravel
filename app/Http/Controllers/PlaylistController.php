@@ -70,8 +70,9 @@ class PlaylistController extends Controller
             ->join('playlist_song','songs.id','playlist_song.song_id')
             ->join('playlists','playlist_song.playlist_id','playlists.id')
             ->distinct('playlists.*','songs.*','playlist_song.*')
+            ->where('playlists.id','=',"$id")
             ->get();
-//        dd($playlist);
+
         return view('template.demo.playlist-detail', compact('playlist', 'songs2','playlists'));
     }
 
