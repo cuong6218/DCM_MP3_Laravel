@@ -229,7 +229,7 @@
                             <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="album-title">
                                     <h6>Featured album</h6>
-                                    <h4>List Top View</h4>
+                                    <h4>List Top Listen</h4>
                                 </div>
                                 <div class="album-buy-now">
                                     <a href="{{route('home2.albums')}}" class="btn musica-btn">List Hot Albums</a>

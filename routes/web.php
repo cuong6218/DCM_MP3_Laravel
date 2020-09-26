@@ -114,6 +114,8 @@ Route::prefix('profile')->middleware('auth')->group(function (){
         Route::get('/{id}/delete', [\App\Http\Controllers\PlaylistController::class, 'destroy'])->name('playlist.destroy');
         Route::get('/{playlist_id}/add-song/{song_id}', [\App\Http\Controllers\PlaylistController::class, 'addSong'])->name('playlists.addSong');
         Route::get('/{playlist_id}/delete-song/{song_id}', [\App\Http\Controllers\PlaylistController::class, 'deleteSong'])->name('playlists.deleteSong');
+
+        Route::get('/auto-playlist/{id}',[\App\Http\Controllers\Autoplay::class,'autoplayPlaylist'])->name('playlist.auto');
     });
 
 
