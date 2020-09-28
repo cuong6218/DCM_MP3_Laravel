@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlaylistController extends Controller
 {
@@ -25,6 +26,9 @@ class PlaylistController extends Controller
     {
         $playlists = $this->playlistService->getDesc();
         $songs = $this->songService->getTrash();
+
+
+
         return view('template.demo.playlist-list', compact('playlists', 'songs'));
     }
 
@@ -58,9 +62,18 @@ class PlaylistController extends Controller
      */
     public function show($id)
     {
-        $playlist = $this->playlistService->show($id);
+        $playlists = $this->playlistService->show($id);
         $songs2 = $this->songService->getAll();
-        return view('template.demo.playlist-detail', compact('playlist', 'songs2'));
+
+        $playlist = DB::table('singers')
+            ->join('songs','singers.id','songs.singer_id')
+            ->join('playlist_song','songs.id','playlist_song.song_id')
+            ->join('playlists','playlist_song.playlist_id','playlists.id')
+            ->distinct('playlists.*','songs.*','playlist_song.*')
+            ->where('playlists.id','=',"$id")
+            ->get();
+
+        return view('template.demo.playlist-detail', compact('playlist', 'songs2','playlists'));
     }
 
     /**
@@ -107,4 +120,5 @@ class PlaylistController extends Controller
         $this->playlistService->deleteSong($playlist_id, $song_id);
         return back();
     }
+
 }

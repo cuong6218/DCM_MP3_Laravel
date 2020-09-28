@@ -20,11 +20,14 @@ class SongController extends Controller
 {
     protected $songService;
     protected $playlistService;
+
     public function __construct(SongService $songService,
-                                PlaylistService $playlistService){
+                                PlaylistService $playlistService)
+    {
         $this->songService = $songService;
         $this->playlistService = $playlistService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -108,11 +111,11 @@ class SongController extends Controller
         $dislikeCtr = Dislike::where(['song_id' => $likeSong->id])->count();
 
         $comments = DB::table('songs')
-            ->join('comments','songs.id','comments.song_id')
-            ->join('users','comments.user_id','users.id')
-            ->select('songs.*','comments.*','users.name')
-            ->where('songs.id','=',"$id")
-            ->orderBy('comments.id','desc')
+            ->join('comments', 'songs.id', 'comments.song_id')
+            ->join('users', 'comments.user_id', 'users.id')
+            ->select('songs.*', 'comments.*', 'users.name')
+            ->where('songs.id', '=', "$id")
+            ->orderBy('comments.id', 'desc')
             ->simplePaginate(5);
 
         $shows = DB::table('singers')
@@ -122,7 +125,7 @@ class SongController extends Controller
             ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail', compact('shows', 'likeCtr','dislikeCtr','comments'));
+        return view('template.detail', compact('shows', 'likeCtr', 'dislikeCtr', 'comments'));
 
     }
 
@@ -218,7 +221,9 @@ class SongController extends Controller
         }
 
     }
-    function softDelete($id){
+
+    function softDelete($id)
+    {
         $this->songService->sortDelete($id);
         return back();
     }
@@ -232,6 +237,7 @@ class SongController extends Controller
             Session::put($views, 1);
         }
         return redirect()->back();
+
 
     }
 
