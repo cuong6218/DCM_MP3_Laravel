@@ -24,10 +24,10 @@
         <!-- Music Search -->
         @foreach($singers as $singer)
             <div class="col-md-3 mt-3 mb-3">
-            <div class="card" style="width: 18rem; height: 400px">
+            <div class="card" style="width: 18rem; height: 400px; background-color: #231238">
                 <img class="card-img-top rounded-circle " style="width: 280px; height: 280px" src="{{asset('storage/'.$singer->image)}}" alt="Card image cap">
                 <div class="card-body">
-                    <a href="{{route('home2.song-singer',$singer->id)}}"><h5 class="card-title text-center">{{$singer->singer_name}}</h5></a>
+                    <a href="{{route('home2.song-singer',$singer->id)}}"><h5 class="card-title text-center text-light">{{$singer->singer_name}}</h5></a>
                     <p class="card-text text-center">166K interested</p>
                 </div>
             </div>
