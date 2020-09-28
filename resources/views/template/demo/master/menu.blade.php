@@ -115,7 +115,8 @@
             line-height: 2.375rem;
             text-align: center;
             pointer-events: none;
-            color: #aaa;}
+            color: #aaa;
+        }
     </style>
 </head>
 
@@ -148,7 +149,7 @@
                     <!-- Menu -->
 
                     <!-- Search box. -->
-                    <div class="form-group has-search">
+                    <div class="form-group has-search" style="margin-top: 12px">
                         {{ csrf_field() }}
                         <i class="fa fa-search form-control-feedback"></i>
                         <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />

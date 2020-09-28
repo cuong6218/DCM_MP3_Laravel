@@ -195,7 +195,10 @@ class SongController extends Controller
             $singers =  DB::table('singers')
                 ->where('singer_name', 'LIKE', "%{$query}%")
                 ->get();
-        return view('template.demo.search-song',compact('songs','singers','query'));
+            $playlists =  DB::table('playlists')
+                ->where('playlist_name', 'LIKE', "%{$query}%")
+                ->get();
+        return view('template.demo.search-song',compact('songs','singers','query','playlists'));
     }
     }
 
@@ -204,11 +207,11 @@ class SongController extends Controller
     {
         if ($request->query) {
             $query = $request->query('name');
-            $data = DB::table(DB::raw('songs' . ',' . 'singers'))
+            $data = DB::table(DB::raw('songs' . ',' . 'singers'.','.'playlists'))
                 ->where('song_name', 'LIKE', "%{$query}%")->limit(2)
                 ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(3)
+                ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(3)
                 ->get();
-
             $output = '<ul class="dropdown-menu" style="display: block;width: 84% ">';
             foreach ($data as $row) {
                 $output .= '<li style="margin-left: 10px;">';
@@ -218,6 +221,10 @@ class SongController extends Controller
                 $output .= '<li style="margin-left: 10px">';
                 $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
                 $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->singer_name . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
+                $output .= '</a></li>';
+                $output .= '<li style="margin-left: 10px">';
+                $output .= '<a href="' . route('home2.show-search', $row->playlist_name) . '">';
+                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->playlist_name . '<i style="font-size: 12px;font-weight: normal">-trong playlist</i></p>';
                 $output .= '</a></li>';
             }
             $output .= '</ul>';

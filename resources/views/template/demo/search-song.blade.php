@@ -77,6 +77,33 @@
                         @endforelse
                     </div>
                 </div>
+                <div class="container">
+                    <div class="row mt-4">
+                        <!-- Single Music Player -->
+                        <div class="bradcumbContent">
+                            <h5 style="color: white"> Playlists </h5>
+                        </div>
+
+                        @forelse($playlists as $playlist)
+                            <div class="col-md-3 mt-3 mb-3">
+                                <div class="card"
+                                     style="width: 18rem; height: 400px;margin-left: -20px;margin-top: 15px">
+                                    <img class="card-img-top rounded-circle " style="width: 280px; height: 280px"
+                                         src="{{asset('storage/images/album_default.png')}}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <a href="{{route('playlist.show',$playlist->id)}}"><h5
+                                                class="card-title text-center">{{$playlist->playlist_name}}</h5></a>
+                                        <p class="card-text text-center">166K interested</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty:
+                        <div class="mt-4">
+                            <h5 style="color: white">not found</h5>
+                        </div>
+                        @endforelse
+                    </div>
+                </div>
             </div>
 
             <!-- Music Search -->
