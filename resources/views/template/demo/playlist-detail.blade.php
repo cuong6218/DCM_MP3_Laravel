@@ -26,9 +26,10 @@
             <div class="row">
                 <div class="col-md-3 text-center">
                     <img style="width: 100%;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
-{{--                    <h5 class="playlist-name" >{{$playlist[0]->playlist_name}}</h5>--}}
+                    <h5 class="playlist-name" >{{$playlists->playlist_name}}</h5>
                     <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn btn-secondary mt-3"><i class="fa fa-play" aria-hidden="true"></i> Play all songs</a>
                 </div>
+
                 <div class="col-md-9">
                     @foreach($playlist as $key => $song)
                         <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
