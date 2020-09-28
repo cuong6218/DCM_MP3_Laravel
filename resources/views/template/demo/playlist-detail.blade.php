@@ -40,16 +40,16 @@
                                     <img src="{{asset('storage/'.$song->image)}}" alt="">
                                 </div>
                                 <div class="shows-name">
-                                    <h6>{{$song->song_name}}</h6>
-                                    <p>{{$song->singer->singer_name}}</p>
+                                    <a href="{{route('home2.show',$song->id)}}"><h6>{{$song->song_name}} </h6></a>
+                                    <a href="{{route('home2.song-singer',$song->singer->id)}}"><p>{{$song->singer->singer_name}}</p></a>
                                 </div>
                             </div>
                             <div class="music-play-icon playlist_delete">
                                 <audio controls>
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
-                                <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
                             </div>
+                            <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>
                         </div>
                     @endforeach
 
@@ -65,8 +65,8 @@
                                             <img src="{{asset('storage/'.$song1->image)}}" alt="">
                                         </div>
                                         <div class="shows-name">
-                                            <h6>{{$song1->song_name}}</h6>
-                                            <p>{{$song1->singer->singer_name}}</p>
+                                            <a href="{{route('home2.show',$song->id)}}"><h6>{{$song1->song_name}}</h6></a>
+                                            <a href="{{route('home2.song-singer',$song->singer->id)}}"><p>{{$song1->singer->singer_name}}</p></a>
                                         </div>
                                     </div>
                                     <div class="music-play-icon playlist_delete">
