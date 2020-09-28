@@ -11,8 +11,12 @@ use App\Models\Dislike;
 use App\Models\Likes;
 use App\Models\Singer;
 use App\Models\Song;
+
+use App\Models\Tag;
+
 use http\Client\Response;
 use http\Params;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -40,8 +44,9 @@ class SongController extends Controller
     public function index()
     {
         //
+
         $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
-//        $songs = $this->songService->getTrash();
+
         return view('admin.songs.list', compact('songs'));
     }
 
@@ -56,7 +61,8 @@ class SongController extends Controller
         $albums = Album::all();
         $categorys = Category::all();
         $singers = Singer::all();
-        return view('admin.songs.create', compact('albums', 'categorys', 'singers'));
+        $tags = Tag::all();
+        return view('admin.songs.create', compact('albums', 'categorys', 'singers','tags'));
     }
 
     /**
@@ -90,6 +96,10 @@ class SongController extends Controller
         $song->album_id = $request->album_id;
         $song->category_id = $request->category_id;
         $song->save();
+        $song->tags()->sync($request->tags,false);
+
+
+
         return redirect()->route('songs.index');
     }
 
@@ -113,6 +123,7 @@ class SongController extends Controller
         $likeSong = Song::find($id);
         $likeCtr = Likes::where(['song_id' => $likeSong->id])->count();
         $dislikeCtr = Dislike::where(['song_id' => $likeSong->id])->count();
+        $song = Song::findOrFail($id);
 
         $comments = DB::table('songs')
             ->join('comments', 'songs.id', 'comments.song_id')
@@ -129,7 +140,7 @@ class SongController extends Controller
             ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail', compact('shows', 'likeCtr', 'dislikeCtr', 'comments'));
+        return view('template.detail', compact('shows', 'likeCtr', 'dislikeCtr', 'comments','song'));
 
     }
 
@@ -142,6 +153,11 @@ class SongController extends Controller
     public function edit($id)
     {
         //
+        $song = Song::findOrFail($id);
+        $singer = Singer::all();
+        $albums = Album::all();
+        $tags = Tag::all();
+        return view('admin.songs.edit', compact('song','singer','albums'));
     }
 
     /**
@@ -183,23 +199,24 @@ class SongController extends Controller
         return view('template.demo.detail-singer', compact('lists'));
 
     }
+
     public function showSearch(Request $request)
     {
         if ($request->server) {
             $query = $request->server->get('PATH_INFO');
-            $query = str_replace('/songs/search/','',$query);
+            $query = str_replace('/songs/search/', '', $query);
 
-        $songs =  DB::table('songs')
-            ->where('song_name', 'LIKE', "%{$query}%")
-            ->get();
-            $singers =  DB::table('singers')
+            $songs = DB::table('songs')
+                ->where('song_name', 'LIKE', "%{$query}%")
+                ->get();
+            $singers = DB::table('singers')
                 ->where('singer_name', 'LIKE', "%{$query}%")
                 ->get();
-            $playlists =  DB::table('playlists')
+            $playlists = DB::table('playlists')
                 ->where('playlist_name', 'LIKE', "%{$query}%")
                 ->get();
-        return view('template.demo.search-song',compact('songs','singers','query','playlists'));
-    }
+            return view('template.demo.search-song', compact('songs', 'singers', 'query', 'playlists'));
+        }
     }
 
 
@@ -207,30 +224,37 @@ class SongController extends Controller
     {
         if ($request->query) {
             $query = $request->query('name');
-            $data = DB::table(DB::raw('songs' . ',' . 'singers'.','.'playlists'))
-                ->where('song_name', 'LIKE', "%{$query}%")->limit(2)
-                ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(3)
-                ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(3)
+            $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
+                ->where('song_name', 'LIKE', "%{$query}%")
+                ->orWhere('singer_name', 'LIKE', "%{$query}%")
+                ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(1)
                 ->get();
             $output = '<ul class="dropdown-menu" style="display: block;width: 84% ">';
             foreach ($data as $row) {
-                $output .= '<li style="margin-left: 10px;">';
-                $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
-                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->song_name . '<i style="font-size: 12px;font-weight: normal">-trong bài hát</i></p>';
-                $output .= '</a></li>';
-                $output .= '<li style="margin-left: 10px">';
-                $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
-                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->singer_name . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
-                $output .= '</a></li>';
-                $output .= '<li style="margin-left: 10px">';
-                $output .= '<a href="' . route('home2.show-search', $row->playlist_name) . '">';
-                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->playlist_name . '<i style="font-size: 12px;font-weight: normal">-trong playlist</i></p>';
-                $output .= '</a></li>';
+                    $output .= '<li style="margin-left: 10px;">';
+                    $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
+                    $output .= '<p style="font-size: 14px;font-weight: bold">'
+                        . $row->song_name
+                        . '<i style="font-size: 12px;font-weight: normal">-trong bài hát</i></p>';
+                    $output .= '</a></li>';
+                    $output .= '<li style="margin-left: 10px">';
+                    $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
+                    $output .= '<p style="font-size: 14px;font-weight: bold">'
+                        . $row->singer_name
+                        . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
+                    $output .= '</a></li>';
+                    $output .= '<li style="margin-left: 10px">';
+                    $output .= '<a href="' . route('home2.show-search', $row->playlist_name) . '">';
+                    $output .= '<p style="font-size: 14px;font-weight: bold">'
+                        . $row->playlist_name
+                        . '<i style="font-size: 12px;font-weight: normal">-trong playlist</i></p>';
+                    $output .= '</a></li>';
             }
             $output .= '</ul>';
             echo $output;
         }
     }
+
     function like($id)
     {
         $loggedin_user = Auth::user()->id;

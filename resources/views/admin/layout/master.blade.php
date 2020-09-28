@@ -9,12 +9,19 @@
     <meta name="author" content=""/>
     <base href="{{asset('/')}}">
     <title>Dashboard - SB Admin</title>
-
+    <link href="/tag/css/select2.css" rel="stylesheet"/>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
           crossorigin="anonymous"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
             crossorigin="anonymous"></script>
     <link href="/server/css/styles.css" rel="stylesheet"/>
+    <style>
+        #new-tag{
+            width: 100%;
+        }
+    </style>
+    @toastr_css
+
 </head>
 <body class="sb-nav-fixed">
 
@@ -77,6 +84,10 @@
                         <div class="sb-nav-link-icon"><i class="fab fa-app-store"></i></div>
                         Songs
                     </a>
+                    <a class="nav-link" href="{{route('tags.create')}}">
+                        <div class="sb-nav-link-icon"><i class="fab fa-app-store"></i></div>
+                        Tags
+                    </a>
 
                     <a class="nav-link" href="{{route('browser.pending')}}">
 
@@ -120,6 +131,9 @@
 {{--        </footer>--}}
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
@@ -134,5 +148,12 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="/server/assets/demo/datatables-demo.js"></script>
+<script src="/tag/js/select2.js"></script>
+<script src="/tag/js/select2.full.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>
 </body>
 </html>
