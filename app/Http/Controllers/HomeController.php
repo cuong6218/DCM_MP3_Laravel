@@ -42,7 +42,8 @@ class HomeController extends Controller
     function showListSinger()
     {
         $singers = DB::table('singers')->select('*')->orderBy('id', 'desc')->get();
-        return view('template.demo.list-singer', compact('singers'));
+        $singerView = DB::select('SELECT singers.*, COUNT(songs.views) AS luot_nghe FROM singers INNER JOIN songs ON singers.id = songs.singer_id GROUP BY songs.singer_id');
+        return view('template.demo.list-singer', compact('singers', 'singerView'));
     }
 
     function showListSong()
