@@ -260,14 +260,7 @@
                 alertify.success('Delete Success');
             }
         })
-
-
-
-
     });
-
-
-
 </script>
 <script>
 
@@ -275,7 +268,7 @@
     $(document).ready(function(){
 
         $('#song_name').keyup(function(){
-            let query = $(this).val();
+            let query = $(this).val().toLowerCase();
             if(query !== '')
             {
                 let keyword = $('input[name="keyword"]').val();
@@ -296,10 +289,13 @@
                         $('#songList').html(data);
                     }
                 });
+                $("body").click(function(){
+                    $("#songList").hide();
+                });
             }
         });
 
-        $(document).on('click', 'li', function(){
+        $(document).on('keyup', 'li', function(){
             $('#song_name').val($(this).text());
             $('#songList').fadeOut();
         });
