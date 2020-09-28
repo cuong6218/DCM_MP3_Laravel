@@ -15,7 +15,11 @@
         "laravel/framework": "^8.0",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+        "ext-mysqli": "*",
+        "ext-http": "*",
+        "ext-dom": "*",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

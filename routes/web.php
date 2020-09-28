@@ -50,6 +50,7 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
         Route::post('/edit/{id}',[\App\Http\Controllers\SongController::class,'update'])->name('songs.update');
         Route::get('/destroy/{id}',[\App\Http\Controllers\SongController::class,'softDelete'])->name('songs.softDelete');
 
+
     });
 
 
@@ -81,7 +82,8 @@ Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbum
 Route::get('singer',[\App\Http\Controllers\HomeController::class, 'showListSinger'])->name('home2.singer');
 Route::get('singer/{id}',[\App\Http\Controllers\SongController::class, 'showListSongSinger'])->name('home2.song-singer');
 Route::get('songs',[\App\Http\Controllers\HomeController::class, 'showListSong'])->name('home2.song');
-
+Route::get('songs/search/{name}',[\App\Http\Controllers\SongController::class,'showSearch'])->name('home2.show-search');
+Route::get('/search', [\App\Http\Controllers\SongController::class,'search'])->name('songs.search');
 
 Route::prefix('users')->group(function (){
     Route::get('register',[\App\Http\Controllers\UserController::class,'indexRegister'])->name('users.register');
@@ -125,7 +127,6 @@ Route::prefix('profile')->middleware('auth')->group(function (){
 
 
 });
-
 
 Route::get('/auth/redirect/{provider}', [\App\Http\Controllers\SocialController::class,'redirect']);
 

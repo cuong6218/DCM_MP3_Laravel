@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+
+    <!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="UTF-8">
@@ -73,6 +74,10 @@
             margin-top: 15px;
             margin-bottom: 5px;
         }
+
+        .has-search .form-control {
+            padding-left: 2.375rem;
+
         .empty-playlist {
             background-color: red;
             cursor: pointer;
@@ -98,11 +103,19 @@
             color:red;
             bottom: 5%;
             right: 0;
-
         }
 
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;}
     </style>
-
 </head>
 
 <body>
@@ -132,6 +145,17 @@
                     </div>
 
                     <!-- Menu -->
+
+                    <!-- Search box. -->
+                    <div class="form-group has-search">
+                        {{ csrf_field() }}
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />
+                        <div style="width: 120% ;position: relative " id="songList">
+                        </div>
+                        <div style="position: absolute; height: 6px; right: 2px; bottom: 2px; left: 2px; border-radius: 3px;"></div>
+                    </div>
+
                     <div class="classy-menu">
 
                         <!-- close btn -->
@@ -141,6 +165,7 @@
 
                         <!-- Nav Start -->
                         <div class="classynav">
+
                             <ul>
                                 <li><a href="{{route('home2.index')}}">Home Page</a></li>
                                 <li><a href="{{route('home2.albums')}}">List Albums</a></li>
@@ -239,8 +264,46 @@
 
     });
 
+
+
 </script>
 
+
+    <!--search song ajax-->
+    $(document).ready(function(){
+
+        $('#song_name').keyup(function(){
+            let query = $(this).val();
+            if(query !== '')
+            {
+                let keyword = $('input[name="keyword"]').val();
+                console.log(keyword)
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: "{{route('songs.search')}}",
+                    method:"GET",
+                    data:{name:keyword},
+                    success:function(data){
+                        console.log(this.url)
+                        $('#songList').fadeIn();
+                        $('#songList').html(data);
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', 'li', function(){
+            $('#song_name').val($(this).text());
+            $('#songList').fadeOut();
+        });
+
+    });
+</script>
 
 
 
