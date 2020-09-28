@@ -85,7 +85,7 @@
                         <h2 data-animation="fadeInUp" data-delay="100ms">{{$shows[0]->singer_name}}</h2>
                         <div class="tags">
                             @foreach($song->tags as $tag)
-                                <a href="{{route('tags.index',$tag->id)}}" class="label label-default" style="background-color: black; padding: 5px; color: white; font-weight: bold; margin-left: 2px;">{{$tag->name}}</>
+                                <a href="{{route('tags.index',$tag->id)}}" class="label label-default" style="background-color: black; padding: 5px; color: white; font-weight: bold; margin-left: 2px;">{{$tag->name}}</a>
                             @endforeach
                         </div>
                         <h5 data-animation="fadeInUp" data-delay="300ms">{{$shows[0]->description}}</h5>
@@ -196,24 +196,6 @@
 
 
     </div>
-
-
-  <!-- jQuery js -->
-  <script src="js/jquery.min.js"></script>
-  <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
-  <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- All js -->
-  <script src="js/poca.bundle.js"></script>
-  <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
-<!--icon search-->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
-        integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY="
-        crossorigin="anonymous"/>
-
 </section>
 @jquery
 @toastr_js
