@@ -224,6 +224,7 @@ class SongController extends Controller
     {
         if ($request->query) {
             $query = $request->query('name');
+
             $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
                 ->where('song_name', 'LIKE', "%{$query}%")
                 ->orWhere('singer_name', 'LIKE', "%{$query}%")
