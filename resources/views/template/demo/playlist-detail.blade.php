@@ -24,8 +24,8 @@
     <div class="upcoming-shows-area section-padding-100">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 text-center">
-                    <img style="width: 100%;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
+                <div class="col-md-3 text-center box-image-playlist">
+                    <img style="width: 100%;" src="{{asset('storage/images/playlist-default.jpg')}}" alt="no image">
                     <h5 class="playlist-name" >{{$playlists->playlist_name}}</h5>
                     <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn btn-secondary mt-3"><i class="fa fa-play" aria-hidden="true"></i> Play all songs</a>
                 </div>
@@ -60,38 +60,39 @@
 {{--                            <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>--}}
                         </div>
                     @endforeach
-
+                </div>
                     <h1 class="text-light">Song Suggest</h1>
+                            <div class="row">
+                                @foreach($songs2 as $key => $song1)
+                                    <div class="col-md-6">
+                                        <div class="single-upcoming-shows  d-flex align-items-center flex-wrap">
+                                            <div class="shows-date col-md-3">
+                                                <h2>{{++$key}}<span></span></h2>
+                                            </div>
+                                            <div class="shows-desc d-flex align-items-center col-md-6 box-content">
+                                                <div class="shows-img">
+                                                    <img src="{{asset('storage/'.$song1->image)}}" alt="">
+                                                </div>
+                                                <div class="shows-name">
+                                                    <h6>{{$song1->song_name}}</h6>
+                                                    <p>{{$song1->singer->singer_name}}</p>
+                                                </div>
+                                            </div>
 
-                            @foreach($songs2 as $key => $song1)
-                                <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
-                                    <div class="shows-date">
-                                        <h2>{{++$key}}<span></span></h2>
-                                    </div>
-                                    <div class="shows-desc d-flex align-items-center">
-                                        <div class="shows-img">
-                                            <img src="{{asset('storage/'.$song1->image)}}" alt="">
-                                        </div>
-                                        <div class="shows-name">
-                                        <h6>{{$song1->song_name}}</h6>
-                                          <p>{{$song1->singer->singer_name}}</p>
+                                            <div class="col-md-3">
+                                                <a href="{{route('playlists.addSong',[$playlists->id, $song1->id])}}" class="btn text-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="music-play-icon playlist_delete">
-{{--                                        <audio controls>--}}
-{{--                                            <source src="{{asset('storage/'.$song1->audio)}}">--}}
-{{--                                        </audio>--}}
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <a href="{{route('playlists.addSong',[$playlists->id, $song1->id])}}" class="btn text-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            @endforeach
+
+                                @endforeach
+                            </div>
+
 
 
                 </div>
             </div>
-        </div>
+
     </div>
     <!-- ##### CTA Area Start ##### -->
     <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/bg-8.jpg);">

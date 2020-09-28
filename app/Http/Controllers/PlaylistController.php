@@ -25,7 +25,7 @@ class   PlaylistController extends Controller
     public function index()
     {
         $playlists = $this->playlistService->getDesc();
-        $songs = $this->songService->getTrash();
+        $songs = $this->songService->getAll();
 
 
 

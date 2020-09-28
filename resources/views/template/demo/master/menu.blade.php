@@ -147,19 +147,7 @@
                     </div>
 
                     <!-- Menu -->
-
-                    <!-- Search box. -->
-                    <div class="form-group has-search" style="margin-top: 12px">
-                        {{ csrf_field() }}
-                        <i class="fa fa-search form-control-feedback"></i>
-                        <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />
-                        <div style="width: 120% ;position: relative " id="songList">
-                        </div>
-                        <div style="position: absolute; height: 6px; right: 2px; bottom: 2px; left: 2px; border-radius: 3px;"></div>
-                    </div>
-
                     <div class="classy-menu">
-
                         <!-- close btn -->
                         <div class="classycloseIcon">
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
@@ -174,6 +162,13 @@
                                 <li><a href="{{route('home2.singer')}}">List Singer</a></li>
                                 <li><a href="{{route('home2.song')}}">List Songs</a></li>
                             </ul>
+                            <!-- Search box. -->
+                            <div class="form-group has-search" style="margin-top: 12px">
+                                {{ csrf_field() }}
+                                <i class="fa fa-search form-control-feedback"></i>
+                                <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />
+                            </div>
+
 
                             <!-- Social Button -->
                             @if(\Illuminate\Support\Facades\Auth::check())
@@ -204,6 +199,9 @@
                             @endif
                         </div>
                         <!-- Nav End -->
+                        <div style="position: relative;top: -19px " id="songList">
+                        </div>
+                        <div style="position: absolute; height: 6px; right: 2px; bottom: 2px; left: 2px; border-radius: 3px;"></div>
                     </div>
                 </nav>
             </div>
@@ -302,10 +300,6 @@
 
     });
 </script>
-
-
-
-
 
 </body>
 
