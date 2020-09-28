@@ -27,7 +27,7 @@
         @foreach($singers as $singer)
             <div class="col-md-3 mt-5 mb-3">
 {{--                width: 18rem; height: 400px;--}}
-            <div class="card" style=" background-color: #231238">
+            <div class="card-singer">
                 <img class="card-img-top rounded-circle " src="{{asset('storage/'.$singer->image)}}" alt="Card image cap">
                 <div class="card-body">
                     <a href="{{route('home2.song-singer',$singer->id)}}"><h5 class="card-title text-center text-light">{{$singer->singer_name}}</h5></a>
