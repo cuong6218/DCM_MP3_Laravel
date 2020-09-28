@@ -64,5 +64,10 @@ class AlbumSeeder extends Seeder
             'album_name' => 'BlackPink Arena',
             'image' => 'images/G3sgtQSydn4ZkeBa1dmE4ihjGoSTpxdSb2cblqlx.jpeg',
         ]);
+        DB::table('albums')->insert([
+            'id' => 11,
+            'album_name' => 'Sẽ có người cần anh (Single)',
+            'image' => 'images/CUlqpjsHllOC0lUblBYOyfUITLbeDEJDZFtarE7n.jpeg',
+        ]);
     }
 }
