@@ -6,6 +6,7 @@ use App\Http\Services\SingerService;
 use App\Models\Singer;
 use Illuminate\Http\Request;
 use App\Http\Requests\SingerRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class SingerController extends Controller
@@ -99,4 +100,5 @@ class SingerController extends Controller
         $this->singerService->destroy($id);
         return redirect()->route('singers.index');
     }
+
 }
