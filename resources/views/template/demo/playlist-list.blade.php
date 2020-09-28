@@ -150,7 +150,7 @@
     <div class="form-popup" id="myForm">
         <form action="{{route('playlist.store')}}" method="post" class="form-container">
             @csrf
-            <h1>Add new playlist</h1>
+            <h3 class="text-center">Add new playlist</h3>
             <input type="text" placeholder="New playlist" name="playlist_name" required>
 {{--            @foreach($songs as $song)--}}
 {{--                <div class="checkbox">--}}
