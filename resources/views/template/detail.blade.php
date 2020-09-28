@@ -232,8 +232,8 @@
                 method: 'POST',
                 success: function (result) {
                     console.log(result)
-                    {{--let html = '<a><i class="fa fa-headphones" aria-hidden="true"></i> Listen ({{++$shows[0]->views}})</a>';--}}
-                    {{--$('#test').html(html);--}}
+                    let html = '<a><i class="fa fa-headphones" aria-hidden="true"></i> Listen ( {{++$shows[0]->views}} )</a>';
+                    $('#test').html(html);
 
                 }
             })
