@@ -15,21 +15,14 @@
                     <p class="text-danger">{{$errors->first('album_name')}}</p>
                 @endif
             </div>
-{{--            <div class="form-group">--}}
-{{--                <label for="exampleFormControlFile1">Albums Image: </label>--}}
-{{--                <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">--}}
-{{--                @if($errors->has('image'))--}}
-{{--                    <p class="text-danger">{{$errors->first('image')}}</p>--}}
-{{--                @endif--}}
-{{--            </div>--}}
-            <div class="custom-file">
-                <input name="image" type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Choose file</label>
-                @if($errors->has('image'))
-                    <p class="text-danger">{{$errors->first('image')}}</p>
-                @endif
-            </div>
-            <br><br>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Choose file</label>
+                    <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                    @if($errors->has('image'))
+                        <p class="text-danger">{{$errors->first('image')}}</p>
+                    @endif
+                </div>
+
             <button type="submit" class="btn btn-info">Add Albums</button>
             <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
         </form>

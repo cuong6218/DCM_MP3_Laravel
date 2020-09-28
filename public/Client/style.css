@@ -2013,3 +2013,17 @@ img {
     position: relative;
     transform: translate(-50%, 10px);
 }
+.single-upcoming-shows{
+    margin: 20px 0;
+}
+
+.shows-desc.d-flex.align-items-center.col-md-6.box-content{
+    max-width: 70% !important;
+    width: 50%;
+    flex: 0 0 65%;
+}
+.box-image-playlist h5{
+    margin-top: 20px;
+    bottom: 0;
+    color: white;
+}
