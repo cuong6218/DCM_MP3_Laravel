@@ -28,6 +28,7 @@
                 @endif
             </div>
 
+
             <button type="submit" class="btn btn-info">Update Albums</button>
             <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
         </form>

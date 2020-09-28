@@ -11,6 +11,7 @@ use App\Models\Dislike;
 use App\Models\Likes;
 use App\Models\Singer;
 use App\Models\Song;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +39,7 @@ class SongController extends Controller
         //
 //        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
         $songs = $this->songService->getTrash();
+
         return view('admin.songs.list', compact('songs'));
     }
 
@@ -52,7 +54,8 @@ class SongController extends Controller
         $albums = Album::all();
         $categorys = Category::all();
         $singers = Singer::all();
-        return view('admin.songs.create', compact('albums', 'categorys', 'singers'));
+        $tags = Tag::all();
+        return view('admin.songs.create', compact('albums', 'categorys', 'singers','tags'));
     }
 
     /**
@@ -86,6 +89,10 @@ class SongController extends Controller
         $song->album_id = $request->album_id;
         $song->category_id = $request->category_id;
         $song->save();
+        $song->tags()->sync($request->tags,false);
+
+
+
         return redirect()->route('songs.index');
     }
 
@@ -109,6 +116,7 @@ class SongController extends Controller
         $likeSong = Song::find($id);
         $likeCtr = Likes::where(['song_id' => $likeSong->id])->count();
         $dislikeCtr = Dislike::where(['song_id' => $likeSong->id])->count();
+        $song = Song::findOrFail($id);
 
         $comments = DB::table('songs')
             ->join('comments', 'songs.id', 'comments.song_id')
@@ -125,7 +133,7 @@ class SongController extends Controller
             ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail', compact('shows', 'likeCtr', 'dislikeCtr', 'comments'));
+        return view('template.detail', compact('shows', 'likeCtr', 'dislikeCtr', 'comments','song'));
 
     }
 
@@ -138,6 +146,11 @@ class SongController extends Controller
     public function edit($id)
     {
         //
+        $song = Song::findOrFail($id);
+        $singer = Singer::all();
+        $albums = Album::all();
+        $tags = Tag::all();
+        return view('admin.songs.edit', compact('song','singer','albums'));
     }
 
     /**

@@ -10,7 +10,8 @@
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Songs name:</label>
-                <input value="{{old('song_name')}}" name="song_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input value="{{old('song_name')}}" name="song_name" type="text" class="form-control"
+                       id="exampleInputEmail1" aria-describedby="emailHelp">
                 @if($errors->has('song_name'))
                     <p class="text-danger">{{$errors->first('song_name')}}</p>
                 @endif
@@ -18,7 +19,8 @@
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Songs author:</label>
-                <input value="{{old('author')}}" name="author" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input value="{{old('author')}}" name="author" type="text" class="form-control" id="exampleInputEmail1"
+                       aria-describedby="emailHelp">
                 @if($errors->has('author'))
                     <p class="text-danger">{{$errors->first('author')}}</p>
                 @endif
@@ -26,7 +28,8 @@
 
             <div class="form-group">
                 <label for="exampleFormControlFile1">Songs Image: </label>
-                <input value="{{old('image')}}" name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input value="{{old('image')}}" name="image" type="file" class="form-control-file"
+                       id="exampleFormControlFile1">
                 @if($errors->has('image'))
                     <p class="text-danger">{{$errors->first('image')}}</p>
                 @endif
@@ -34,7 +37,8 @@
 
             <div class="form-group">
                 <label for="exampleFormControlFile1">Songs Audio: </label>
-                <input value="{{old('audio')}}" name="audio" type="file" class="form-control-file" id="exampleFormControlFile1">
+                <input value="{{old('audio')}}" name="audio" type="file" class="form-control-file"
+                       id="exampleFormControlFile1">
                 @if($errors->has('audio'))
                     <p class="text-danger">{{$errors->first('audio')}}</p>
                 @endif
@@ -67,8 +71,21 @@
                 </select>
             </div>
 
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Tags:</label>
+                <select class="form-control js-example-basic-multiple" name="tags[]" multiple="multiple">
+                    @foreach($tags as $key => $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
             <button type="submit" class="btn btn-info">Add Songs</button>
-            <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
+            <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel
+            </button>
         </form>
     </div>
+    <br><br>
 @endsection
