@@ -26,7 +26,7 @@
                 <!-- Single Music Player -->
                 @foreach($songs as $song)
                     <div class="single-music-player col-sm-3">
-                        <img style="width: 100%; height: 100%" src="{{asset('storage/'.$song->image)}}" alt="">
+                        <img style="width: 255px; height: 255px" src="{{asset('storage/'.$song->image)}}" alt="">
                         <div class="music-info d-flex justify-content-between">
                             <div class="music-text">
                                <a href="{{route('home2.show',$song->id)}}"> <h5>{{$song->song_name}}</h5></a>
