@@ -77,6 +77,7 @@
 
         .has-search .form-control {
             padding-left: 2.375rem;
+        }
 
         .empty-playlist {
             background-color: red;
@@ -94,9 +95,9 @@
         }
 
 
-        .fa-thumbs-o-up{
-         margin-left: 10px;
-
+        .fa-thumbs-o-up {
+            margin-left: 10px;
+        }
 
         .playlist-name{
             position: relative;
@@ -149,7 +150,7 @@
                     <!-- Search box. -->
                     <div class="form-group has-search">
                         {{ csrf_field() }}
-                        <span class="fa fa-search form-control-feedback"></span>
+                        <i class="fa fa-search form-control-feedback"></i>
                         <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />
                         <div style="width: 120% ;position: relative " id="songList">
                         </div>
@@ -267,7 +268,7 @@
 
 
 </script>
-
+<script>
 
     <!--search song ajax-->
     $(document).ready(function(){
