@@ -204,25 +204,26 @@ class SongController extends Controller
     {
         if ($request->query) {
             $query = $request->query('name');
-            $data = DB::table(DB::raw('songs'.','.'singers'))
+            $data = DB::table(DB::raw('songs' . ',' . 'singers'))
                 ->where('song_name', 'LIKE', "%{$query}%")->limit(2)
                 ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(3)
                 ->get();
 
             $output = '<ul class="dropdown-menu" style="display: block;width: 84% ">';
             foreach ($data as $row) {
-                    $output .= '<li style="margin-left: 10px;">';
-                    $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
-                    $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->song_name . '<i style="font-size: 12px;font-weight: normal">-trong bài hát</i></p>';
-                    $output .= '</a></li>';
-                    $output .= '<li style="margin-left: 10px">';
-                    $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
-                    $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->singer_name . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
-                    $output .= '</a></li>';
+                $output .= '<li style="margin-left: 10px;">';
+                $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
+                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->song_name . '<i style="font-size: 12px;font-weight: normal">-trong bài hát</i></p>';
+                $output .= '</a></li>';
+                $output .= '<li style="margin-left: 10px">';
+                $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
+                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->singer_name . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
+                $output .= '</a></li>';
             }
             $output .= '</ul>';
             echo $output;
         }
+    }
     function like($id)
     {
         $loggedin_user = Auth::user()->id;
