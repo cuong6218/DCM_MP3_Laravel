@@ -71,8 +71,9 @@
                                 </div>
                             </div>
                         @empty:
-
-                        <h5 style="color: white">not found</h5>
+                        <div class="mt-4">
+                            <h5 style="color: white">not found</h5>
+                        </div>
                         @endforelse
                     </div>
                 </div>
