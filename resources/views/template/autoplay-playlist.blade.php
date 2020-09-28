@@ -22,7 +22,7 @@
         }
 
         #container-1 {
-            background-color: white;
+            /*background-color: white;*/
             margin-top: 30px;
         }
 
@@ -46,9 +46,9 @@
         #th-name2{
             padding-top: 11px;
         }
-        #back-add{
-            margin-left: 110px;
-        }
+        /*#back-add{*/
+        /*    margin-left: 110px;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -61,7 +61,7 @@
             <table class="table" id="table-1">
                 <tbody>
                 <tr>
-                    <td class="table-info" colspan="2">Description: {{$playlists[0]->description}}</td>
+                    <td class="table-info" colspan="2">{{$playlists[0]->description}}</td>
                 </tr>
                 <tr>
 
@@ -88,10 +88,11 @@
         </tr>
         </thead>
     </table>
+    <button  class="btn btn-secondary " onclick="window.history.go(-1); return false;">Cancel</button>
 </div>
-<button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
 
 
+{{--id="back-add"--}}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

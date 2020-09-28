@@ -19,16 +19,19 @@
     <!-- bg gradients -->
     <div class="bg-gradients"></div>
     <!-- ##### Breadcumb Area End ##### -->
-
+    <div class="background-black">
+    <div class="container">
     <div  class="musica-music-artists-area d-flex flex-wrap clearfix">
         <!-- Music Search -->
-        @foreach($singers as $singer)
-            <div class="col-md-3 mt-3 mb-3">
-            <div class="card" style="width: 18rem; height: 400px">
-                <img class="card-img-top rounded-circle " style="width: 280px; height: 280px" src="{{asset('storage/'.$singer->image)}}" alt="Card image cap">
+
+        @foreach($singerView as $singer)
+            <div class="col-md-3 mt-5 mb-3">
+{{--                width: 18rem; height: 400px;--}}
+            <div class="card-singer">
+                <img class="card-img-top rounded-circle " src="{{asset('storage/'.$singer->image)}}" alt="Card image cap">
                 <div class="card-body">
-                    <a href="{{route('home2.song-singer',$singer->id)}}"><h5 class="card-title text-center">{{$singer->singer_name}}</h5></a>
-                    <p class="card-text text-center">166K interested</p>
+                    <a href="{{route('home2.song-singer',$singer->id)}}"><h5 class="card-title text-center text-light">{{$singer->singer_name}}</h5></a>
+                    <p class="card-text text-center text-light">{{$singer->luot_nghe}} interested</p>
                 </div>
             </div>
             </div>
@@ -43,7 +46,8 @@
 {{--            <br>--}}
         @endforeach
     </div>
-
+    </div>
+    </div>
     <!-- ##### CTA Area Start ##### -->
     <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/bg-8.jpg);">
         <div class="container">

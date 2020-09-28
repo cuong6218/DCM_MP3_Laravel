@@ -11,11 +11,18 @@ use App\Models\Dislike;
 use App\Models\Likes;
 use App\Models\Singer;
 use App\Models\Song;
+
 use App\Models\Tag;
+
+use http\Client\Response;
+use http\Params;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\Console\Input\Input;
 
 class SongController extends Controller
 {
@@ -61,7 +68,7 @@ class SongController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SongRequest $request)
@@ -156,7 +163,7 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      * @return \Illuminate\Http\Response
      */
@@ -192,7 +199,54 @@ class SongController extends Controller
         return view('template.demo.detail-singer', compact('lists'));
 
     }
+    public function showSearch(Request $request)
+    {
+        if ($request->server) {
+            $query = $request->server->get('PATH_INFO');
+            $query = str_replace('/songs/search/','',$query);
 
+        $songs =  DB::table('songs')
+            ->where('song_name', 'LIKE', "%{$query}%")
+            ->get();
+            $singers =  DB::table('singers')
+                ->where('singer_name', 'LIKE', "%{$query}%")
+                ->get();
+            $playlists =  DB::table('playlists')
+                ->where('playlist_name', 'LIKE', "%{$query}%")
+                ->get();
+        return view('template.demo.search-song',compact('songs','singers','query','playlists'));
+    }
+    }
+
+
+    public function search(Request $request)
+    {
+        if ($request->query) {
+            $query = $request->query('name');
+            $data = DB::table(DB::raw('songs' . ',' . 'singers'.','.'playlists'))
+                ->where('song_name', 'LIKE', "%{$query}%")->limit(2)
+                ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(3)
+                ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(3)
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display: block;width: 84% ">';
+            foreach ($data as $row) {
+                $output .= '<li style="margin-left: 10px;">';
+                $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
+                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->song_name . '<i style="font-size: 12px;font-weight: normal">-trong bài hát</i></p>';
+                $output .= '</a></li>';
+                $output .= '<li style="margin-left: 10px">';
+                $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
+                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->singer_name . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
+                $output .= '</a></li>';
+                $output .= '<li style="margin-left: 10px">';
+                $output .= '<a href="' . route('home2.show-search', $row->playlist_name) . '">';
+                $output .= '<p style="font-size: 14px;font-weight: bold">' . $row->playlist_name . '<i style="font-size: 12px;font-weight: normal">-trong playlist</i></p>';
+                $output .= '</a></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
     function like($id)
     {
         $loggedin_user = Auth::user()->id;
@@ -251,15 +305,7 @@ class SongController extends Controller
         }
         return redirect()->back();
 
-//    function choosePlaylist($id){
-//        $playlists = $this->playlistService->getAll();
-//        $song = $this->songService->show($id);
-//        return view('template.demo.playlist-song', compact('playlists', 'song'));
-//    }
-//    function addSong($playlist_id, $song_id){
-//        $this->songService->addSong($request, $id);
-//        return redirect()->route('playlist.index');
-//
-//    }
+
     }
+
 }

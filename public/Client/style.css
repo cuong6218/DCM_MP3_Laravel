@@ -1937,10 +1937,13 @@ img {
 .form-popup {
     display: none;
     position: fixed;
-    bottom: 20%;
-    right: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     border: 3px solid #f1f1f1;
-    z-index: 9;
+    z-index: 9999;
+    border-radius: 6px;
+
 }
 
 /* Add styles to the form container */
@@ -1993,4 +1996,20 @@ img {
 /*# sourceMappingURL=style.css.map */
 .playlist_delete .btn{
     font-size: 14px;
+}
+.background-black{
+    background-color: #0D0927;
+}
+.card-singer {
+    min-height: 350px;
+    width: 200px;
+    background-color: #231238;
+}
+.card-img-top{
+    width: 150px;
+    height: 150px;
+    left: 50%;
+    top: 50%;
+    position: relative;
+    transform: translate(-50%, 10px);
 }

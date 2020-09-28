@@ -7,7 +7,7 @@ use App\Http\Services\SongService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PlaylistController extends Controller
+class   PlaylistController extends Controller
 {
     protected $data = [];
     protected $playlistService;

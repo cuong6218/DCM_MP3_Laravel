@@ -26,9 +26,10 @@
             <div class="row">
                 <div class="col-md-3 text-center">
                     <img style="width: 100%;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
-{{--                    <h5 class="playlist-name" >{{$playlist[0]->playlist_name}}</h5>--}}
-                    <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn btn-success">Play all songs</a>
+                    <h5 class="playlist-name" >{{$playlists->playlist_name}}</h5>
+                    <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn btn-secondary mt-3"><i class="fa fa-play" aria-hidden="true"></i> Play all songs</a>
                 </div>
+
                 <div class="col-md-9">
                     @foreach($playlist as $key => $song)
                         <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
@@ -40,16 +41,23 @@
                                     <img src="{{asset('storage/'.$song->image)}}" alt="">
                                 </div>
                                 <div class="shows-name">
+
+{{--                                    <a href="{{route('home2.show',$song->id)}}"><h6>{{$song->song_name}} </h6></a>--}}
+{{--                                    <a href="{{route('home2.song-singer',$song->singer->id)}}"><p>{{$song->singer->singer_name}}</p></a>--}}
+
                                     <h6>{{$song->song_name}}</h6>
                                     <p>{{$song->singer_name}}</p>
+
                                 </div>
                             </div>
                             <div class="music-play-icon playlist_delete">
                                 <audio controls>
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
-                                <a href="{{route('playlists.deleteSong',[$song->playlist_id, $song->song_id])}}" onclick="return confirm('Are you sure?')" class="btn btn-info">Delete</a>
+
                             </div>
+                            <a href="{{route('playlists.deleteSong',[$song->playlist_id, $song->song_id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>
+{{--                            <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>--}}
                         </div>
                     @endforeach
 
@@ -65,8 +73,8 @@
                                             <img src="{{asset('storage/'.$song1->image)}}" alt="">
                                         </div>
                                         <div class="shows-name">
-                                            <h6>{{$song1->song_name}}</h6>
-                                            <p>{{$song1->singer->singer_name}}</p>
+                                        <h6>{{$song1->song_name}}</h6>
+                                          <p>{{$song1->singer->singer_name}}</p>
                                         </div>
                                     </div>
                                     <div class="music-play-icon playlist_delete">
