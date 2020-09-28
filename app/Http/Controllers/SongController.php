@@ -238,15 +238,7 @@ class SongController extends Controller
         }
         return redirect()->back();
 
-//    function choosePlaylist($id){
-//        $playlists = $this->playlistService->getAll();
-//        $song = $this->songService->show($id);
-//        return view('template.demo.playlist-song', compact('playlists', 'song'));
-//    }
-//    function addSong($playlist_id, $song_id){
-//        $this->songService->addSong($request, $id);
-//        return redirect()->route('playlist.index');
-//
-//    }
+
     }
+
 }
