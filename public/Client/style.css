@@ -2000,9 +2000,10 @@ img {
 .background-black{
     background-color: #0D0927;
 }
-.card {
+.card-singer {
     min-height: 350px;
     width: 200px;
+    background-color: #231238;
 }
 .card-img-top{
     width: 150px;
@@ -2011,5 +2012,4 @@ img {
     top: 50%;
     position: relative;
     transform: translate(-50%, 10px);
-
 }
