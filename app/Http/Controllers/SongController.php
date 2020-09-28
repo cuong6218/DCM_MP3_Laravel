@@ -44,8 +44,8 @@ class SongController extends Controller
     public function index()
     {
         //
-//        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
-        $songs = $this->songService->getTrash();
+
+        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
 
         return view('admin.songs.list', compact('songs'));
     }

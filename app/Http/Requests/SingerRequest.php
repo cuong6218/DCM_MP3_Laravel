@@ -25,7 +25,7 @@ class SingerRequest extends FormRequest
     {
         return [
             'singer_name' => 'required|min:2|max:20',
-            'description' => 'required'
+
         ];
     }
 }
