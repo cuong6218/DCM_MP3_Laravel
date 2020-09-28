@@ -19,9 +19,9 @@
     <!-- ##### Breadcumb Area End ##### -->
     <!-- ##### Header Area Start ##### -->
     <br><br><br><br>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
 
                 <table class="table">
                     <thead class="table-info">
@@ -41,12 +41,17 @@
                                 Musics</a></th>
                     </tr>
                     </thead>
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col"><a href="{{route('playlist.index',\Illuminate\Support\Facades\Auth::user()->id)}}">Playlists</a></th>
+                    </tr>
+                    </thead>
                 </table>
 
             </div>
 
 
-            <div class="col-sm-8">
+            <div class="col-sm-9">
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -62,7 +67,7 @@
                         <th scope="col">Audio</th>
                         <th scope="col">Image</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" colspan="2">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,6 +98,7 @@
                                         ">{{$music->status}}</a>
                                 </td>
 {{--                                <td><a href="{{route('profile.delete',$music->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure!')">Delete</a></td>--}}
+                                <td><a href="{{route('profile.musics.edit',$music->id)}}" class="btn btn-info">Edit</a></td>
                                 <td><a id="delete-music" data-id="{{$music->id}}" class="btn btn-danger">Delete</a></td>
 
                     </tbody>

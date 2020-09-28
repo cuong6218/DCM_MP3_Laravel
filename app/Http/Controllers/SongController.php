@@ -3,20 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SongRequest;
+use App\Http\Services\PlaylistService;
+use App\Http\Services\SongService;
 use App\Models\Album;
 use App\Models\Category;
+use App\Models\Dislike;
+use App\Models\Likes;
 use App\Models\Singer;
 use App\Models\Song;
 use http\Client\Response;
 use http\Params;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Input\Input;
 
 class SongController extends Controller
 {
+    protected $songService;
+    protected $playlistService;
+
+    public function __construct(SongService $songService,
+                                PlaylistService $playlistService)
+    {
+        $this->songService = $songService;
+        $this->playlistService = $playlistService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +40,8 @@ class SongController extends Controller
     public function index()
     {
         //
-        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
+//        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
+        $songs = $this->songService->getTrash();
         return view('admin.songs.list', compact('songs'));
     }
 
@@ -86,13 +102,25 @@ class SongController extends Controller
     public function show($id)
     {
         //
-        $views = 'song_' . $id;
-        if (!Session::has($views)) {
-            Song::where('id', $id)->increment('views');
-            Session::put($views, 1);
-        } else {
-            Session::forget($views);
-        }
+//        $views = 'song_' . $id;
+//        if (!Session::has($views)) {
+//            Song::where('id', $id)->increment('views');
+//            Session::put($views, 1);
+//        } else {
+//            Session::forget($views);
+//        }
+
+        $likeSong = Song::find($id);
+        $likeCtr = Likes::where(['song_id' => $likeSong->id])->count();
+        $dislikeCtr = Dislike::where(['song_id' => $likeSong->id])->count();
+
+        $comments = DB::table('songs')
+            ->join('comments', 'songs.id', 'comments.song_id')
+            ->join('users', 'comments.user_id', 'users.id')
+            ->select('songs.*', 'comments.*', 'users.name')
+            ->where('songs.id', '=', "$id")
+            ->orderBy('comments.id', 'desc')
+            ->simplePaginate(5);
 
         $shows = DB::table('singers')
             ->join('songs', 'singers.id', 'songs.singer_id')
@@ -101,7 +129,7 @@ class SongController extends Controller
             ->where('songs.id', '=', "$id")
             ->get();
 
-        return view('template.detail', compact('shows'));
+        return view('template.detail', compact('shows', 'likeCtr', 'dislikeCtr', 'comments'));
 
     }
 
@@ -171,6 +199,7 @@ class SongController extends Controller
     }
     }
 
+
     public function search(Request $request)
     {
         if ($request->query) {
@@ -194,6 +223,65 @@ class SongController extends Controller
             $output .= '</ul>';
             echo $output;
         }
+    function like($id)
+    {
+        $loggedin_user = Auth::user()->id;
+        $like_user = Likes::where(['user_id' => $loggedin_user, 'song_id' => $id])->first();
+
+        if (empty($like_user->user_id)) {
+            $user_id = Auth::user()->id;
+            $email = Auth::user()->email;
+            $song_id = $id;
+            $like = new Likes();
+            $like->user_id = $user_id;
+            $like->email = $email;
+            $like->song_id = $song_id;
+            $like->save();
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+
+    }
+
+    function disLike($id)
+    {
+        $loggedin_user = Auth::user()->id;
+        $like_user = Dislike::where(['user_id' => $loggedin_user, 'song_id' => $id])->first();
+
+        if (empty($like_user->user_id)) {
+            $user_id = Auth::user()->id;
+            $email = Auth::user()->email;
+            $song_id = $id;
+            $like = new Dislike();
+            $like->user_id = $user_id;
+            $like->email = $email;
+            $like->song_id = $song_id;
+            $like->save();
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+
+    }
+
+    function softDelete($id)
+    {
+        $this->songService->sortDelete($id);
+        return back();
+    }
+
+
+    function listen($id)
+    {
+        $views = 'song_' . $id;
+        if (!Session::has($views)) {
+            Song::where('id', $id)->increment('views');
+            Session::put($views, 1);
+        }
+        return redirect()->back();
+
+
     }
 
 }

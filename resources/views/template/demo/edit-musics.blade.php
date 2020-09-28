@@ -11,7 +11,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <h2>Profile</h2>
+            <h2>Edit Song</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -40,52 +40,71 @@
                     <tr>
                         <th scope="col"><a href="{{route('profile.pending',\Illuminate\Support\Facades\Auth::user()->id)}}">List Musics</a></th>
                     </tr>
-
-                    </thead>
-                    <thead class="table-info">
-                    <tr>
-                        <th scope="col"><a href="{{route('playlist.index',\Illuminate\Support\Facades\Auth::user()->id)}}">Playlists</a></th>
-                    </tr>
                     </thead>
                 </table>
             </div>
 
 
             <div class="col-sm-9">
-
-                <form method="post" action="{{route('profile.users.update',\Illuminate\Support\Facades\Auth::user()->id)}}">
+                <form method="post" enctype="multipart/form-data" action="{{route('profile.musics.update',$music->id)}}">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">User Name</label>
-                        <input name="name" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @if($errors->has('name'))
-                            <p class="text-danger">{{$errors->first('name')}}</p>
+                        <label for="exampleInputEmail1">Songs name:</label>
+                        <input value="{{$music->music_name}}" name="music_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @if($errors->has('music_name'))
+                            <p class="text-danger">{{$errors->first('music_name')}}</p>
+                        @endif
+                    </div>
+
+                    <img src="{{asset('storage/'.$music->image)}}" style="width: 100px; height: 100px">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Songs Image: </label>
+                        <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                        @if($errors->has('image'))
+                            <p class="text-danger">{{$errors->first('image')}}</p>
+                        @endif
+                    </div>
+
+{{--                    <div class="form-group">--}}
+{{--                        <label for="exampleFormControlFile1">Songs Audio: </label>--}}
+{{--                        <input name="audio" type="file" class="form-control-file" id="exampleFormControlFile1">--}}
+{{--                        @if($errors->has('audio'))--}}
+{{--                            <p class="text-danger">{{$errors->first('audio')}}</p>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Songs Singer:</label>
+                        <select name="singer" class="form-control" id="exampleFormControlSelect1">
+                            @foreach($singers as $singer)
+                                <option @if($singer->id == $music->singer) selected @endif value="{{$singer->id}}">{{$singer->singer_name}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('singer'))
+                            <p class="text-danger">{{$errors->first('singer')}}</p>
                         @endif
                     </div>
 
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email </label>
-                        <input disabled value="{{\Illuminate\Support\Facades\Auth::user()->email}}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$music->desc}}</textarea>
+                        @if($errors->has('desc'))
+                            <p class="text-danger">{{$errors->first('desc')}}</p>
+                        @endif
                     </div>
 
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-info">Upload Songs</button>
+                    <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
                 </form>
-<br><br>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input disabled value="{{\Illuminate\Support\Facades\Auth::user()->password}}" type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <a href="{{route('profile.password')}}" class="btn btn-warning" @if(empty(\Illuminate\Support\Facades\Auth::user()->password)) hidden @endif>Change Password</a>
-
+                <br><br>
             </div>
         </div>
     </div>
 
 
 
-    <br><br>
+
 
 
 

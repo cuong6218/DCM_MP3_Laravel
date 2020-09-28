@@ -1,5 +1,6 @@
 @extends('template.demo.master.menu')
 @section('content')
+
     <!-- ##### Preloader ##### -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="circle-preloader">
@@ -13,7 +14,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/breadcumb.jpg);">
         <div class="bradcumbContent">
-            <h2>Show List Songs</h2>
+            <h2>Playlist Detail</h2>
         </div>
     </div>
     <!-- bg gradients -->
@@ -23,31 +24,76 @@
     <div class="upcoming-shows-area section-padding-100">
         <div class="container">
             <div class="row">
-                <!-- Single Music Player -->
-                @foreach($songs as $song)
-                    <div class="single-music-player col-sm-3">
-                        <img style="width: 100%; height: 100%" src="{{asset('storage/'.$song->image)}}" alt="">
-                        <div class="music-info d-flex justify-content-between">
-                            <div class="music-text">
-                               <a href="{{route('home2.show',$song->id)}}"> <h5>{{$song->song_name}}</h5></a>
-                                <p>{{$song->author}}</p>
-                                <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$song->views}}</i></a>
+                <div class="col-md-3 text-center">
+                    <img style="width: 100%;" src="{{asset('storage/images/album_default.png')}}" alt="no image">
+{{--                    <h5 class="playlist-name" >{{$playlist[0]->playlist_name}}</h5>--}}
+                    <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn btn-secondary mt-3"><i class="fa fa-play" aria-hidden="true"></i> Play all songs</a>
+                </div>
+                <div class="col-md-9">
+                    @foreach($playlist as $key => $song)
+                        <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                            <div class="shows-date">
+                                <h2>{{++$key}}<span></span></h2>
                             </div>
-                            <div class="music-play-icon">
-                                <audio controls data-update="{{$song->id}}">
+                            <div class="shows-desc d-flex align-items-center">
+                                <div class="shows-img">
+                                    <img src="{{asset('storage/'.$song->image)}}" alt="">
+                                </div>
+                                <div class="shows-name">
+
+{{--                                    <a href="{{route('home2.show',$song->id)}}"><h6>{{$song->song_name}} </h6></a>--}}
+{{--                                    <a href="{{route('home2.song-singer',$song->singer->id)}}"><p>{{$song->singer->singer_name}}</p></a>--}}
+
+                                    <h6>{{$song->song_name}}</h6>
+                                    <p>{{$song->singer_name}}</p>
+
+                                </div>
+                            </div>
+                            <div class="music-play-icon playlist_delete">
+                                <audio controls>
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
+
                             </div>
+                            <a href="{{route('playlists.deleteSong',[$song->playlist_id, $song->song_id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>
+{{--                            <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>--}}
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+
+                    <h1 class="text-light">Song Suggest</h1>
+
+                            @foreach($songs2 as $key => $song1)
+                                <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+                                    <div class="shows-date">
+                                        <h2>{{++$key}}<span></span></h2>
+                                    </div>
+                                    <div class="shows-desc d-flex align-items-center">
+                                        <div class="shows-img">
+                                            <img src="{{asset('storage/'.$song1->image)}}" alt="">
+                                        </div>
+                                        <div class="shows-name">
+                                        <h6>{{$song1->song_name}}</h6>
+                                          <p>{{$song1->singer->singer_name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="music-play-icon playlist_delete">
+{{--                                        <audio controls>--}}
+{{--                                            <source src="{{asset('storage/'.$song1->audio)}}">--}}
+{{--                                        </audio>--}}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="{{route('playlists.addSong',[$playlists->id, $song1->id])}}" class="btn text-light"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                </div>
             </div>
         </div>
     </div>
-
     <!-- ##### CTA Area Start ##### -->
-    <div class="musica-cta-area section-padding-100 bg-img bg-overlay2"
-         style="background-image: url(/Client/img/bg-img/bg-8.jpg);">
+    <div class="musica-cta-area section-padding-100 bg-img bg-overlay2" style="background-image: url(/Client/img/bg-img/bg-8.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -76,12 +122,8 @@
                 <div class="col-12 col-md-6 col-xl-3">
                     <div class="footer-widget-area mb-100">
                         <a href="#"><img src="/Client/img/core-img/logo2.png" alt=""></a>
-                        <p class="copywrite-text"><a href="#">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                                                                    aria-hidden="true"></i> by <a
-                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
@@ -154,4 +196,16 @@
             </div>
         </div>
     </footer>
+    <div class="form-popup" id="myForm">
+
+    </div>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
 @endsection

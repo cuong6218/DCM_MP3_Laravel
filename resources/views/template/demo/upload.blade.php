@@ -20,9 +20,9 @@
     <!-- ##### Header Area Start ##### -->
 <br><br><br><br>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
 
                 <table class="table">
                     <thead class="table-info">
@@ -41,11 +41,16 @@
                         <th scope="col"><a href="{{route('profile.pending',\Illuminate\Support\Facades\Auth::user()->id)}}">List Musics</a></th>
                     </tr>
                     </thead>
+                    <thead class="table-info">
+                    <tr>
+                        <th scope="col"><a href="{{route('playlist.index',\Illuminate\Support\Facades\Auth::user()->id)}}">Playlists</a></th>
+                    </tr>
+                    </thead>
                 </table>
             </div>
 
 
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <h4>Add Songs</h4>
                 <hr>
                 <form method="post" enctype="multipart/form-data" action="{{route('profile.upload.store')}}">
@@ -90,6 +95,13 @@
 
                     <input name="user_id" type="text" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" hidden>
 
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        @if($errors->has('desc'))
+                            <p class="text-danger">{{$errors->first('desc')}}</p>
+                        @endif
+                    </div>
 
                     <button type="submit" class="btn btn-info">Add Songs</button>
                     <button id="back-add" class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>

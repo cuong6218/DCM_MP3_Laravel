@@ -42,7 +42,7 @@
                             <h4>{{$lists[0]->singer_name}}</h4>
                         </div>
                         <div class="album-buy-now">
-                            <a href="{{route('home2.index')}}" class="btn musica-btn">Home Page</a>
+                            <a href="{{route('auto.listSinger',$lists[0]->id)}}" class="btn musica-btn">Auto Music Singer</a>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                                     <source src="{{asset('storage/'.$list->audio)}}">
                                 </audio>
                             </div>
-                                <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
+                                <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$list->views}}</i></a>
                                 <a style="color: white" href="{{asset('storage/'.$list->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                             @endforeach
                         </div>

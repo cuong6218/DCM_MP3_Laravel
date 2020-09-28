@@ -117,7 +117,7 @@
 
                                         <a href="{{route('home2.show',$song->id)}}"><h5>{{$song->song_name}}</h5></a>
                                         <p>{{$song->author}}</p>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$song->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$song->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
                                         <audio  controls>
@@ -144,10 +144,10 @@
                                                 {{$singer->singer_name}}</p>
                                             @endif
                                         @endforeach
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$customer->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$customer->views}}</i></a>
                                     </div>
                                     <div class="music-play-icon">
-                                        <audio class="" controls>
+                                        <audio controls >
                                             <source src="{{asset('storage/'.$customer->audio)}}">
                                         </audio>
                                     </div>
@@ -206,6 +206,7 @@
                         @endforeach
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -229,7 +230,7 @@
                             <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="album-title">
                                     <h6>Featured album</h6>
-                                    <h4>List Top View</h4>
+                                    <h4>List Top Listen</h4>
                                 </div>
                                 <div class="album-buy-now">
                                     <a href="{{route('home2.albums')}}" class="btn musica-btn">List Hot Albums</a>
@@ -250,7 +251,7 @@
                                             <source src="{{asset('storage/'.$list->audio)}}" >
                                         </audio>
                                     </div>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$list->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$list->views}}</i></a>
                                         <a style="color: white" href="{{asset('storage/'.$list->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                                         @endforeach
                                 </div>
@@ -261,7 +262,7 @@
                                     <p>Hot Musics</p>
                                     <h6>{{$listSongs[0]->song_name}}</h6>
                                 </div>
-                                <audio preload="auto" controls >
+                                <audio preload="auto" controls>
                                     <source src="{{asset('storage/'.$listSongs[0]->audio)}}">
                                 </audio>
 {{--                                <audio class="my_audio" controls autoplay></audio>--}}
@@ -292,7 +293,69 @@
         @endforeach
     </div>
     <!-- ##### Music Artists Area End ##### -->
+    <div class="featured-album-area section-padding-100 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="featured-album-content d-flex flex-wrap">
 
+                        <!-- Album Thumbnail -->
+                        <div class="album-thumbnail h-100 bg-img"
+                             style="background-image: url(/Client/img/bg-img/bg-10.jpg);"></div>
+
+                        <!-- Album Songs -->
+                        <div class="album-songs h-100">
+
+                            <!-- Album Info -->
+                            <div class="album-info mb-50 d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="album-title">
+                                    <h6>Featured album</h6>
+                                    <h4>List Top Like</h4>
+                                </div>
+                                <div class="album-buy-now">
+                                    <a href="{{route('home2.albums')}}" class="btn musica-btn">List Hot Albums</a>
+                                </div>
+                            </div>
+
+                            <div class="album-all-songs">
+                                <!-- Music Playlist -->
+                                <div class="music-playlist">
+                                @foreach($showListLike as $listLike)
+                                    <!-- Single Song -->
+                                        <div class="single-music active ">
+
+                                            <a href="{{route('home2.show',$listLike->id)}}">
+                                                <h6>{{$listLike->song_name}}</h6>
+                                            </a>
+                                            <audio controls preload="auto">
+                                                <source src="{{asset('storage/'.$listLike->audio)}}" >
+                                            </audio>
+                                        </div>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$listLike->views}}</i></a>
+
+                                        <a style="color: white" href="{{asset('storage/'.$listLike->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
+                                        <a style="color: white" class="mr-4"><i class="fa fa-thumbs-o-up" aria-hidden="true"> {{$listLike->luot_like}}</i></a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <!-- Now Playing -->
+                            <div class="now-playing d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="songs-name">
+                                    <p>Hot Musics</p>
+{{--                                    <h6>{{$showListLike[0]->song_name}}</h6>--}}
+                                </div>
+                                <audio preload="auto" controls>
+{{--                                    <source src="{{asset('storage/'.$showListLike[0]->audio)}}">--}}
+                                </audio>
+                                {{--                                <audio class="my_audio" controls autoplay></audio>--}}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area section-padding-100-0">
         <div class="container-fluid">

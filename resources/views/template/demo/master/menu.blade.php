@@ -30,6 +30,7 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <script src="https://www.collaboratescience.com/protoplasm/library/main.js"></script>
+
     <style>
         #text-name {
             color: white;
@@ -73,8 +74,35 @@
             margin-top: 15px;
             margin-bottom: 5px;
         }
+
         .has-search .form-control {
             padding-left: 2.375rem;
+
+        .empty-playlist {
+            background-color: red;
+            cursor: pointer;
+            background: linear-gradient(33deg,#5a1eae -7%,#ce267a 117%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 4px;
+            width: 180px;
+            min-height: 229px;
+        }
+
+
+        .fa-thumbs-o-up{
+         margin-left: 10px;
+
+
+        .playlist-name{
+            position: relative;
+            color:red;
+            bottom: 5%;
+            right: 0;
         }
 
         .has-search .form-control-feedback {
@@ -152,9 +180,10 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{\Illuminate\Support\Facades\Auth::user()->email}}
+
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('profile.upload')}}">Upload Music</a>
+                                        <a class="dropdown-item" href="{{route('profile.list')}}">Personal music</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('users.logout.store')}}">Logout</a>
                                     </div>
@@ -200,28 +229,7 @@
 <script src="/Client/js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="/Client/js/active.js"></script>
-{{--<script>--}}
-{{--    playlist = {--}}
-{{--        @foreach($testSongs as $key=>$test)--}}
-{{--        'song_{{++$key}}' : 'storage/{{$test->audio}}',--}}
-{{--        @endforeach--}}
 
-{{--    }--}}
-{{--    $("#my_audio").trigger('load');--}}
-
-
-{{--    keys = Object.keys(playlist);--}}
-{{--    $('.my_audio').append("<source id='sound_src' src=" + playlist[keys[0]] + " type='audio/mpeg'>");--}}
-
-{{--    count = 0;--}}
-{{--    $('.my_audio').on('ended', function () {--}}
-{{--        count++;--}}
-{{--        $("#sound_src").attr("src", playlist[keys[count]])[0];--}}
-{{--        $(".my_audio").trigger('load');--}}
-{{--        play_audio('play');--}}
-{{--    });--}}
-
-{{--</script>--}}
 <script>
     $(document).ready(function () {
         let origin = location.origin;
@@ -250,7 +258,16 @@
                 alertify.success('Delete Success');
             }
         })
+
+
+
+
     });
+
+
+
+</script>
+
 
     <!--search song ajax-->
     $(document).ready(function(){
@@ -287,6 +304,9 @@
 
     });
 </script>
+
+
+
 
 
 </body>

@@ -48,6 +48,7 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
         Route::get('/delete/{id}',[\App\Http\Controllers\SongController::class,'destroy'])->name('songs.delete');
         Route::get('/edit/{id}',[\App\Http\Controllers\SongController::class,'edit'])->name('songs.edit');
         Route::post('/edit/{id}',[\App\Http\Controllers\SongController::class,'update'])->name('songs.update');
+        Route::get('/destroy/{id}',[\App\Http\Controllers\SongController::class,'softDelete'])->name('songs.softDelete');
 
 
     });
@@ -68,13 +69,14 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
         Route::get('approved',[\App\Http\Controllers\ApprovedController::class,'listApproved'])->name('browser.approved');
         Route::post('status/{id}',[\App\Http\Controllers\ApprovedController::class,'approved'])->name('browser.approved.edit');
         Route::get('notApproved',[\App\Http\Controllers\ApprovedController::class,'listNotApproved'])->name('browser.notApproved.list');
-
     });
 
 });
 
 Route::get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
 Route::get('songs/{id}',[\App\Http\Controllers\SongController::class,'show'])->name('home2.show');
+Route::post('songs/{id}',[\App\Http\Controllers\CommentController::class,'storeComment'])->name('comment.store');
+
 Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])->name('home2.show-album');
 Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbums'])->name('home2.albums');
 Route::get('singer',[\App\Http\Controllers\HomeController::class, 'showListSinger'])->name('home2.singer');
@@ -99,6 +101,41 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::get('/list/{id}',[\App\Http\Controllers\ProfileController::class,'showPending'])->name('profile.pending');
     Route::get('/delete/{id}',[\App\Http\Controllers\ApprovedController::class,'deleteMusic'])->name('profile.delete');
     Route::get('/users/{id}',[\App\Http\Controllers\ProfileController::class,'showProfile'])->name('profile.users');
+    Route::post('/users/{id}',[\App\Http\Controllers\ProfileController::class,'updateUser'])->name('profile.users.update');
+    Route::get('/change',[\App\Http\Controllers\ProfileController::class,'showChangePassword'])->name('profile.password');
+    Route::post('/change',[\App\Http\Controllers\ProfileController::class,'postChangePassword'])->name('profile.password.update');
+
+    Route::get('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'editMusic'])->name('profile.musics.edit');
+    Route::post('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'updateMusic'])->name('profile.musics.update');
+
+    Route::prefix('playlist')->group(function (){
+        Route::get('', [\App\Http\Controllers\PlaylistController::class, 'index'])->name('playlist.index');
+        Route::get('/add', [\App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
+        Route::post('/add', [\App\Http\Controllers\PlaylistController::class, 'store'])->name('playlist.store');
+        Route::get('/{id}/show', [\App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist.show');
+        Route::get('/{id}/delete', [\App\Http\Controllers\PlaylistController::class, 'destroy'])->name('playlist.destroy');
+        Route::get('/{playlist_id}/add-song/{song_id}', [\App\Http\Controllers\PlaylistController::class, 'addSong'])->name('playlists.addSong');
+        Route::get('/{playlist_id}/delete-song/{song_id}', [\App\Http\Controllers\PlaylistController::class, 'deleteSong'])->name('playlists.deleteSong');
+
+        Route::get('/auto-playlist/{id}',[\App\Http\Controllers\Autoplay::class,'autoplayPlaylist'])->name('playlist.auto');
+    });
+
+
+    Route::get('like/{id}',[\App\Http\Controllers\SongController::class,'like'])->name('show.like');
+    Route::get('dislike/{id}',[\App\Http\Controllers\SongController::class,'disLike'])->name('show.dislike');
+
+
+
 });
 
+Route::get('/auth/redirect/{provider}', [\App\Http\Controllers\SocialController::class,'redirect']);
+
+Route::get('/callback/{provider}', [\App\Http\Controllers\SocialController::class,'callback']);
+
+
+Route::prefix('auto')->group(function (){
+    Route::get('/list-singer/{id}',[\App\Http\Controllers\Autoplay::class,'autoplaySinger'])->name('auto.listSinger');
+});
+
+Route::post('/listen/{id}',[\App\Http\Controllers\SongController::class,'listen']);
 
