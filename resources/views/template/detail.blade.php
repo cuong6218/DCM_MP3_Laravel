@@ -86,7 +86,7 @@
                         <h2 data-animation="fadeInUp" data-delay="100ms">{{$shows[0]->singer_name}}</h2>
                         <div class="tags">
                             @foreach($song->tags as $tag)
-                                <a href="{{route('tags.index',$tag->id)}}" class="label label-default" style="background-color: black; padding: 5px; color: white; font-weight: bold; margin-left: 2px;">{{$tag->name}}</>
+                                <a href="{{route('tags.index',$tag->id)}}" class="label label-default" style="background-color: black; padding: 5px; color: white; font-weight: bold; margin-left: 2px;">{{$tag->name}}</a>
                             @endforeach
                         </div>
                         <h5 data-animation="fadeInUp" data-delay="300ms">{{$shows[0]->description}}</h5>
@@ -197,9 +197,6 @@
 
 
     </div>
-
-
-
 </section>
 @jquery
 @toastr_js

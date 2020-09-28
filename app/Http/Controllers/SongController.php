@@ -229,7 +229,7 @@ class SongController extends Controller
                 ->orWhere('singer_name', 'LIKE', "%{$query}%")
                 ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(1)
                 ->get();
-            $output = '<ul class="dropdown-menu" style="display: block;width: 84% ">';
+            $output = '<ul class="dropdown-menu" style="display: block;width: 251px;;margin-left: 440px ">';
             foreach ($data as $row) {
                     $output .= '<li style="margin-left: 10px;">';
                     $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
