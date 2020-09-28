@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    @toastr_css
+
     <!-- Title -->
     <title>Musica - Music Template</title>
     <base href="{{asset('')}}">
     <!-- Favicon -->
-    <link href="/tag/css/select2.css" rel="stylesheet"/>
+
     <link rel="icon" href="/Client/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
@@ -59,6 +59,7 @@
             color: black;
         }
     </style>
+    @toastr_css
 </head>
 
 <body>
@@ -198,21 +199,6 @@
     </div>
 
 
-  <!-- jQuery js -->
-  <script src="js/jquery.min.js"></script>
-  <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
-  <!-- Bootstrap js -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- All js -->
-  <script src="js/poca.bundle.js"></script>
-  <!-- Active js -->
-  <script src="js/default-assets/active.js"></script>
-<!--icon search-->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
-        integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY="
-        crossorigin="anonymous"/>
 
 </section>
 @jquery
@@ -257,8 +243,7 @@
     });
 
 </script>
-<script src="/tag/js/select2.js"></script>
-<script src="/tag/js/select2.full.js"></script>
+
 </body>
 
 </html>

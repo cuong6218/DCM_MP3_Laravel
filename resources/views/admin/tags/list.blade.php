@@ -52,6 +52,9 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tags : </label>
                             <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            @if($errors->has('name'))
+                                <p class="text-danger">{{$errors->first('name')}}</p>
+                            @endif
                         </div>
 
                         <button id="new-tag" type="submit" class="btn btn-primary"> Create New Tags</button>
