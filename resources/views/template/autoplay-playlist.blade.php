@@ -15,7 +15,7 @@
     <style>
         body {
             font-size: 14px;
-            background-image: url("/storage/12345.jpg");
+            background-image: url("/storage/images/back-ground.jpg");
             height: 100vh;
             background-size: cover;
             background-blend-mode: multiply;

@@ -14,4 +14,7 @@ class Album extends Model
     function songs(){
         return $this->hasMany(Song::class,'albums_id');
     }
+//    function singers(){
+//        return $this->hasManyThrough('App\Models\Singer', 'App\Models\Song');
+//    }
 }

@@ -17,7 +17,11 @@
     <link href="/server/css/styles.css" rel="stylesheet"/>
     <style>
         #new-tag{
-            width: 100%;
+            width: 95%;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(10px, 10px);
         }
     </style>
     @toastr_css

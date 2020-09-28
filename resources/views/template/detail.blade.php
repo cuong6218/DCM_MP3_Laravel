@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    @toastr_css
+
     <!-- Title -->
     <title>Musica - Music Template</title>
     <base href="{{asset('')}}">
     <!-- Favicon -->
-    <link href="/tag/css/select2.css" rel="stylesheet"/>
+
     <link rel="icon" href="/Client/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
@@ -59,6 +59,7 @@
             color: black;
         }
     </style>
+    @toastr_css
 </head>
 
 <body>
@@ -239,8 +240,7 @@
     });
 
 </script>
-<script src="/tag/js/select2.js"></script>
-<script src="/tag/js/select2.full.js"></script>
+
 </body>
 
 </html>
