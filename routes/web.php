@@ -54,6 +54,12 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
     });
 
 
+    Route::prefix('tags')->group(function (){
+        Route::get('list',[\App\Http\Controllers\TagController::class,'index'])->name('tags.create');
+        Route::post('list',[\App\Http\Controllers\TagController::class,'store'])->name('tags.store');
+        Route::get('list/{id}',[\App\Http\Controllers\TagController::class,'destroy'])->name('tags.destroy');
+    });
+
     Route::prefix('singers')->group(function (){
         Route::get('', [\App\Http\Controllers\SingerController::class, 'index'])->name('singers.index');
         Route::get('/create', [\App\Http\Controllers\SingerController::class, 'create'])->name('singers.create');
@@ -76,6 +82,7 @@ Route::middleware('checkLogin')->prefix('admin')->group(function (){
 Route::get('',[\App\Http\Controllers\HomeController::class,'index2'])->name('home2.index');
 Route::get('songs/{id}',[\App\Http\Controllers\SongController::class,'show'])->name('home2.show');
 Route::post('songs/{id}',[\App\Http\Controllers\CommentController::class,'storeComment'])->name('comment.store');
+Route::get('tags/{id}',[\App\Http\Controllers\TagController::class,'show'])->name('tags.index');
 
 Route::get('albums/{id}',[\App\Http\Controllers\AlbumController::class, 'show'])->name('home2.show-album');
 Route::get('albums',[\App\Http\Controllers\HomeController::class, 'showListAlbums'])->name('home2.albums');
@@ -120,11 +127,8 @@ Route::prefix('profile')->middleware('auth')->group(function (){
         Route::get('/auto-playlist/{id}',[\App\Http\Controllers\Autoplay::class,'autoplayPlaylist'])->name('playlist.auto');
     });
 
-
     Route::get('like/{id}',[\App\Http\Controllers\SongController::class,'like'])->name('show.like');
     Route::get('dislike/{id}',[\App\Http\Controllers\SongController::class,'disLike'])->name('show.dislike');
-
-
 
 });
 

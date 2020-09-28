@@ -12,6 +12,7 @@
     <title>Musica - Music Template</title>
     <base href="{{asset('')}}">
     <!-- Favicon -->
+    <link href="/tag/css/select2.css" rel="stylesheet"/>
     <link rel="icon" href="/Client/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
@@ -82,6 +83,11 @@
                     <!-- Welcome Text -->
                     <div class="welcome-text">
                         <h2 data-animation="fadeInUp" data-delay="100ms">{{$shows[0]->singer_name}}</h2>
+                        <div class="tags">
+                            @foreach($song->tags as $tag)
+                                <a href="{{route('tags.index',$tag->id)}}" class="label label-default" style="background-color: black; padding: 5px; color: white; font-weight: bold; margin-left: 2px;">{{$tag->name}}</>
+                            @endforeach
+                        </div>
                         <h5 data-animation="fadeInUp" data-delay="300ms">{{$shows[0]->description}}</h5>
                         <div class="welcome-btn-group">
                             <a href="{{route('home2.index')}}" class="btn poca-btn m-2 ml-0 active"
@@ -251,6 +257,8 @@
     });
 
 </script>
+<script src="/tag/js/select2.js"></script>
+<script src="/tag/js/select2.full.js"></script>
 </body>
 
 </html>
