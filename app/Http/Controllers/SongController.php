@@ -227,8 +227,8 @@ class SongController extends Controller
             $query = $request->query('name');
             if ($check == 0) {
                 $data = DB::table(DB::raw('songs' . ',' . 'singers'))
-                    ->where('song_name', 'LIKE', "%{$query}%")
-                    ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(2)->orderBy('singer_name', 'asc')
+                    ->where('song_name', 'LIKE', "%{$query}%")->limit(1)->orderBy('song_name','asc')
+                    ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(2)->orderBy('singer_name','asc')
                     ->get();
                 $output = '<ul class="dropdown-menu" style="display:block;width: 251px;;margin-left: 440px ">';
                 foreach ($data as $row) {
@@ -249,18 +249,10 @@ class SongController extends Controller
                 echo $output;
             } else {
                 $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
-                    ->where('song_name', 'LIKE', "%{$query}%")
-                    ->orWhere('singer_name', 'LIKE', "%{$query}%")
-                    ->orWhere('playlist_name', 'LIKE', "%{$query}%")->distinct(2)
+                    ->where('song_name', 'LIKE', "%{$query}%")->limit(1)->orderBy('song_name','asc')
+                    ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(1)->orderBy('singer_name','asc')
+                    ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(1)->orderBy('playlist_name','asc')
                     ->get();
-                $output = '<ul class="dropdown-menu" style="display:block;width: 251px;;margin-left: 440px ">';
-                foreach ($data as $row) {
-
-                    $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
-                        ->where('song_name', 'LIKE', "%{$query}%")
-                        ->orWhere('singer_name', 'LIKE', "%{$query}%")
-                        ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(1)
-                        ->get();
                     $output = '<ul class="dropdown-menu" style="display: block;width: 251px;;margin-left: 440px ">';
                     foreach ($data as $row) {
                         $output .= '<li style="margin-left: 10px;">';
@@ -287,7 +279,7 @@ class SongController extends Controller
                 }
             }
         }
-    }
+
         function like($id)
         {
             $loggedin_user = Auth::user()->id;

@@ -288,15 +288,15 @@
                         $('#songList').html(data);
                     }
                 });
-                // $("body").click(function(){
-                //     $("#songList").hide();
-                // });
+                $("body").click(function(){
+                    $("#songList").hide();
+                });
             }
         });
 
         $(document).on('click', 'li', function(){
             $('#song_name').val($(this).text());
-            $('#songList').fadeOut();   
+            $('#songList').fadeOut();
         });
 
     });
