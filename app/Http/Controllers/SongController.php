@@ -256,6 +256,14 @@ class SongController extends Controller
                     ->get();
                 $output = '<ul class="dropdown-menu" style="display:block;width: 251px;;margin-left: 440px ">';
                 foreach ($data as $row) {
+
+            $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
+                ->where('song_name', 'LIKE', "%{$query}%")
+                ->orWhere('singer_name', 'LIKE', "%{$query}%")
+                ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(1)
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display: block;width: 251px;;margin-left: 440px ">';
+            foreach ($data as $row) {
                     $output .= '<li style="margin-left: 10px;">';
                     $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
                     $output .= '<p style="font-size: 14px;font-weight: bold">'

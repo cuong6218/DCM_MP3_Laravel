@@ -29,7 +29,7 @@
                     <!-- Single Music Player -->
                     @foreach($playlists as $playlist)
                         <div class="single-music-player col-sm-3">
-                            <img style="width: 100%; height: 100%" src="{{asset('storage/images/album_default.png')}}" alt="no image">
+                            <img style="width: 100%; height: 100%" src="{{asset('storage/images/playlist-default.jpg')}}" alt="no image">
                             <div class="music-info d-flex justify-content-between">
                                 <div class="music-text">
                                     <a href="{{route('playlist.show', $playlist->id)}}"> <h5>{{$playlist->playlist_name}}</h5></a>
