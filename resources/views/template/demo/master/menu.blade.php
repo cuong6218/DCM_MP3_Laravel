@@ -167,6 +167,7 @@
                                 {{ csrf_field() }}
                                 <i class="fa fa-search form-control-feedback"></i>
                                 <input type="text" style="height: auto "  name="keyword"  id="song_name" class="form-control " placeholder="Enter song ,singer" />
+
                             </div>
 
 
@@ -199,7 +200,7 @@
                             @endif
                         </div>
                         <!-- Nav End -->
-                        <div style="position: relative;top: -19px " id="songList">
+                        <div style="position:relative;top: -19px " id="songList">
                         </div>
                         <div style="position: absolute; height: 6px; right: 2px; bottom: 2px; left: 2px; border-radius: 3px;"></div>
                     </div>
@@ -287,15 +288,15 @@
                         $('#songList').html(data);
                     }
                 });
-                $("body").click(function(){
-                    $("#songList").hide();
-                });
+                // $("body").click(function(){
+                //     $("#songList").hide();
+                // });
             }
         });
 
-        $(document).on('keyup', 'li', function(){
+        $(document).on('click', 'li', function(){
             $('#song_name').val($(this).text());
-            $('#songList').fadeOut();
+            $('#songList').fadeOut();   
         });
 
     });

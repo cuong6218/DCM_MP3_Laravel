@@ -9,6 +9,7 @@ use App\Models\Album;
 use App\Models\Category;
 use App\Models\Dislike;
 use App\Models\Likes;
+use App\Models\Playlist;
 use App\Models\Singer;
 use App\Models\Song;
 
@@ -223,14 +224,38 @@ class SongController extends Controller
     public function search(Request $request)
     {
         if ($request->query) {
+            $check = Playlist::all()->count();
             $query = $request->query('name');
-            $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
-                ->where('song_name', 'LIKE', "%{$query}%")
-                ->orWhere('singer_name', 'LIKE', "%{$query}%")
-                ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(1)
-                ->get();
-            $output = '<ul class="dropdown-menu" style="display: block;width: 251px;;margin-left: 440px ">';
-            foreach ($data as $row) {
+            if ($check == 0) {
+                $data = DB::table(DB::raw('songs' . ',' . 'singers'))
+                    ->where('song_name', 'LIKE', "%{$query}%")
+                    ->orWhere('singer_name', 'LIKE', "%{$query}%")->limit(2)->orderBy('singer_name','asc')
+                    ->get();
+                $output = '<ul class="dropdown-menu" style="display:block;width: 251px;;margin-left: 440px ">';
+                foreach ($data as $row) {
+                    $output .= '<li style="margin-left: 10px;">';
+                    $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
+                    $output .= '<p style="font-size: 14px;font-weight: bold">'
+                        . $row->song_name
+                        . '<i style="font-size: 12px;font-weight: normal">-trong bài hát</i></p>';
+                    $output .= '</a></li>';
+                    $output .= '<li style="margin-left: 10px">';
+                    $output .= '<a href="' . route('home2.show-search', $row->singer_name) . '">';
+                    $output .= '<p style="font-size: 14px;font-weight: bold">'
+                        . $row->singer_name
+                        . '<i style="font-size: 12px;font-weight: normal">-trong ca sĩ</i></p>';
+                    $output .= '</a></li>';
+                }
+                $output .= '</ul>';
+                echo $output;
+            } else {
+                $data = DB::table(DB::raw('songs' . ',' . 'singers' . ',' . 'playlists'))
+                    ->where('song_name', 'LIKE', "%{$query}%")
+                    ->orWhere('singer_name', 'LIKE', "%{$query}%")
+                    ->orWhere('playlist_name', 'LIKE', "%{$query}%")->distinct(2)
+                    ->get();
+                $output = '<ul class="dropdown-menu" style="display:block;width: 251px;;margin-left: 440px ">';
+                foreach ($data as $row) {
                     $output .= '<li style="margin-left: 10px;">';
                     $output .= '<a href="' . route('home2.show-search', $row->song_name) . '">';
                     $output .= '<p style="font-size: 14px;font-weight: bold">'
@@ -249,9 +274,10 @@ class SongController extends Controller
                         . $row->playlist_name
                         . '<i style="font-size: 12px;font-weight: normal">-trong playlist</i></p>';
                     $output .= '</a></li>';
+                }
+                $output .= '</ul>';
+                echo $output;
             }
-            $output .= '</ul>';
-            echo $output;
         }
     }
 
