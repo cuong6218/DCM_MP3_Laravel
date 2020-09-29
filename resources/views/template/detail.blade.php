@@ -106,7 +106,7 @@
                         </div>
                         <div class="poca-music-content">
                             <span class="music-published-date">{{$shows[0]->created_at}}</span>
-                            <h2>{{$shows[0]->album_name}} - {{$shows[0]->singer_name}}</h2>
+                            <h2>{{$shows[0]->song_name}} - {{$shows[0]->singer_name}}</h2>
                             <div class="music-meta-data">
                                 <p>By <a href="#" class="music-author">{{$shows[0]->author}}</a> | <a href="#"
                                                                                                       class="music-catagory">Tutorials</a>
@@ -228,9 +228,9 @@
                 url: origin + '/listen/' + {{$shows[0]->id}},
                 method: 'POST',
                 success: function (result) {
-                    console.log(result)
-                    let html = '<a><i class="fa fa-headphones" aria-hidden="true"></i> Listen ( {{++$shows[0]->views}} )</a>';
-                    $('#test').html(html);
+                    // console.log(result)
+                    {{--let html = '<a><i class="fa fa-headphones" aria-hidden="true"></i> Listen ( {{++$shows[0]->views}} )</a>';--}}
+                    {{--$('#test').html(html);--}}
 
                 }
             })

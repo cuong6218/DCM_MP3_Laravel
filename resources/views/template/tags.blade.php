@@ -24,12 +24,13 @@
         <div class="container">
             <div class="row">
                 <!-- Single Music Player -->
+
                 @foreach($songs as $song)
                     <div class="single-music-player col-sm-3">
                         <img style="width: 100%; height: 100%" src="{{asset('storage/'.$song->image)}}" alt="">
                         <div class="music-info d-flex justify-content-between">
                             <div class="music-text">
-                                <a href="{{route('home2.show',$song->id)}}"> <h5>{{$song->song_name}}</h5></a>
+                                <a href="{{route('home2.show',$song->song_id)}}"> <h5>{{$song->song_name}}</h5></a>
                                 <p>{{$song->author}}</p>
                                 <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$song->views}}</i></a>
                             </div>

@@ -51,9 +51,10 @@
                                 <!-- Music Playlist -->
                                 <div class="music-playlist">
                                     <!-- Single Song -->
+{{--                                    @dd($albums)--}}
                                     @foreach($albums as $album)
                                     <div class="single-music active">
-                                        <a href="{{route('home2.show',$album->album_id)}}"><h6>{{$album->song_name}}</h6></a>
+                                        <a href="{{route('home2.show',$album->id)}}"><h6>{{$album->song_name}}</h6></a>
                                         <audio  controls>
                                             <source src="{{asset('storage/'.$album->audio)}}">
                                         </audio>
