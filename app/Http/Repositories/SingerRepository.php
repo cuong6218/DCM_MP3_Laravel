@@ -16,7 +16,7 @@ class SingerRepository
 
     function getDesc()
     {
-        return $this->singer->select('*')->orderBy('id', 'desc')->simplePaginate(5);
+        return $this->singer->select('*')->orderBy('id', 'desc')->paginate(5);
     }
     function getAll()
     {

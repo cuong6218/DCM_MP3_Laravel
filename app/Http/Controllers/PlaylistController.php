@@ -22,9 +22,9 @@ class   PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $playlists = $this->playlistService->getDesc();
+        $playlists = $this->playlistService->getAll($id);
         $songs = $this->songService->getAll();
 
 
@@ -51,7 +51,8 @@ class   PlaylistController extends Controller
     public function store(Request $request)
     {
         $this->playlistService->store($request);
-        return redirect()->route('playlist.index');
+        return back();
+//        return redirect()->route('playlist.index');
     }
 
     /**

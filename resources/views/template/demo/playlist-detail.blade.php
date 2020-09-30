@@ -1,6 +1,20 @@
 @extends('template.demo.master.menu')
 @section('content')
+    <head>
+        <style>
+            .audioplayer{
+                background-color: #E587DB;
+            }
+            .audioplayer:not(.audioplayer-playing) .audioplayer-playpause {
+                background: linear-gradient(to right, #F3C9CA, #5722a9);
+            }
 
+            .audioplayer .audioplayer-volume-adjust div div {
+                background: linear-gradient(to right, #cc1573, #5722a9);
+            }
+
+        </style>
+    </head>
     <!-- ##### Preloader ##### -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="circle-preloader">
@@ -27,10 +41,11 @@
                 <div class="col-md-3 text-center box-image-playlist">
                     <img style="width: 100%;" src="{{asset('storage/images/playlist-default.jpg')}}" alt="no image">
                     <h5 class="playlist-name" >{{$playlists->playlist_name}}</h5>
-                    <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn btn-secondary mt-3"><i class="fa fa-play" aria-hidden="true"></i> Play all songs</a>
+                    <a  href="{{route('playlist.auto',$playlists->id)}}" class="btn musica-btn mt-3"><i class="fa fa-play" aria-hidden="true"></i> Play all songs</a>
                 </div>
 
                 <div class="col-md-9">
+
                     @foreach($playlist as $key => $song)
                         <div class="single-upcoming-shows d-flex align-items-center flex-wrap">
                             <div class="shows-date">
@@ -41,23 +56,21 @@
                                     <img src="{{asset('storage/'.$song->image)}}" alt="">
                                 </div>
                                 <div class="shows-name">
-
-{{--                                    <a href="{{route('home2.show',$song->id)}}"><h6>{{$song->song_name}} </h6></a>--}}
-{{--                                    <a href="{{route('home2.song-singer',$song->singer->id)}}"><p>{{$song->singer->singer_name}}</p></a>--}}
-
-                                    <h6>{{$song->song_name}}</h6>
-                                    <p>{{$song->singer_name}}</p>
+                                    <a href="{{route('home2.show', $song->song_id)}}"><h6>{{$song->song_name}}</h6></a>
+                                    <a href="{{route('home2.song-singer', $song->singer_id)}}"><p>{{$song->singer_name}}</p></a>
 
                                 </div>
                             </div>
-                            <div class="music-play-icon playlist_delete">
+                            <div class="poca-music-player">
                                 <audio controls>
                                     <source src="{{asset('storage/'.$song->audio)}}">
                                 </audio>
-
                             </div>
+{{--                            <div class="music-play-icon playlist_delete">--}}
+{{--                                --}}
+
+{{--                            </div>--}}
                             <a href="{{route('playlists.deleteSong',[$song->playlist_id, $song->song_id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>
-{{--                            <a href="{{route('playlists.deleteSong',[$playlist->id, $song->id])}}" onclick="return confirm('Are you sure?')" class="btn text-light"><i class="fa fa-times" aria-hidden="true"></i></a>--}}
                         </div>
                     @endforeach
                 </div>

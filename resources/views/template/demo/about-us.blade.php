@@ -59,7 +59,7 @@
                                             <source src="{{asset('storage/'.$album->audio)}}">
                                         </audio>
                                     </div>
-                                        <a style="color: white"><i class="fa fa-eye" aria-hidden="true"> {{$album->views}}</i></a>
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$album->views}}</i></a>
                                         <a style="color: white" href="{{asset('storage/'.$album->audio)}}" download><i class="fa fa-download" aria-hidden="true"></i></a>
                                     @endforeach
                                 </div>

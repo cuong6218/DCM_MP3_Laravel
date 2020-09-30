@@ -46,7 +46,7 @@ class SongController extends Controller
     {
         //
 
-        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->simplePaginate(5);
+        $songs = DB::table('songs')->select('*')->orderBy('id', 'desc')->paginate(5);
 
         return view('admin.songs.list', compact('songs'));
     }
@@ -223,7 +223,12 @@ class SongController extends Controller
     public function search(Request $request)
     {
         if ($request->query) {
-            $check = Playlist::all()->count();
+//            $check = Playlist::all()->count();
+            if(isset(Auth::user()->id)){
+                $check = DB::table('playlists')->where('user_id', '=', Auth::user()->id)->count();
+            } else {
+                $check = Playlist::all()->count();
+            }
             $query = $request->query('name');
             if ($check == 0) {
                 $data = DB::table(DB::raw('songs' . ',' . 'singers'))
@@ -256,6 +261,7 @@ class SongController extends Controller
                     ->orderBy('singer_name', 'asc')
                     ->orWhere('playlist_name', 'LIKE', "%{$query}%")->limit(2)
                     ->orderBy('playlist_name', 'asc')
+//                    ->orWhere('user_id', '=', 2)
                     ->get();
                     $output = '<ul class="dropdown-menu" style="display: block;width: 251px;;margin-left: 440px ">';
                     foreach ($data as $row) {

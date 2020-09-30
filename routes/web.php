@@ -116,7 +116,7 @@ Route::prefix('profile')->middleware('auth')->group(function (){
     Route::post('/edit-music/{id}',[\App\Http\Controllers\ProfileController::class,'updateMusic'])->name('profile.musics.update');
 
     Route::prefix('playlist')->group(function (){
-        Route::get('', [\App\Http\Controllers\PlaylistController::class, 'index'])->name('playlist.index');
+        Route::get('/{id}', [\App\Http\Controllers\PlaylistController::class, 'index'])->name('playlist.index');
         Route::get('/add', [\App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
         Route::post('/add', [\App\Http\Controllers\PlaylistController::class, 'store'])->name('playlist.store');
         Route::get('/{id}/show', [\App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist.show');

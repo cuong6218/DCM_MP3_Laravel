@@ -5,6 +5,7 @@ namespace App\Http\Repositories;
 
 
 use App\Models\Playlist;
+use Illuminate\Support\Facades\DB;
 
 class PlaylistReposiroty
 {
@@ -14,8 +15,8 @@ class PlaylistReposiroty
         $this->playlist = $playlist;
     }
 
-    function getAll(){
-        return Playlist::all();
+    function getAll($id){
+        return DB::table('playlists')->where('user_id', $id)->get();
     }
     function getDesc(){
         return $this->playlist->select('*')->orderBy('id', 'desc')->get();
