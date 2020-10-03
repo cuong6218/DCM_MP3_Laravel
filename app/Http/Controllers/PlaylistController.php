@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class   PlaylistController extends Controller
@@ -109,7 +110,7 @@ class   PlaylistController extends Controller
     public function destroy($id)
     {
         $this->playlistService->destroy($id);
-        return redirect()->route('playlist.index');
+        return redirect()->route('playlist.index', Auth::user()->id);
     }
     public function addSong($playlist_id, $song_id){
         $playlist = $this->playlistService->show($playlist_id);
