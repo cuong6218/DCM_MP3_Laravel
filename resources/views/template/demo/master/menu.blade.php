@@ -175,13 +175,13 @@
                             @if(\Illuminate\Support\Facades\Auth::check())
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{\Illuminate\Support\Facades\Auth::user()->email}}
+                                        <strong>{{\Illuminate\Support\Facades\Auth::user()->name}}</strong>
 
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('profile.list')}}">Personal music</a>
+                                        <a class="dropdown-item" href="{{route('profile.users', \Illuminate\Support\Facades\Auth::user()->id)}}">Personal music</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('users.logout.store')}}">Logout</a>
                                     </div>
@@ -294,7 +294,7 @@
             }
         });
 
-        $(document).on('click', 'li', function(){
+        $('#songList').on('click', 'li', function(){
             $('#song_name').val($(this).text());
             $('#songList').fadeOut();
         });

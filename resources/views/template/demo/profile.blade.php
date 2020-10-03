@@ -75,8 +75,9 @@
 <br><br>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input disabled value="{{\Illuminate\Support\Facades\Auth::user()->password}}" type="password" class="form-control" id="exampleInputPassword1">
+                    <input  disabled value="{{\Illuminate\Support\Facades\Auth::user()->password}}" type="password" class="form-control" id="exampleInputPassword1">
                 </div>
+
                 <a href="{{route('profile.password')}}" class="btn btn-warning" @if(empty(\Illuminate\Support\Facades\Auth::user()->password)) hidden @endif>Change Password</a>
 
             </div>

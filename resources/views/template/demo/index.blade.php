@@ -26,8 +26,8 @@
                 <div class="slide-img bg-img" style="background-image: url(/Client/img/bg-img/bg-2.jpg);"></div>
                 <!-- Slide Content -->
                 <div class="hero-slides-content text-center">
-                    <h2 data-animation="fadeInUp" data-delay="100ms">Colorlib <span>Colorlib</span></h2>
-                    <p data-animation="fadeInUp" data-delay="300ms">Music Template</p>
+                    <h2 data-animation="fadeInUp" data-delay="100ms">BlackPink <span>Colorlib</span></h2>
+                    <p data-animation="fadeInUp" data-delay="300ms">Musica</p>
                 </div>
                 <!-- Big Text -->
                 <h2 class="big-text">Colorlib</h2>
@@ -40,7 +40,7 @@
                 <!-- Slide Content -->
                 <div class="hero-slides-content text-center">
                     <h2 data-animation="fadeInUp" data-delay="100ms">Festival <span>Festival</span></h2>
-                    <p data-animation="fadeInUp" data-delay="300ms">Free Themes</p>
+                    <p data-animation="fadeInUp" data-delay="300ms">Free Music</p>
                 </div>
                 <!-- Big Text -->
                 <h2 class="big-text">Festival</h2>
@@ -96,7 +96,7 @@
                     <div class="col-12">
                         <div class="section-heading">
                             <h2 style="color: black">New Musics</h2>
-                            <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>
+{{--                            <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>--}}
                         </div>
                     </div>
                     <div class="music-player-slides owl-carousel">
@@ -121,33 +121,8 @@
                             </div>
                         @endforeach
                     </div>
-                    <hr>
-                    <div class="music-player-slides owl-carousel">
-                    @foreach($customerMusic as $customer)
-                        <!-- Single Music Player -->
-                            <div class="single-music-player">
-                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$customer->image)}}" alt="">
+{{--                    <hr>--}}
 
-                                <div class="music-info d-flex justify-content-between">
-                                    <div class="music-text">
-                                        <a><h5>{{$customer->music_name}}</h5></a>
-                                        @foreach($singerAll as $singer)
-
-                                        <p > @if($singer->id == $customer->singer)
-                                                {{$singer->singer_name}}</p>
-                                            @endif
-                                        @endforeach
-                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$customer->views}}</i></a>
-                                    </div>
-                                    <div class="music-play-icon">
-                                        <audio controls >
-                                            <source src="{{asset('storage/'.$customer->audio)}}">
-                                        </audio>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
 
                 </div>
             </div>
@@ -204,7 +179,48 @@
         </div>
     </div>
     <!-- ##### Upcoming Shows Area End ##### -->
+    <div class="music-player-area section-padding-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12">
+                        <div class="section-heading">
+                            <h2 style="color: black">List Music</h2>
+{{--                            <h6>Sed porta cursus enim, vitae maximus felis luctus iaculis.</h6>--}}
+                        </div>
+                    </div>
+{{--                    <hr>--}}
+                    <div class="music-player-slides owl-carousel">
+                    @foreach($customerMusic as $customer)
+                        <!-- Single Music Player -->
+                            <div class="single-music-player">
+                                <img style="width: 350px; height: 350px" src="{{asset('storage/'.$customer->image)}}" alt="">
 
+                                <div class="music-info d-flex justify-content-between">
+                                    <div class="music-text">
+                                        <a><h5>{{$customer->music_name}}</h5></a>
+                                        @foreach($singerAll as $singer)
+
+                                            <p > @if($singer->id == $customer->singer)
+                                                    {{$singer->singer_name}}</p>
+                                            @endif
+                                        @endforeach
+                                        <a style="color: white"><i class="fa fa-headphones" aria-hidden="true"> {{$customer->views}}</i></a>
+                                    </div>
+                                    <div class="music-play-icon">
+                                        <audio controls >
+                                            <source src="{{asset('storage/'.$customer->audio)}}">
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ##### Featured Album Area Start ##### -->
     <div class="featured-album-area section-padding-100 clearfix">
         <div class="container">

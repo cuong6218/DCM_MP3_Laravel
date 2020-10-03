@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\PlaylistService;
 use App\Http\Services\SongService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class   PlaylistController extends Controller
@@ -22,9 +23,9 @@ class   PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $playlists = $this->playlistService->getDesc();
+        $playlists = $this->playlistService->getAll($id);
         $songs = $this->songService->getAll();
 
 
@@ -51,7 +52,8 @@ class   PlaylistController extends Controller
     public function store(Request $request)
     {
         $this->playlistService->store($request);
-        return redirect()->route('playlist.index');
+        return back();
+//        return redirect()->route('playlist.index');
     }
 
     /**
@@ -108,7 +110,7 @@ class   PlaylistController extends Controller
     public function destroy($id)
     {
         $this->playlistService->destroy($id);
-        return redirect()->route('playlist.index');
+        return redirect()->route('playlist.index', Auth::user()->id);
     }
     public function addSong($playlist_id, $song_id){
         $playlist = $this->playlistService->show($playlist_id);

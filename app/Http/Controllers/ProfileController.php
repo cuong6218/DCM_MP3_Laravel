@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\ChangeUserRequest;
 use App\Http\Requests\MusicEditRequest;
 use App\Http\Requests\MusicRequest;
 use App\Http\Requests\UserRequest;
@@ -73,7 +74,7 @@ class ProfileController extends Controller
         return view('template.demo.profile');
     }
 
-    function updateUser(UserRequest $request, $id)
+    function updateUser(ChangeUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->name = $request->name;

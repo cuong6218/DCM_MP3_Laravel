@@ -6,6 +6,7 @@ namespace App\Http\Services;
 
 use App\Http\Repositories\PlaylistReposiroty;
 use App\Models\Playlist;
+use Illuminate\Support\Facades\Auth;
 
 class PlaylistService
 {
@@ -14,8 +15,8 @@ class PlaylistService
     {
         $this->playlistRepo = $playlistRepo;
     }
-    function getAll(){
-        return $this->playlistRepo->getAll();
+    function getAll($id){
+        return $this->playlistRepo->getAll($id);
     }
     function getDesc(){
         return $this->playlistRepo->getDesc();
@@ -23,6 +24,7 @@ class PlaylistService
     function store($request){
         $playlist = new Playlist();
         $playlist->playlist_name = $request->playlist_name;
+        $playlist->user_id = Auth::user()->id;
         $this->playlistRepo->save($playlist);
         $playlist->songs()->sync($request->song);
     }
