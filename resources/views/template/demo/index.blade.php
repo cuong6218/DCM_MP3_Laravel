@@ -164,9 +164,9 @@
                                 <div class="shows-location">
                                     <p>At the Castle</p>
                                 </div>
-                                <div class="shows-time">
-                                    <p>{{$album->created_at}}</p>
-                                </div>
+{{--                                <div class="shows-time">--}}
+{{--                                    <p>{{$album->created_at}}</p>--}}
+{{--                                </div>--}}
                                 <div class="buy-tickets">
                                     <a href="{{route('home2.show-album',$album->id)}}" class="btn musica-btn">Show Albums</a>
                                 </div>
